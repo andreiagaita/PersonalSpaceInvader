@@ -1,54 +1,22 @@
-using UnityEngine;
-using XInputDotNetPure; // Required in C#
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerController : MonoBehaviour
+internal class PlayerController : XInputController
 {
-	public int playerNumber;
+	public float force;
+	public float speed;
 
-	// xinput
-	bool playerIndexSet = false;
-	PlayerIndex playerIndex;
-	GamePadState state;
-	GamePadState prevState;
-
-	void Update ()
+	public void Update()
 	{
-		// Find a PlayerIndex
-		if (!playerIndexSet || !prevState.IsConnected)
-		{
-			PlayerIndex testPlayerIndex = (PlayerIndex)playerNumber;
-			GamePadState testState = GamePad.GetState (testPlayerIndex);
-			if (testState.IsConnected)
-			{
-				Debug.Log (string.Format ("GamePad found {0}", testPlayerIndex));
-				playerIndex = testPlayerIndex;
-				playerIndexSet = true;
-			}
-			else
-				return;
-		}		
+		base.Update();
 
-		state = GamePad.GetState (playerIndex);
+		if (!controllerReady)
+			return;
 
 		float horizontal = state.ThumbSticks.Left.X;
-		float vertical = state.ThumbSticks.Left.Y;
+		float vertical = state.ThumbSticks.Left.Y;		
 
-		prevState = state;
-	}
-
-	void OnDisable()
-	{
-		OnApplicationQuit();
-	}
-
-	void OnDestroy ()
-	{
-		OnApplicationQuit ();
-	}
-
-	void OnApplicationQuit ()
-	{
-		GamePad.SetVibration (playerIndex, 0, 0);
+		rigidbody2D.AddForce(new Vector2(horizontal * force, vertical * force));
+		rigidbody2D.velocity = new Vector2(Mathf.Clamp(rigidbody2D.velocity.x, -speed, speed), Mathf.Clamp(rigidbody2D.velocity.y, -speed, speed));
 	}
 }
