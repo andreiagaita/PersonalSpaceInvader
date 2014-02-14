@@ -40,21 +40,41 @@ public class LevelEditor : Editor {
 		DrawDefaultInspector ();
 	}
 	
+	public void OnSceneGUI () {
+		MySceneGUI ();
+	}
+	
 	public void OnPreSceneGUI () {
+		MySceneGUI ();
+	}
+	
+	public void MySceneGUI () {
 		Tools.current = Tool.None;
 		
 		Vector2 mousePos = GUIToGridPoint (Event.current.mousePosition);
 		DrawCell (mousePos);
+		
+		int id = GUIUtility.GetControlID (FocusType.Passive);
+		
+		if (Event.current.type == EventType.MouseDown) {
+			SetTile (mousePos, selectedBrushPrefab);
+			EditorGUIUtility.hotControl = id;
+		}
+		if (Event.current.type == EventType.MouseUp) {
+			if (EditorGUIUtility.hotControl == id)
+				EditorGUIUtility.hotControl = 0;
+		}
+		if (Event.current.type == EventType.MouseDrag) {
+			if (EditorGUIUtility.hotControl == id) {
+				if (mousePos != lastMousePos) {
+					lastMousePos = mousePos;
+					SetTile (mousePos, selectedBrushPrefab);
+				}
+			}
+		}
+		
 		if (Event.current.type == EventType.MouseMove)
 			Event.current.Use ();
-		
-		if (Event.current.type == EventType.MouseDown)
-			SetTile (mousePos, selectedBrushPrefab);
-		if (mousePos != lastMousePos) {
-			if (Event.current.type == EventType.MouseDrag)
-				SetTile (mousePos, selectedBrushPrefab);
-			lastMousePos = mousePos;
-		}
 	}
 	
 	void SetTile (Vector2 pos, GameObject brushPrefab) {
