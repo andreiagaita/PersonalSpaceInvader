@@ -18,7 +18,7 @@ public class XInputController : MonoBehaviour
 		// Find a PlayerIndex
 		if (!playerIndexSet || !prevState.IsConnected)
 		{
-			PlayerIndex testPlayerIndex = (PlayerIndex)playerNumber;
+			PlayerIndex testPlayerIndex = (PlayerIndex)playerNumber - 1;
 			GamePadState testState = GamePad.GetState (testPlayerIndex);
 			if (testState.IsConnected)
 			{
