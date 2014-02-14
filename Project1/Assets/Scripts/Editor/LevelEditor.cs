@@ -16,10 +16,20 @@ public class LevelEditor : Editor {
 		}
 	}
 	
+	Vector2 lastMousePos = Vector2.zero;
+	Level level;
+	
+	public void OnEnable () {
+		level = target as Level;
+		//SceneView.onSceneGUIDelegate += OnSceneGUICustom;
+	}
+	
+	public void OnDisable () {
+		//SceneView.onSceneGUIDelegate -= OnSceneGUICustom;
+	}
+	
 	public override void OnInspectorGUI ()
 	{
-		Level level = target as Level;
-		
 		// Brush toolbar
 		string[] brushNames = new string[level.brushPrefabs.Count + 1];
 		brushNames[0] = "Empty";
@@ -30,11 +40,41 @@ public class LevelEditor : Editor {
 		DrawDefaultInspector ();
 	}
 	
-	public void OnSceneGUI () {
+	public void OnPreSceneGUI () {
+		Tools.current = Tool.None;
+		
 		Vector2 mousePos = GUIToGridPoint (Event.current.mousePosition);
 		DrawCell (mousePos);
 		if (Event.current.type == EventType.MouseMove)
 			Event.current.Use ();
+		
+		if (Event.current.type == EventType.MouseDown)
+			SetTile (mousePos, selectedBrushPrefab);
+		if (mousePos != lastMousePos) {
+			if (Event.current.type == EventType.MouseDrag)
+				SetTile (mousePos, selectedBrushPrefab);
+			lastMousePos = mousePos;
+		}
+	}
+	
+	void SetTile (Vector2 pos, GameObject brushPrefab) {
+		GameObject toDelete = null;
+		foreach (GameObject go in level.tiles) {
+			if (go.transform.position == (Vector3)pos) {
+				level.tiles.Remove (go);
+				toDelete = go;
+				break;
+			}
+		}
+		if (toDelete != null)
+			DestroyImmediate (toDelete);
+		
+		if (brushPrefab != null) {
+			GameObject instance = (GameObject)Instantiate (brushPrefab, pos, Quaternion.identity);
+			level.tiles.Add (instance);
+			instance.transform.parent = level.transform;
+		}
+		Event.current.Use ();
 	}
 	
 	void DrawCell (Vector3 pos) {
