@@ -21,8 +21,6 @@ public class CharacterController : MonoBehaviour
 
 	void Update ()
 	{
-		UpdateCollisionFlags ();
-
 		Vector2 newVelocity = rigidbody2D.velocity;
 
 		if (Input.GetButtonDown ("Jump"))
@@ -60,7 +58,7 @@ public class CharacterController : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		//UpdateCollisionFlags ();
+		UpdateCollisionFlags ();
 	}
 
 	private void UpdateCollisionFlags ()
