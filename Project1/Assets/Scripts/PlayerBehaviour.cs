@@ -5,23 +5,25 @@ using System;
 public class PlayerBehaviour : MonoBehaviour {
 
 	public event Action Died;
-	public Transform enemyAura;
+	public PlayerBehaviour enemy;
+	public GameObject aura;
+	public GameObject arrow;
 	public Transform spawnLocation;
+	public PlayerColor playerColor;
 	private float playerAuraDistance = 0f;
 	private float distanceLimit; 
-	private GameObject enemy;
 
+	void Awake () {
+		GameManager.instance.players.Add (this);
+	}
+	
 	void Start () {
-		distanceLimit = (enemyAura.renderer.bounds.size.x + transform.renderer.bounds.size.x) / 2;
-		transform.position = spawnLocation.position;
-		enemy = enemyAura.transform.root.gameObject;
+		distanceLimit = (aura.renderer.bounds.size.x) / 2;
+		arrow.GetComponent<SpriteRenderer>().color = GetActualPlayerColor();
 	}
 	
 	void Update () {
-		if (!enemyAura || !spawnLocation)
-			return;
-
-		playerAuraDistance = Vector3.Distance (enemyAura.position, transform.position);
+		playerAuraDistance = Vector3.Distance (enemy.transform.position, transform.position);
 		if (playerAuraDistance < distanceLimit)
 		{
 			if (Died != null)
@@ -29,6 +31,16 @@ public class PlayerBehaviour : MonoBehaviour {
 			AdjustScore();
 			RespawnEnemy();
 		}
+	}
+
+	public PlayerColor GetPlayerColor()
+	{
+		return playerColor;
+	}
+
+	public Color GetActualPlayerColor()
+	{
+		return GameManager.instance.playerColors[(int)playerColor];
 	}
 
 	void AdjustScore()

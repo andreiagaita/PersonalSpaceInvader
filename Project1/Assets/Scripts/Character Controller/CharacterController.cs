@@ -12,15 +12,14 @@ public class CharacterController : MonoBehaviour
 	public GameObject graphic;
 
 	private bool canJump = true;
-
-	public enum PlayerColor
+	
+	public PlayerColor playerColor
 	{
-		Red = 0,
-		Blue = 1,
-		Green = 2,
-		Orange = 3
+		get 
+		{
+			return GetComponent<PlayerBehaviour>().GetPlayerColor();
+		}
 	}
-	public PlayerColor playerColor;
 
 	[Flags]
 	private enum CollisionFlags

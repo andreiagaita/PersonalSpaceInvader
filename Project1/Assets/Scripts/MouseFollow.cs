@@ -3,14 +3,16 @@ using System.Collections;
 
 public class MouseFollow : MonoBehaviour {
 
-	public Transform target;
 	public float rotationSpeed = 0.1f;
+	private Transform target;
+
+	void Start()
+	{
+		target = transform.root.gameObject.GetComponent<PlayerBehaviour>().enemy.transform;
+	}
 
 	void Update () 
 	{
-		if (!target)
-			return;
-
 		RotateTowardsTarget(target);
 	}
 
