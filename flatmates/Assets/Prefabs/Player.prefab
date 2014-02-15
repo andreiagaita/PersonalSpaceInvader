@@ -276,7 +276,7 @@ MonoBehaviour:
   coneStart: 0
   coneAngle: 360
   lightColor: {r: .653900981, g: .65882355, b: .565813184, a: 0}
-  lightDetail: 5040
+  lightDetail: 384
   lightMaterial: {fileID: 2100000, guid: e59eef300ef3e7d49b4def05ab2750f2, type: 2}
   shadowLayer:
     serializedVersion: 2
