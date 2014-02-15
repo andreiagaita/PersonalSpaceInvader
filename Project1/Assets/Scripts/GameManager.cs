@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour {
 	[HideInInspector]
 	public List<Transform> powerUpLocations = new List<Transform> ();
 	public GameObject[] powerUps;
-	private float powerUpDuration = 0f;
+	private float powerUpDuration = 10f;
 	private float timeSincePowerUpSpawn = 0f;
 	private GameObject currentPowerUp;
 	
