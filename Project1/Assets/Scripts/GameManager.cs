@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour {
 	
 	public void OnLevelWasLoaded (int level) 
 	{
-		if (gameRoundEnded && Application.loadedLevelName.Equals("LevelTest"))
+		if (Application.loadedLevelName.Equals("LevelTest"))
 			InitLevel ();
 	}
 
@@ -115,6 +115,21 @@ public class GameManager : MonoBehaviour {
 			PlayerCreated (player);
 	}
 
+	public void RemovePlayers ()
+	{
+		players.Clear ();
+	}
+
+	public void AddSpawnPoint(GameObject spawnPoint)
+	{
+		spawnPoints.Add (spawnPoint);
+	}
+
+	public void RemoveSpawnPoints ()
+	{
+		spawnPoints.Clear();
+	}
+	
 	public void SpawnPlayers () {
 		List<GameObject> randomSpawnPoints = new List<GameObject> (spawnPoints);
 		randomSpawnPoints.Shuffle ();
@@ -160,6 +175,8 @@ public class GameManager : MonoBehaviour {
 		{
 			winningPlayerColor = player.playerColor;
 			gameRoundEnded = true;
+			RemovePlayers ();
+			RemoveSpawnPoints();
 			Application.LoadLevel("EndGameMenu");
 		}
 	}
