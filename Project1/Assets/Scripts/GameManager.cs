@@ -35,7 +35,9 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 	}
-
+	
+	public GameObject playerPrefab;
+	public int playerCount = 4;
 	public GameObject soundManagerPrefab;
 	public GUIText scoreTextPrefab;
 	public int scoreToWin = 20;
@@ -89,7 +91,9 @@ public class GameManager : MonoBehaviour {
 
 	private void InitLevels ()
 	{
-		levels.Add ("LevelTest");
+		levels.Add ("Level1");
+		levels.Add ("Level2");
+		levels.Add ("Level3");
 	}
 
 	private void InitLevel ()
@@ -98,6 +102,9 @@ public class GameManager : MonoBehaviour {
 			return;
 
 		gameRoundEnded = false;
+		
+		for (int i=0; i<playerCount; i++)
+			Instantiate (playerPrefab);
 		SpawnPlayers ();
 		AssignTargets ();
 		
@@ -149,6 +156,7 @@ public class GameManager : MonoBehaviour {
 
 	public void AddPlayer (PlayerBehaviour player)
 	{
+		player.playerColor = (PlayerColor)players.Count;
 		players.Add (player);
 		if (PlayerCreated != null)
 			PlayerCreated (player);
@@ -271,7 +279,7 @@ public class GameManager : MonoBehaviour {
 
 	public void NextLevel ()
 	{
-		currentLevel = UnityEngine.Random.Range (0, levels.Count - 1);
+		currentLevel = UnityEngine.Random.Range (0, levels.Count);
 
 		if (LevelStart != null)
 			LevelStart ();
