@@ -78,21 +78,24 @@ public class LevelEditor : Editor {
 	}
 	
 	void SetTile (Vector2 pos, GameObject brushPrefab) {
-		GameObject toDelete = null;
-		foreach (GameObject go in level.tiles) {
-			if (go.transform.position == (Vector3)pos) {
-				level.tiles.Remove (go);
-				toDelete = go;
-				break;
+		for (int i=level.tiles.Count-1; i>=0; i--) {
+			GameObject go = level.tiles[i];
+			if (go == null) {
+				level.tiles.RemoveAt (i);
+				continue;
 			}
-		}
-		if (toDelete != null)
-			DestroyImmediate (toDelete);
+			if (go.transform.position == (Vector3)pos) {
+				level.tiles.RemoveAt (i);
+				DestroyImmediate (go);
+				continue;
+			}
+		}	
 		
 		if (brushPrefab != null) {
-			GameObject instance = (GameObject)Instantiate (brushPrefab, pos, Quaternion.identity);
-			level.tiles.Add (instance);
+			GameObject instance = PrefabUtility.InstantiatePrefab (brushPrefab) as GameObject;
+			instance.transform.position = pos;
 			instance.transform.parent = level.transform;
+			level.tiles.Add (instance);
 		}
 		Event.current.Use ();
 	}

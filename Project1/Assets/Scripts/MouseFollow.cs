@@ -3,13 +3,16 @@ using System.Collections;
 
 public class MouseFollow : MonoBehaviour {
 
-	public Transform target;
 	public float rotationSpeed = 0.1f;
+	private Transform target;
+	private PlayerBehaviour player;
 
-	void Start ()
+	void Start()
 	{
-		if (!target)
-			Debug.LogError("You need to assign a target to the AuraSpike object");
+		player = transform.root.gameObject.GetComponent<PlayerBehaviour>();
+		var enemy = player.enemy;
+		if (enemy)
+			target = enemy.transform;
 	}
 
 	void Update () 
@@ -19,6 +22,10 @@ public class MouseFollow : MonoBehaviour {
 
 	private void RotateTowardsTarget(Transform target)
 	{
+		if (!target)
+			return;
+
+		target = player.enemy.transform;
 		var direction = (target.position - transform.position).normalized;
 		var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
 		angle = Mathf.LerpAngle(transform.rotation.eulerAngles.z, angle, Time.deltaTime * rotationSpeed);
