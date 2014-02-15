@@ -12,23 +12,23 @@ public class GameStateManager : GameScript
     public GameObject PlayerPrefab;
 	public bool fake2Player = true;
 
-    bool ndPlayerJoin = false;
-
     private SpawnPoint[] LevelSpawns;
 
     void Start()
     {
         base.Start();
 
-	    Subscribe ("Network", "OnJoinedRoom", JoinSelfPlayer);
+	    //Subscribe ("Network", "OnJoinedRoom", JoinSelfPlayer);
 
-		JoinSelfPlayer();
+		//JoinSelfPlayer();
+
+        Debug.Log("Waiting for host to join game... Press A to join");
     }
 
-	public void JoinSelfPlayer ()
+	public void JoinSelfPlayer (int playerID)
 	{
 
-        currentPlayerInfo = new ClientPlayerInfo(1, "Player1", Vector3.zero, Color.red, 0);
+        currentPlayerInfo = new ClientPlayerInfo(playerID, "Player" + playerID, Vector3.zero, Color.red, 0);
         Debug.Log("host player created");
 
         LevelSpawns = GameObject.FindObjectsOfType<SpawnPoint>();
@@ -47,20 +47,45 @@ public class GameStateManager : GameScript
 
 		player.GetComponentInChildren<SpriteRenderer>().color = currentPlayerInfo.Color;
 		PlayerController controller = player.GetComponentInChildren<PlayerController>();
-        controller.controller =  PlayerController.ControllerType.Keyboard;
+        controller.controller =  PlayerController.ControllerType.Xbox;
         controller.playerNumber = currentPlayerInfo.ID;
+
+        Debug.Log("Waiting for other players to join game... Press A to join");
     }
 
     void Update()
     {
-        if (fake2Player && Time.realtimeSinceStartup > 2 && !ndPlayerJoin)
+        if(Input.anyKeyDown)
         {
-            SpawnPoint spawnLocation = GetRandomSpawn();
-            PlayerJoined(2, "Player2", spawnLocation.transform.position, Color.green, 0);
-            spawnLocation.Available = false;
-            Debug.Log("2nd player created");
-            ndPlayerJoin = true;
+            int playerID = FindControllerID();
+            if (playerID != -1)
+            {
+                if (currentPlayerInfo == null)
+                {
+                    JoinSelfPlayer(playerID);
+                }
+                else if (currentPlayerInfo.ID != playerID && !currentPlayerInfo.OpponentPlayers.ContainsKey(playerID))
+                {
+                    SpawnPoint spawnLocation = GetRandomSpawn();
+                    PlayerJoined(playerID, "Player" + playerID, spawnLocation.transform.position, Color.green, 0);
+                    spawnLocation.Available = false;
+                    Debug.Log("player " + playerID + "created");
+                }
+            }
         }
+    }
+
+    int FindControllerID()
+    {
+        int controllerID = -1;
+        for (int i = 1; i < 4; i++)
+        {
+            string keyCode = "Joystick" + (i == 0 ? "" : i.ToString()) + "Button0";
+            Debug.Log("checking: " + keyCode + " : " + Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), keyCode)));
+            if (Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), keyCode)))
+                return i;
+        }
+        return controllerID;
     }
 
     void PlayerJoined(int id, string name, Vector3 position, Color color, int score)
