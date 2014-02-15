@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour {
 		instance = this;
 	}
 	
-	public static int playersAlive = 3;
 	public static int scorePlayer1 = 0;
 	public static int scorePlayer2 = 0;
 	public static int scorePlayer3 = 0;
