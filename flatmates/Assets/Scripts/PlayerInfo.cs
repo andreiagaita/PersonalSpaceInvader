@@ -2,20 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public enum PlayerID
+public enum ViewerType
 {
     None,
     Game,
-    Player1,
-    Player2,
-    Player3,
-    Player4,
+    Player,
     Spectator
 }
 
 public class PlayerInfo
 {
-    public PlayerID ID { get; set; }
+    public int ID { get; set; }
     public string Name { get; set; }
     public Vector3 Position { get; set; }
     public Color Color { get; set; }
@@ -23,7 +20,7 @@ public class PlayerInfo
     public List<PickupObject> ObjectsOwned { get; set; }
     public List<PickupObject> ObjectsPicked { get; set; }
 
-    public PlayerInfo(PlayerID id, string name, Vector3 position, Color color, int score)
+    public PlayerInfo(int id, string name, Vector3 position, Color color, int score)
     {
         ID = id;
         Name = name;

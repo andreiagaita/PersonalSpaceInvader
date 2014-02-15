@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundManagerPrefab: {fileID: 100000, guid: 09c55d3833ec84f40b9447dfbf5ee019, type: 2}
-  scoreTextprefab: {fileID: 100000, guid: bed3138bb62c34cbd8c3b5b2dbecf31e, type: 2}
+  scoreTextPrefab: {fileID: 13200000, guid: bed3138bb62c34cbd8c3b5b2dbecf31e, type: 2}
   playerColors:
   - {r: .588235259, g: .0346020721, b: .0346020721, a: 1}
   - {r: .0600388758, g: .0367106311, b: .713235259, a: 1}
