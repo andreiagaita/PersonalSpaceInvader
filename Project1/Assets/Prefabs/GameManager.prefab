@@ -51,6 +51,10 @@ MonoBehaviour:
   pulsatingAura: {fileID: 100000, guid: e8fe9b77c1de8584799e114fac8e95e3, type: 2}
   spawnPoints: []
   players: []
+  powerUpLocations: []
+  powerUps:
+  - {fileID: 100000, guid: c0d517e459de21a459c9f53a713adb35, type: 2}
+  - {fileID: 100000, guid: ae960862b409c9a4790d98398f4fafee, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14371bb7f5e6f40cfb9cda74199f4b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 14
+  speed: 20
   jumpForce: 28
   jumpableTimeCooldown: .100000001
   graphic: {fileID: 100008}
@@ -229,6 +229,7 @@ MonoBehaviour:
   graphic: {fileID: 21200004}
   spawnLocation: {fileID: 0}
   playerColor: 0
+  activePowerUp: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

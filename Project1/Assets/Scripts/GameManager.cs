@@ -60,6 +60,12 @@ public class GameManager : MonoBehaviour {
 	public List<GameObject> spawnPoints = new List<GameObject> ();
 	[HideInInspector]
 	public List<PlayerBehaviour> players = new List<PlayerBehaviour> ();
+	[HideInInspector]
+	public List<Transform> powerUpLocations = new List<Transform> ();
+	public GameObject[] powerUps;
+	private float powerUpDuration = 10f;
+	private float timeSincePowerUpSpawn = 0f;
+	private GameObject currentPowerUp;
 	
 	public void Awake () {
 		var old = gameManager;
@@ -126,6 +132,18 @@ public class GameManager : MonoBehaviour {
 				DestroyPulsatingAuraCircles();
 				timeSinceLastTargetReassign = 0f;
 			}
+
+			timeSincePowerUpSpawn += Time.deltaTime;
+			if (timeSincePowerUpSpawn > powerUpDuration)
+			{
+				var powerUpIndex = UnityEngine.Random.Range (0, powerUps.Length);
+				var locationIndex = UnityEngine.Random.Range (0, powerUpLocations.Count);
+				if (currentPowerUp != null)
+					Destroy(currentPowerUp);
+				currentPowerUp = Instantiate(powerUps[powerUpIndex], powerUpLocations[locationIndex].position, Quaternion.identity) as GameObject;
+				timeSincePowerUpSpawn = 0;
+				powerUpDuration = UnityEngine.Random.Range (5, 15);
+			}
 		}
 	}
 
@@ -154,6 +172,16 @@ public class GameManager : MonoBehaviour {
 	public void RemoveSpawnPoints ()
 	{
 		spawnPoints.Clear();
+	}
+
+	public void AddPowerUpLocation (Transform powerUpLocation)
+	{
+		powerUpLocations.Add(powerUpLocation);
+	}
+
+	public void RemovePowerUpLocations ()
+	{
+		powerUpLocations.Clear();
 	}
 	
 	public void SpawnPlayers () {
@@ -202,6 +230,7 @@ public class GameManager : MonoBehaviour {
 			ResetState ();
 			RemovePlayers ();
 			RemoveSpawnPoints();
+			RemovePowerUpLocations ();
 			GameEnd ();
 		}
 	}
