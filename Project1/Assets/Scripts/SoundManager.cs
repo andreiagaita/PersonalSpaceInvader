@@ -49,9 +49,9 @@ public class SoundManager : MonoBehaviour {
 
 		var list = clips.FindAll ((obj) => obj.key == "jump").Select (x => x.clip).Except (jumpClipsPerPlayer.Values).ToArray ();
 		if (list.Length == 0)
-			jumpClipsPerPlayer.Add (player.tag, clips.First (x => x.key == "jump").clip);
+			jumpClipsPerPlayer.Add (player.GetPlayerColor ().ToString (), clips.First (x => x.key == "jump").clip);
 		else
-			jumpClipsPerPlayer.Add (player.tag, list[0]);
+			jumpClipsPerPlayer.Add (player.GetPlayerColor ().ToString (), list[0]);
 		player.Jumped += PlayerJumped;
 	}
 
@@ -59,7 +59,7 @@ public class SoundManager : MonoBehaviour {
 	{
 		player.Died -= PlayerDied;
 		player.Jumped -= PlayerJumped;
-
+		jumpClipsPerPlayer.Remove (player.GetPlayerColor ().ToString ());
 	}
 
 	void PlayClip (string type)
@@ -78,7 +78,7 @@ public class SoundManager : MonoBehaviour {
 
 	void PlayerJumped (PlayerBehaviour player, string jumptype)
 	{
-		var clip = jumpClipsPerPlayer[player.tag];
+		var clip = jumpClipsPerPlayer[player.GetPlayerColor ().ToString ()];
 		audio.PlayOneShot (clip);
 	}
 
