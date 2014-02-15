@@ -7688,6 +7688,7 @@ MonoBehaviour:
   - {r: .0243295692, g: .661764741, b: .318868637, a: 1}
   - {r: .904411793, g: .423037201, b: .0532006919, a: 1}
   assignNewTargetsDelay: 20
+  pulsatingAura: {fileID: 100000, guid: e8fe9b77c1de8584799e114fac8e95e3, type: 2}
   spawnPoints: []
   players: []
 --- !u!4 &834012914
@@ -15048,6 +15049,10 @@ Prefab:
       value: 
       objectReference: {fileID: 13200000, guid: bed3138bb62c34cbd8c3b5b2dbecf31e,
         type: 2}
+    - target: {fileID: 11400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
+      propertyPath: assignNewTargetsDelay
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
   m_RootGameObject: {fileID: 834012912}
