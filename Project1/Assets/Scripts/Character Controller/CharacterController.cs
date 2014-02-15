@@ -85,10 +85,34 @@ public class CharacterController : MonoBehaviour
 			canJump = false;
 		}
 
-		if ((collisionFlags & (CollisionFlags.Left | CollisionFlags.Right)) == 0)
+		if (ShouldApplyHorizontalInput (horizontalInput))
 			newVelocity.x = horizontalInput * speed;
 
 		rigidbody2D.velocity = newVelocity;
+	}
+
+	private bool ShouldApplyHorizontalInput (float horizontalInput)
+	{
+		if ((collisionFlags & (CollisionFlags.Left | CollisionFlags.Right)) == 0)
+			return true;
+
+		if ((collisionFlags & CollisionFlags.Left) != 0)
+		{
+			if (horizontalInput > 0)
+				return true;
+			else
+				return false;
+		}
+		
+		if ((collisionFlags & CollisionFlags.Right) != 0)
+		{
+			if (horizontalInput < 0)
+				return true;
+			else
+				return false;
+		}
+			
+		return false;
 	}
 
 	void FixedUpdate ()

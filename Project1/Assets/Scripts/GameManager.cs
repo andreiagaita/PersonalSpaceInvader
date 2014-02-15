@@ -83,4 +83,23 @@ public class GameManager : MonoBehaviour {
 			players[i].enemy.aura.GetComponent<SpriteRenderer>().color = players[i].GetActualPlayerColor();
 		}
 	}
+	
+	public Vector3 GetSpawnPositionFurtestAway () {
+		int spawnIndex = -1;
+		float maxDist = 0;
+		for (int i=0; i<spawnPoints.Count; i++) {
+			float minDist = Mathf.Infinity;
+			for (int j=0; j<players.Count; j++) {
+				float dist = Vector2.Distance (players[j].transform.position, spawnPoints[i].transform.position);
+				minDist = Mathf.Min (minDist, dist);
+			}
+			
+			if (minDist > maxDist)
+			{
+				maxDist = minDist;
+				spawnIndex = i;
+			}
+		}
+		return spawnPoints[spawnIndex].transform.position;
+	}
 }
