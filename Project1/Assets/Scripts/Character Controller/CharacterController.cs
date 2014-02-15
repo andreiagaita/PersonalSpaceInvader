@@ -9,6 +9,8 @@ public class CharacterController : MonoBehaviour
 	public float speed = 10f;
 	public float jumpForce = 5f;
 
+	public float jumpableTimeCooldown = 0.1f;
+
 	public GameObject graphic;
 	
 	public PlayerColor playerColor
@@ -43,6 +45,8 @@ public class CharacterController : MonoBehaviour
 	enum VisualDirection { Left, Right }
 	private VisualDirection direction = VisualDirection.Right;
 
+	private float lastJumpableTime;
+
 	void Start ()
 	{
 		graphicAnimator = graphic.GetComponent<Animator> ();
@@ -57,10 +61,10 @@ public class CharacterController : MonoBehaviour
 
 	void Update ()
 	{
-		bool canJump = false;
-
 		if ((collisionFlags & (CollisionFlags.Below | CollisionFlags.Left | CollisionFlags.Right)) != 0)
-			canJump = true;
+			lastJumpableTime = Time.time;
+
+		bool canJump = jumpableTimeCooldown > (Time.time - lastJumpableTime);
 
 		graphicAnimator.speed = Mathf.Lerp (1f, 10f, Mathf.InverseLerp (0f, speed, Mathf.Abs (rigidbody2D.velocity.x)));
 
@@ -134,22 +138,22 @@ public class CharacterController : MonoBehaviour
 
 		if ((DirectionalCollisionTest (new Vector2 (collisionTestCenterOffset, 0f), Vector3.down)
 		    || DirectionalCollisionTest (new Vector2 (-collisionTestCenterOffset, 0f), Vector3.down))
-		    && rigidbody2D.velocity.y <= 0)
+		    && rigidbody2D.velocity.y <= 0.1f)
 			collisionFlags |= CollisionFlags.Below;
 		
 		if ((DirectionalCollisionTest (new Vector2 (collisionTestCenterOffset, 0f), Vector3.up)
 		    || DirectionalCollisionTest (new Vector2 (-collisionTestCenterOffset, 0f), Vector3.up))
-		    && rigidbody2D.velocity.y >= 0)
+		    && rigidbody2D.velocity.y >= -0.1f)
 			collisionFlags |= CollisionFlags.Above;
 		
 		if ((DirectionalCollisionTest (new Vector2 (0f, collisionTestCenterOffset), Vector3.right)
 		    || DirectionalCollisionTest (new Vector2 (0f, -collisionTestCenterOffset), Vector3.right))
-		    && rigidbody2D.velocity.x >= 0)
+		    && rigidbody2D.velocity.x >= -0.1f)
 			collisionFlags |= CollisionFlags.Right;
 		
 		if ((DirectionalCollisionTest (new Vector2 (0f, collisionTestCenterOffset), Vector3.left)
 		     || DirectionalCollisionTest (new Vector2 (0f, -collisionTestCenterOffset), Vector3.left))
-		    && rigidbody2D.velocity.x <= 0)
+		    && rigidbody2D.velocity.x <= 0.1f)
 			collisionFlags |= CollisionFlags.Left;
 	}
 
