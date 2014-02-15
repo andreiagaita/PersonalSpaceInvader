@@ -228,7 +228,7 @@ public class GameManager : MonoBehaviour {
 	private void DestroyPulsatingAuraCircles()
 	{
 		for (var i = 0; i < players.Count; ++i)
-			DestroyImmediate(pulsatingAuras[i]);
+			Destroy(pulsatingAuras[i]);
 		aurasPulsating = false;
 	}
 
