@@ -197,7 +197,7 @@ MonoBehaviour:
   speed: 15
   jumpForce: 30
   graphic: {fileID: 100008}
-  collisionTestDistance: .600000024
+  collisionTestDistance: .649999976
   collisionTestCenterOffset: .49000001
 --- !u!114 &11400002
 MonoBehaviour:

@@ -9,7 +9,8 @@ public class GameStateManager : GameScript
     private ClientPlayerInfo currentPlayerInfo;
     private Dictionary<Guid, PickupObject> GamePickups = new Dictionary<Guid, PickupObject>();
 
-    public Transform PlayerPrefab;
+    public GameObject PlayerPrefab;
+	public bool fake2Player = true;
 
     bool ndPlayerJoin = false;
 
@@ -19,7 +20,14 @@ public class GameStateManager : GameScript
     {
         base.Start();
 
-        // create myself
+	    Subscribe ("Network", "OnJoinedRoom", JoinSelfPlayer);
+
+		JoinSelfPlayer();
+    }
+
+	public void JoinSelfPlayer ()
+	{
+
         currentPlayerInfo = new ClientPlayerInfo(1, "Player1", Vector3.zero, Color.red, 0);
         Debug.Log("host player created");
 
@@ -34,18 +42,18 @@ public class GameStateManager : GameScript
         }
 
         SpawnPoint spawnLocation = GetRandomSpawn();
-        Transform playerTransform = (Transform)GameObject.Instantiate(PlayerPrefab, spawnLocation.transform.position, Quaternion.identity);
+        GameObject player = PhotonNetwork.Instantiate(PlayerPrefab.name, spawnLocation.transform.position, Quaternion.identity, 0);
         spawnLocation.Available = false;
 
-        playerTransform.GetComponentInChildren<SpriteRenderer>().color = currentPlayerInfo.Color;
-        PlayerController controller = playerTransform.GetComponentInChildren<PlayerController>();
+		player.GetComponentInChildren<SpriteRenderer>().color = currentPlayerInfo.Color;
+		PlayerController controller = player.GetComponentInChildren<PlayerController>();
         controller.controller =  PlayerController.ControllerType.Keyboard;
         controller.playerNumber = currentPlayerInfo.ID;
     }
 
     void Update()
     {
-        if (Time.realtimeSinceStartup > 2 && !ndPlayerJoin)
+        if (fake2Player && Time.realtimeSinceStartup > 2 && !ndPlayerJoin)
         {
             SpawnPoint spawnLocation = GetRandomSpawn();
             PlayerJoined(2, "Player2", spawnLocation.transform.position, Color.green, 0);
