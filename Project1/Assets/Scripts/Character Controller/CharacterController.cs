@@ -10,8 +10,6 @@ public class CharacterController : MonoBehaviour
 	public float jumpForce = 5f;
 
 	public GameObject graphic;
-
-	private bool canJump = true;
 	
 	public PlayerColor playerColor
 	{
@@ -42,6 +40,9 @@ public class CharacterController : MonoBehaviour
 	private Vector3 graphicScale;
 	private Vector3 reverseGraphicScale;
 
+	enum VisualDirection { Left, Right }
+	private VisualDirection direction = VisualDirection.Right;
+
 	void Start ()
 	{
 		graphicAnimator = graphic.GetComponent<Animator> ();
@@ -56,21 +57,12 @@ public class CharacterController : MonoBehaviour
 
 	void Update ()
 	{
+		bool canJump = false;
+
 		if ((collisionFlags & (CollisionFlags.Below | CollisionFlags.Left | CollisionFlags.Right)) != 0)
 			canJump = true;
 
 		graphicAnimator.speed = Mathf.Lerp (1f, 10f, Mathf.InverseLerp (0f, speed, Mathf.Abs (rigidbody2D.velocity.x)));
-
-		if (rigidbody2D.velocity.x > 0)
-		{
-			graphicTransform.localPosition = graphicOffset;
-			graphicTransform.localScale = graphicScale;
-		}
-		else if (rigidbody2D.velocity.x < 0)
-		{
-			graphicTransform.localPosition = reverseGraphicOffset;
-			graphicTransform.localScale = reverseGraphicScale;
-		}
 
 		Vector2 newVelocity = rigidbody2D.velocity;
 
@@ -81,14 +73,30 @@ public class CharacterController : MonoBehaviour
 			newVelocity.y = jumpForce;
 			if (Jumped != null)
 				Jumped ("normal");
-
-			canJump = false;
 		}
 
 		if (ShouldApplyHorizontalInput (horizontalInput))
 			newVelocity.x = horizontalInput * speed;
+		else
+			newVelocity.x = 0f;
 
 		rigidbody2D.velocity = newVelocity;
+		
+		if (direction == VisualDirection.Right && rigidbody2D.velocity.x < -0.5f)
+			direction = VisualDirection.Left;
+		else if (direction == VisualDirection.Left && rigidbody2D.velocity.x > 0.5f)
+			direction = VisualDirection.Right;
+		
+		if (direction == VisualDirection.Right)
+		{
+			graphicTransform.localPosition = graphicOffset;
+			graphicTransform.localScale = graphicScale;
+		}
+		else
+		{
+			graphicTransform.localPosition = reverseGraphicOffset;
+			graphicTransform.localScale = reverseGraphicScale;
+		}
 	}
 
 	private bool ShouldApplyHorizontalInput (float horizontalInput)
