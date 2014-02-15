@@ -2800,7 +2800,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a082458dd268cb40a273ef4efb6f569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 400004, guid: d448caba286f5624dab91710700502f2, type: 2}
+  PlayerPrefab: {fileID: 100004, guid: d448caba286f5624dab91710700502f2, type: 2}
+  fake2Player: 1
+  useNetwork: 0
 --- !u!4 &823633072
 Transform:
   m_ObjectHideFlags: 0
@@ -2964,6 +2966,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: ae91aae58e8ddb447973d55465b1008e, type: 2}
+      propertyPath: PlayerPrefab
+      value: 
+      objectReference: {fileID: 100004, guid: d448caba286f5624dab91710700502f2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae91aae58e8ddb447973d55465b1008e, type: 2}
   m_RootGameObject: {fileID: 823633070}
