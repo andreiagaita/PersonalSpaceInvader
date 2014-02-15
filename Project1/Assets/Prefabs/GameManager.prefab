@@ -43,10 +43,10 @@ MonoBehaviour:
   scoreToWin: 10
   winningPlayerColor: 0
   playerColors:
-  - {r: .588235259, g: .0346020721, b: .0346020721, a: 1}
-  - {r: .0600388758, g: .0367106311, b: .713235259, a: 1}
-  - {r: .0243295692, g: .661764741, b: .318868637, a: 1}
-  - {r: .904411793, g: .423037201, b: .0532006919, a: 1}
+  - {r: .764705896, g: 0, b: 0, a: 1}
+  - {r: 0, g: .296551704, b: 1, a: 1}
+  - {r: 0, g: .625, b: .288793147, a: 1}
+  - {r: .941176474, g: .525760651, b: 0, a: 1}
   assignNewTargetsDelay: 20
   pulsatingAura: {fileID: 100000, guid: e8fe9b77c1de8584799e114fac8e95e3, type: 2}
   spawnPoints: []
