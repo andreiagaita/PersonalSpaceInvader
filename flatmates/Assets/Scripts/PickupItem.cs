@@ -14,14 +14,14 @@ public class PickupItem : GameScript
 
 	void OnTriggerEnter2D (Collider2D hit)
 	{
-		if (hit.gameObject.layer == LayerMask.NameToLayer("Player"))
-			Pickup(hit.name);
+		if (hit.gameObject.layer == LayerMask.NameToLayer("ItemCollector"))
+			Pickup(hit.transform.parent.name);
 	}
 
 	void OnTriggerStay2D(Collider2D hit)
 	{
-		if (hit.gameObject.layer == LayerMask.NameToLayer("Player"))
-			Pickup(hit.name);
+		if (hit.gameObject.layer == LayerMask.NameToLayer("ItemCollector"))
+			Pickup(hit.transform.parent.name);
 	}
 
 	private void Pickup (string playerName)
@@ -63,6 +63,6 @@ public class PickupItem : GameScript
 		if (!isCollected)
 			return;
 
-		transform.position = BlackBoard.Read<Vector3>(holder, "PublicPosition");
+		transform.position = BlackBoard.Read<Vector3>(holder, "PublicPosition") + Vector3.up * 2;
 	}
 }
