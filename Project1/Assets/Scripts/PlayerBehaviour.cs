@@ -62,5 +62,6 @@ public class PlayerBehaviour : MonoBehaviour {
 	void RespawnEnemy()
 	{
 		enemy.transform.position = enemy.GetComponent<PlayerBehaviour>().spawnLocation.position;
+		transform.position = spawnLocation.position;
 	}
 }
