@@ -9,9 +9,12 @@ public class PlayerBehaviour : MonoBehaviour {
 	private float distanceLimit; 
 	private GameObject enemy;
 
+	void Awake () {
+		GameManager.instance.players.Add (this);
+	}
+	
 	void Start () {
 		distanceLimit = (enemyAura.renderer.bounds.size.x + transform.renderer.bounds.size.x) / 2;
-		transform.position = spawnLocation.position;
 		enemy = enemyAura.transform.root.gameObject;
 	}
 	
