@@ -11,6 +11,7 @@ public class GameStateManager : GameScript
 
     public GameObject PlayerPrefab;
 	public bool fake2Player = true;
+	public bool useNetwork = false;
 
     bool ndPlayerJoin = false;
 
@@ -20,15 +21,20 @@ public class GameStateManager : GameScript
     {
         base.Start();
 
-	    Subscribe ("Network", "OnJoinedRoom", JoinSelfPlayer);
-
-		JoinSelfPlayer();
+		if (useNetwork)
+			Subscribe ("Network", "OnJoinedRoom", JoinSelfPlayer);
+		else
+			JoinSelfPlayer();
     }
 
 	public void JoinSelfPlayer ()
 	{
 
-        currentPlayerInfo = new ClientPlayerInfo(1, "Player1", Vector3.zero, Color.red, 0);
+		int playerID = 1;
+		if (useNetwork)
+			playerID = PhotonNetwork.player.ID;
+
+		currentPlayerInfo = new ClientPlayerInfo(playerID, "Player" + playerID, Vector3.zero, Color.red, 0);
         Debug.Log("host player created");
 
         LevelSpawns = GameObject.FindObjectsOfType<SpawnPoint>();
@@ -42,7 +48,14 @@ public class GameStateManager : GameScript
         }
 
         SpawnPoint spawnLocation = GetRandomSpawn();
-        GameObject player = PhotonNetwork.Instantiate(PlayerPrefab.name, spawnLocation.transform.position, Quaternion.identity, 0);
+		GameObject player = null;
+		if (useNetwork)
+			player = PhotonNetwork.Instantiate(PlayerPrefab.name, spawnLocation.transform.position, Quaternion.identity, 0);
+		else
+		
+			player = Instantiate (PlayerPrefab, spawnLocation.transform.position, Quaternion.identity) as GameObject;
+
+		player.name = "Player" + PhotonNetwork.player.ID;
         spawnLocation.Available = false;
 
 		player.GetComponentInChildren<SpriteRenderer>().color = currentPlayerInfo.Color;
