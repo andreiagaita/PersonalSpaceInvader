@@ -38,7 +38,11 @@ public class GameManager : MonoBehaviour {
 	
 	public Color[] playerColors;
 	public float assignNewTargetsDelay = 20.0f;
+	public GameObject pulsatingAura;
+	private GameObject[] pulsatingAuras;
+	private bool aurasPulsating = false;
 	private float timeSinceLastTargetReassign = 0f;
+	private float pulsatingAuraNotificationLength = 3.0f;
 
 	[HideInInspector]
 	public List<GameObject> spawnPoints = new List<GameObject> ();
@@ -51,8 +55,19 @@ public class GameManager : MonoBehaviour {
 		if (old == null)
 			Instantiate (soundManagerPrefab);
 	}
+
+	public void Start ()
+	{
+		InitLevel ();
+	}
 	
-	public void OnLevelWasLoaded (int level) {
+	public void OnLevelWasLoaded (int level) 
+	{
+		InitLevel ();
+	}
+
+	private void InitLevel ()
+	{
 		SpawnPlayers ();
 		AssignTargets ();
 		
@@ -71,9 +86,15 @@ public class GameManager : MonoBehaviour {
 	public void Update()
 	{
 		timeSinceLastTargetReassign += Time.deltaTime;
+		if (!aurasPulsating && (timeSinceLastTargetReassign > assignNewTargetsDelay - pulsatingAuraNotificationLength))
+		{
+			NotifyIncomingTargetReassignments();
+		}
+
 		if (timeSinceLastTargetReassign > assignNewTargetsDelay)
 		{
 			AssignTargets();
+			DestroyPulsatingAuraCircles();
 			timeSinceLastTargetReassign = 0f;
 		}
 	}
@@ -126,5 +147,23 @@ public class GameManager : MonoBehaviour {
 	public void AwardPointToPlayer (PlayerBehaviour player) {
 		scoreDict[player.playerColor] += 1;
 		scoreTexts[player.playerColor].text = "" + scoreDict[player.playerColor];
+	}
+
+	private void NotifyIncomingTargetReassignments()
+	{
+		pulsatingAuras = new GameObject[players.Count];
+		for (var i = 0; i < players.Count; ++i)
+		{
+			pulsatingAuras[i] = Instantiate(pulsatingAura, players[i].transform.position, Quaternion.identity) as GameObject;
+			pulsatingAuras[i].transform.parent = players[i].transform;
+		}
+		aurasPulsating = true;
+	}
+
+	private void DestroyPulsatingAuraCircles()
+	{
+		for (var i = 0; i < players.Count; ++i)
+			DestroyImmediate(pulsatingAuras[i]);
+		aurasPulsating = false;
 	}
 }
