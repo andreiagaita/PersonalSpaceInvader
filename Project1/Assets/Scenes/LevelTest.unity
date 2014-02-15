@@ -7682,6 +7682,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundManagerPrefab: {fileID: 100000, guid: 09c55d3833ec84f40b9447dfbf5ee019, type: 2}
   scoreTextPrefab: {fileID: 13200000, guid: bed3138bb62c34cbd8c3b5b2dbecf31e, type: 2}
+  scoreToWin: 20
+  winningPlayerColor: 0
   playerColors:
   - {r: .588235259, g: .0346020721, b: .0346020721, a: 1}
   - {r: .0600388758, g: .0367106311, b: .713235259, a: 1}
@@ -15051,6 +15053,10 @@ Prefab:
         type: 2}
     - target: {fileID: 11400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
       propertyPath: assignNewTargetsDelay
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
+      propertyPath: scoreToWin
       value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
