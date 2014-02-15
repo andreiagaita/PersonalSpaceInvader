@@ -23,6 +23,11 @@ public class GameStateManager : GameScript
 		get { return m_CurrentPlayerInfo; }
 	}
 
+	public PlayerInfo GetPlayerByID (int id)
+	{
+		return players[id];
+	}
+
 	void Start()
 	{
 		base.Start();
@@ -31,16 +36,10 @@ public class GameStateManager : GameScript
 		Debug.Log("Waiting for host to join game... Press A to join");
 	}
 
-	private void JoinSelfPlayer(int playerID)
+	void OnEnable ()
 	{
-		if (useNetwork)
-			playerID = PhotonNetwork.player.ID;
-
-		m_CurrentPlayerInfo = CreateMySelf(playerID);
-		Debug.Log("host player created");
-
 		LevelSpawns = GameObject.FindObjectsOfType<SpawnPoint>();
-		if(LevelSpawns == null || LevelSpawns.Length == 0)
+		if (LevelSpawns == null || LevelSpawns.Length == 0)
 		{
 			Debug.LogError("No spawn points found in the level");
 		}
@@ -48,6 +47,15 @@ public class GameStateManager : GameScript
 		{
 			Debug.Log(LevelSpawns.Length + " spawn points found");
 		}
+	}
+
+	private void JoinSelfPlayer(int playerID)
+	{
+		if (useNetwork)
+			playerID = PhotonNetwork.player.ID;
+
+		m_CurrentPlayerInfo = CreateMySelf(playerID, true);
+		Debug.Log("host player created");
 
 		SpawnPoint spawnLocation = GetRandomSpawn();
 		GameObject player = null;
@@ -89,6 +97,17 @@ public class GameStateManager : GameScript
 				}
 			}
 		}
+
+		if (useNetwork && Input.anyKeyDown && m_CurrentPlayerInfo != null && m_CurrentPlayerInfo.currentState == PlayerInfo.PlayerState.Connected)
+		{
+			int controllerID = FindControllerID();
+			if (controllerID != -1)
+			{
+				m_CurrentPlayerInfo.controllerID = controllerID;
+				SetPlayerReady (m_CurrentPlayerInfo.ID);
+				Dispatcher.SendMessage ("Player", "Ready", m_CurrentPlayerInfo.ID);
+			}
+		}
 	}
 
 	int FindControllerID()
@@ -112,12 +131,8 @@ public class GameStateManager : GameScript
 		Debug.Log("Player " + id + " just joined the game");
 		RegisterNewPlayer(id, name);
 		PlayerInfo newPlayer = SetPlayerInfo(id, name, position, color, score);
-		
-		GameObject ndplayerTransform = (GameObject)GameObject.Instantiate(PlayerPrefab, newPlayer.Position, Quaternion.identity);
-		ndplayerTransform.GetComponentInChildren<SpriteRenderer>().color = newPlayer.Color;
-		PlayerController controller = ndplayerTransform.GetComponentInChildren<PlayerController>();
-		controller.controller = newPlayer.ID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
-		controller.controllerID = newPlayer.ID;
+
+		SpawnPlayer (newPlayer);
 	}
 
 	void PlayerLeft(int id)
@@ -138,7 +153,7 @@ public class GameStateManager : GameScript
 
 	public void RegisterNewPlayer(int id, string name)
 	{
-		var player = new PlayerInfo(id, name, Vector3.zero, Color.black, 0);
+		var player = new PlayerInfo(id, name, Vector3.zero, Color.black, 0, false);
 		players.Add(id, player);
 		m_CurrentPlayerInfo.AddOpponent(player);
 	}
@@ -157,9 +172,110 @@ public class GameStateManager : GameScript
 		return player;
 	}
 
-	public ClientPlayerInfo CreateMySelf(int playerID)
+	public ClientPlayerInfo CreateMySelf(int playerID, bool isMaster)
 	{
-		m_CurrentPlayerInfo = new ClientPlayerInfo(playerID, "Player" + playerID, Vector3.zero, Color.red, 0);
+		m_CurrentPlayerInfo = new ClientPlayerInfo (playerID, "Player" + playerID, Vector3.zero, Color.red, 0, isMaster);
+		players.Add(playerID, m_CurrentPlayerInfo);
 		return m_CurrentPlayerInfo;
+	}
+
+	public void SetPlayerReady (int playerId)
+	{
+		PlayerInfo player = players[playerId];
+		player.currentState = PlayerInfo.PlayerState.Ready;
+
+		bool allPlayersReady = true;
+		foreach (KeyValuePair<int, PlayerInfo> playerTuple in players)
+		{
+			if (playerTuple.Value.currentState != PlayerInfo.PlayerState.Ready)
+			{
+				allPlayersReady = false;
+				break;
+			}
+		}
+		if (allPlayersReady)
+			OnAllPlayersReady ();
+	}
+
+	private void OnAllPlayersReady ()
+	{
+		if (!useNetwork)
+			throw new NotImplementedException();
+
+		Debug.Log ("currentPlayer " + currentPlayerInfo.ID);
+		Debug.Log ("IsMaster? " + currentPlayerInfo.isMaster);
+		if (currentPlayerInfo.isMaster)
+		{
+			SetupWorld ();
+		}
+	}
+
+	private void SetupWorld ()
+	{
+		//Setup item spawn points
+
+		//setup player spawn points
+		SetupPlayerSpawnPoinnts ();
+
+
+		Dispatcher.SendMessage("World", "Ready");
+		SetWorldReady ();
+	}
+
+	//Sets up all players initial spawn points
+	private void SetupPlayerSpawnPoinnts ()
+	{
+		foreach (KeyValuePair<int, PlayerInfo> playerTuple in players)
+		{
+			SpawnPoint spawnLocation = GetRandomSpawn();
+			PlayerInfo player = playerTuple.Value;
+			player.Position = spawnLocation.transform.position;
+
+			Dispatcher.SendMessage("Player", "SetSpawnPoint", player);
+
+			spawnLocation.Available = false;
+		}
+	}
+
+	public void SetWorldReady ()
+	{
+		foreach (KeyValuePair<int, PlayerInfo> playerTuple in players)
+		{
+			PlayerInfo player = playerTuple.Value;
+			player.currentState = PlayerInfo.PlayerState.Playing;
+			SpawnPlayer (player);
+		}
+	}
+
+	private void SpawnPlayer (PlayerInfo player)
+	{
+		Debug.Log ("Spawning Player: " + player.ID);
+		GameObject playerGO = (GameObject)Instantiate(PlayerPrefab, player.Position, Quaternion.identity);
+		playerGO.GetComponentInChildren<SpriteRenderer>().color = player.Color;
+		playerGO.name = "Player" + player.ID;
+
+		player.gameObject = playerGO;
+
+		ClientPlayerInfo localPlayer = player as ClientPlayerInfo;
+
+		PlayerController controller = playerGO.GetComponentInChildren<PlayerController>();
+
+		if (localPlayer != null)
+		{
+			controller.controller = localPlayer.controllerID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
+			controller.controllerID = localPlayer.controllerID;
+			controller.playerID = player.ID;
+		}
+		else
+		{
+			controller.enabled = false;
+		}
+	}
+
+	public void MoveRemotePlayer (int id, Vector3 position)
+	{
+		PlayerInfo player = GetPlayerByID (id);
+		player.Position = position;
+		player.gameObject.transform.position = position;
 	}
 }

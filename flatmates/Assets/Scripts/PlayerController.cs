@@ -10,6 +10,14 @@ internal class PlayerController : MonoBehaviour
 	public ControllerType controller;
 
     public int controllerID = 0;
+	public int playerID = 0;
+
+	private Transform myTransform;
+
+	void OnEnable ()
+	{
+		myTransform = GetComponent<Transform> ();
+	}
 
 	public void Update()
 	{
@@ -20,12 +28,12 @@ internal class PlayerController : MonoBehaviour
 
 		float horizontal = 0;
 		float vertical = 0;
-		
+
 		switch (controller)
 		{
 			case ControllerType.Keyboard:
-                horizontal = (Input.GetKeyDown(KeyCode.RightArrow) ? 1 : 0) - (Input.GetKeyDown(KeyCode.LeftArrow) ? 1 : 0);
-                vertical = (Input.GetKeyDown(KeyCode.UpArrow) ? 1 : 0) - (Input.GetKeyDown(KeyCode.DownArrow) ? 1 : 0);
+                horizontal = (Input.GetKey(KeyCode.RightArrow) ? 1 : 0) - (Input.GetKey(KeyCode.LeftArrow) ? 1 : 0);
+                vertical = (Input.GetKey(KeyCode.UpArrow) ? 1 : 0) - (Input.GetKey(KeyCode.DownArrow) ? 1 : 0);
 				break;
 
 			case ControllerType.Xbox:
@@ -38,5 +46,10 @@ internal class PlayerController : MonoBehaviour
 
 		rigidbody2D.AddForce(new Vector2(horizontal * force, vertical * force));
 		rigidbody2D.velocity = new Vector2(Mathf.Clamp(rigidbody2D.velocity.x, -speed, speed), Mathf.Clamp(rigidbody2D.velocity.y, -speed, speed));
+	}
+
+	public void FixedUpdate ()
+	{
+		Dispatcher.SendMessage("Player", "Moved", playerID, myTransform.position);
 	}
 }

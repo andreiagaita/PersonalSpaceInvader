@@ -25,4 +25,8 @@ MonoBehaviour:
   - OnAwakeRPC
   - DestroyRpc
   - SetPlayerInfo
+  - SetPlayerReady
+  - SetPlayerSpawnPoint
+  - SetWorldReady
+  - MovePlayer
   DisableAutoOpenWizard: 0
