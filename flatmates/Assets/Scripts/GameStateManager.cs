@@ -19,17 +19,17 @@ public class GameStateManager : GameScript
     {
         base.Start();
 
-		if (useNetwork)
-			Subscribe ("Network", "OnJoinedRoom", JoinSelfPlayer);
-		else
-			JoinSelfPlayer();
+        //if (useNetwork)
+        //    Subscribe ("Network", "OnJoinedRoom", JoinSelfPlayer);
+        //else
+        //    JoinSelfPlayer();
         Debug.Log("Waiting for host to join game... Press A to join");
     }
 
 	public void JoinSelfPlayer (int playerID)
 	{
 
-		int playerID = 1;
+        //int playerID = 1;
 		if (useNetwork)
 			playerID = PhotonNetwork.player.ID;
 
@@ -54,13 +54,14 @@ public class GameStateManager : GameScript
 		
 			player = Instantiate (PlayerPrefab, spawnLocation.transform.position, Quaternion.identity) as GameObject;
 
-		player.name = "Player" + PhotonNetwork.player.ID;
+        Debug.Log("player: " + player);
+		player.name = "Player" + playerID;
         spawnLocation.Available = false;
 
 		player.GetComponentInChildren<SpriteRenderer>().color = currentPlayerInfo.Color;
 		PlayerController controller = player.GetComponentInChildren<PlayerController>();
-        controller.controller =  PlayerController.ControllerType.Xbox;
-        controller.playerNumber = currentPlayerInfo.ID;
+        controller.controller = currentPlayerInfo.ID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
+        controller.controllerID = currentPlayerInfo.ID;
 
         Debug.Log("Waiting for other players to join game... Press A to join");
     }
@@ -93,10 +94,12 @@ public class GameStateManager : GameScript
         for (int i = 1; i < 4; i++)
         {
             string keyCode = "Joystick" + (i == 0 ? "" : i.ToString()) + "Button0";
-            Debug.Log("checking: " + keyCode + " : " + Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), keyCode)));
+            //Debug.Log("checking: " + keyCode + " : " + Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), keyCode)));
             if (Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), keyCode)))
                 return i;
         }
+        if (Input.GetKeyDown(KeyCode.Return))
+            return 5;
         return controllerID;
     }
 
@@ -105,11 +108,11 @@ public class GameStateManager : GameScript
         Debug.Log("Player " + id + " just joined the game");
         PlayerInfo newPlayer = new PlayerInfo(id, name, position, color, score);
         currentPlayerInfo.AddOpponent(newPlayer);
-        Transform ndplayerTransform = (Transform)GameObject.Instantiate(PlayerPrefab, newPlayer.Position, Quaternion.identity);
+        GameObject ndplayerTransform = (GameObject)GameObject.Instantiate(PlayerPrefab, newPlayer.Position, Quaternion.identity);
         ndplayerTransform.GetComponentInChildren<SpriteRenderer>().color = newPlayer.Color;
         PlayerController controller = ndplayerTransform.GetComponentInChildren<PlayerController>();
-        controller.controller = PlayerController.ControllerType.Xbox;
-        controller.playerNumber = newPlayer.ID;
+        controller.controller = newPlayer.ID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
+        controller.controllerID = newPlayer.ID;
     }
 
     void PlayerLeft(int id)
