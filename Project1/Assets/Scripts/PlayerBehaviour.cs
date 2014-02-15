@@ -16,7 +16,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 	
 	void Start () {
-		distanceLimit = (enemyAura.renderer.bounds.size.x + transform.renderer.bounds.size.x) / 2;
+		distanceLimit = (enemyAura.renderer.bounds.size.x) / 2;
 		enemy = enemyAura.transform.root.gameObject;
 	}
 	
