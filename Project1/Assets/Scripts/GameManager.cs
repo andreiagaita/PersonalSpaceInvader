@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public enum PlayerColor
 {
@@ -11,8 +12,19 @@ public enum PlayerColor
 }
 
 public class GameManager : MonoBehaviour {
-	
-	public static GameManager instance = null;
+
+	public event Action<string> PlayerCreated;
+	static GameManager gameManager = null;
+	public static GameManager instance {
+		get { return gameManager; }
+		private set {
+			if (gameManager != null)
+				Destroy (gameManager.gameObject);
+			gameManager = value;
+			DontDestroyOnLoad (gameManager.gameObject);
+		}
+	}
+	public GameObject soundManagerPrefab;
 	
 	public static int scorePlayer1 = 0;
 	public static int scorePlayer2 = 0;
@@ -27,12 +39,21 @@ public class GameManager : MonoBehaviour {
 	public List<PlayerBehaviour> players = new List<PlayerBehaviour> ();
 	
 	public void Awake () {
-		instance = this;
+		if (instance == null)
+		{
+			instance = this;
+			Instantiate (soundManagerPrefab);
+		}
 	}
 	
 	public void Start () {
 		SpawnPlayers ();
 		AssignTargets ();
+		if (PlayerCreated != null) {
+			foreach (var player in players) {
+				PlayerCreated (player.tag);
+			}
+		}
 	}
 
 	public void Update()
@@ -60,7 +81,26 @@ public class GameManager : MonoBehaviour {
 		for (var i = 0; i < players.Count; ++i)
 		{
 			players[i].enemy = players[(i + 1) % players.Count];
-			players[i].aura.GetComponent<SpriteRenderer>().color = players[i].enemy.GetActualPlayerColor();
+			players[i].enemy.aura.GetComponent<SpriteRenderer>().color = players[i].GetActualPlayerColor();
 		}
+	}
+	
+	public Vector3 GetSpawnPositionFurtestAway () {
+		int spawnIndex = -1;
+		float maxDist = 0;
+		for (int i=0; i<spawnPoints.Count; i++) {
+			float minDist = Mathf.Infinity;
+			for (int j=0; j<players.Count; j++) {
+				float dist = Vector2.Distance (players[j].transform.position, spawnPoints[i].transform.position);
+				minDist = Mathf.Min (minDist, dist);
+			}
+			
+			if (minDist > maxDist)
+			{
+				maxDist = minDist;
+				spawnIndex = i;
+			}
+		}
+		return spawnPoints[spawnIndex].transform.position;
 	}
 }
