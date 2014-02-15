@@ -4,6 +4,8 @@ using System.Collections;
 
 public class CharacterController : MonoBehaviour
 {
+	public event Action<string> Jumped;
+
 	public float speed = 10f;
 	public float jumpForce = 5f;
 
@@ -70,7 +72,11 @@ public class CharacterController : MonoBehaviour
 		float horizontalInput = Input.GetAxis ("Horizontal " + playerColor);
 
 		if (Input.GetButtonDown ("Jump " + playerColor))
+		{
 			newVelocity.y = jumpForce;
+			if (Jumped != null)
+				Jumped ("normal");
+		}
 		newVelocity.x = horizontalInput * speed;
 
 		rigidbody2D.velocity = newVelocity;
