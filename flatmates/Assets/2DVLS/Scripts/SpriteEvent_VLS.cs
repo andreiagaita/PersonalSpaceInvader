@@ -22,9 +22,10 @@ public class SpriteEvent_VLS : MonoBehaviour
 
         if (colliderObject == null)
         {
-            Debug.LogError("Collider Object must be assigned", this);
-            error = true;
-            return;
+	        colliderObject = gameObject;
+	        //Debug.LogError("Collider Object must be assigned", this);
+	        //error = true;
+	        //return;
         }
 
         shadedColor = avgColor = sRender.color;
