@@ -14,6 +14,7 @@ public enum PlayerColor
 public class GameManager : MonoBehaviour {
 
 	public event Action<PlayerBehaviour> PlayerCreated;
+	public event Action<PlayerBehaviour> PlayerDestroyed;
 	public event Action LevelStart;
 	public event Action ColorChangeWarning;
 	public event Action GameEnded;
@@ -137,6 +138,11 @@ public class GameManager : MonoBehaviour {
 
 	public void RemovePlayers ()
 	{
+		if (PlayerDestroyed != null)
+		{
+			foreach (var p in players)
+				PlayerDestroyed (p);
+		}
 		players.Clear ();
 	}
 
@@ -217,7 +223,7 @@ public class GameManager : MonoBehaviour {
 	private void DestroyPulsatingAuraCircles()
 	{
 		for (var i = 0; i < players.Count; ++i)
-			DestroyImmediate(pulsatingAuras[i]);
+			Destroy(pulsatingAuras[i]);
 		aurasPulsating = false;
 	}
 
