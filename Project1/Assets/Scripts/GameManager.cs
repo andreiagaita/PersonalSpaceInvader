@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
 		for (var i = 0; i < players.Count; ++i)
 		{
 			players[i].enemy = players[(i + 1) % players.Count];
-			players[i].aura.GetComponent<SpriteRenderer>().color = players[i].enemy.GetActualPlayerColor();
+			players[i].enemy.aura.GetComponent<SpriteRenderer>().color = players[i].GetActualPlayerColor();
 		}
 	}
 }
