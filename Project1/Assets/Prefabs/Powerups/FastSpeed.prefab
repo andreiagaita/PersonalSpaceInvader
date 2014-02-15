@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   durationOfPowerUp: 10
-  speedScale: 2
+  speedScale: 1.20000005
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
