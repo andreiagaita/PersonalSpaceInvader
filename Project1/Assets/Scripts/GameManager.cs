@@ -40,11 +40,10 @@ public class GameManager : MonoBehaviour {
 	public List<PlayerBehaviour> players = new List<PlayerBehaviour> ();
 	
 	public void Awake () {
-		if (instance == null)
-		{
-			instance = this;
+		var old = gameManager;
+		instance = this;
+		if (old == null)
 			Instantiate (soundManagerPrefab);
-		}
 	}
 	
 	public void Start () {
