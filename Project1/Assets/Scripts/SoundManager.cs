@@ -3,13 +3,23 @@ using System.Collections;
 
 public class SoundManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	static SoundManager soundManager = null;
+	public static SoundManager instance {
+		get { return soundManager; }
+		private set {
+			if (soundManager != null)
+				Destroy (soundManager.gameObject);
+			soundManager = value;
+			DontDestroyOnLoad (soundManager.gameObject);
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	// Use this for initialization
+	void Awake () {
+		if (instance == null)
+			instance = this;
+	}
+
+	public void Start () {
+
 	}
 }

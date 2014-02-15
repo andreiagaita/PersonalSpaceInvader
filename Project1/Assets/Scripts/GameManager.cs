@@ -1,10 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class GameManager : MonoBehaviour {
-	
-	public static GameManager instance = null;
+
+	public event Action<string> PlayerCreated;
+	static GameManager gameManager = null;
+	public static GameManager instance {
+		get { return gameManager; }
+		private set {
+			if (gameManager != null)
+				Destroy (gameManager.gameObject);
+			gameManager = value;
+			DontDestroyOnLoad (gameManager.gameObject);
+		}
+	}
+	public GameObject soundManagerPrefab;
 	
 	public static int scorePlayer1 = 0;
 	public static int scorePlayer2 = 0;
@@ -14,11 +26,20 @@ public class GameManager : MonoBehaviour {
 	public List<PlayerBehaviour> players = new List<PlayerBehaviour> ();
 	
 	public void Awake () {
-		instance = this;
+		if (instance == null)
+		{
+			instance = this;
+			Instantiate (soundManagerPrefab);
+		}
 	}
 	
 	public void Start () {
 		SpawnPlayers ();
+		if (PlayerCreated != null) {
+			foreach (var player in players) {
+				PlayerCreated (player.tag);
+			}
+		}
 	}
 	
 	public void SpawnPlayers () {
