@@ -36,6 +36,7 @@ public class SoundManager : MonoBehaviour {
 		instance = this;
 		GameManager.instance.PlayerCreated += HookupPlayerSounds;
 		GameManager.instance.LevelStart += LevelStart;
+		GameManager.instance.ColorChangeWarning += ColorWarning;
 	}
 
 	void HookupPlayerSounds (PlayerBehaviour player)
@@ -73,5 +74,10 @@ public class SoundManager : MonoBehaviour {
 	void LevelStart ()
 	{
 		PlayClip ("start");
+	}
+
+	void ColorWarning ()
+	{
+		PlayClip ("warning");
 	}
 }
