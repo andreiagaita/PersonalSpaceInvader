@@ -51,8 +51,19 @@ public class GameManager : MonoBehaviour {
 		if (old == null)
 			Instantiate (soundManagerPrefab);
 	}
+
+	public void Start ()
+	{
+		InitLevel ();
+	}
 	
-	public void OnLevelWasLoaded (int level) {
+	public void OnLevelWasLoaded (int level) 
+	{
+		InitLevel ();
+	}
+
+	private void InitLevel ()
+	{
 		SpawnPlayers ();
 		AssignTargets ();
 		
