@@ -1,52 +1,55 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameStateManager : GameScript
 {
-    private Time GameStartTime;
-    private ClientPlayerInfo currentPlayerInfo;
-    private Dictionary<Guid, PickupObject> GamePickups = new Dictionary<Guid, PickupObject>();
+	private Time GameStartTime;
 
-    public GameObject PlayerPrefab;
+	private Dictionary<int, PlayerInfo> players;
+
+	private ClientPlayerInfo m_CurrentPlayerInfo;
+	private Dictionary<Guid, PickupObject> GamePickups = new Dictionary<Guid, PickupObject>();
+
+	public GameObject PlayerPrefab;
 	public bool fake2Player = true;
 	public bool useNetwork = false;
 
-    private SpawnPoint[] LevelSpawns;
+	private SpawnPoint[] LevelSpawns;
 
-    void Start()
-    {
-        base.Start();
+	public ClientPlayerInfo currentPlayerInfo
+	{ 
+		get { return m_CurrentPlayerInfo; }
+	}
 
-        //if (useNetwork)
-        //    Subscribe ("Network", "OnJoinedRoom", JoinSelfPlayer);
-        //else
-        //    JoinSelfPlayer();
-        Debug.Log("Waiting for host to join game... Press A to join");
-    }
-
-	public void JoinSelfPlayer (int playerID)
+	void Start()
 	{
+		base.Start();
 
-        //int playerID = 1;
+		players = new Dictionary<int, PlayerInfo> ();
+		Debug.Log("Waiting for host to join game... Press A to join");
+	}
+
+	private void JoinSelfPlayer(int playerID)
+	{
 		if (useNetwork)
 			playerID = PhotonNetwork.player.ID;
 
-		currentPlayerInfo = new ClientPlayerInfo(playerID, "Player" + playerID, Vector3.zero, Color.red, 0);
-        Debug.Log("host player created");
+		m_CurrentPlayerInfo = CreateMySelf(playerID);
+		Debug.Log("host player created");
 
-        LevelSpawns = GameObject.FindObjectsOfType<SpawnPoint>();
-        if(LevelSpawns == null || LevelSpawns.Length == 0)
-        {
-            Debug.LogError("No spawn points found in the level");
-        }
-        else
-        {
-            Debug.Log(LevelSpawns.Length + " spawn points found");
-        }
+		LevelSpawns = GameObject.FindObjectsOfType<SpawnPoint>();
+		if(LevelSpawns == null || LevelSpawns.Length == 0)
+		{
+			Debug.LogError("No spawn points found in the level");
+		}
+		else
+		{
+			Debug.Log(LevelSpawns.Length + " spawn points found");
+		}
 
-        SpawnPoint spawnLocation = GetRandomSpawn();
+		SpawnPoint spawnLocation = GetRandomSpawn();
 		GameObject player = null;
 		if (useNetwork)
 			player = PhotonNetwork.Instantiate(PlayerPrefab.name, spawnLocation.transform.position, Quaternion.identity, 0);
@@ -54,80 +57,109 @@ public class GameStateManager : GameScript
 		
 			player = Instantiate (PlayerPrefab, spawnLocation.transform.position, Quaternion.identity) as GameObject;
 
-        Debug.Log("player: " + player);
+		Debug.Log("player: " + player);
 		player.name = "Player" + playerID;
-        spawnLocation.Available = false;
+		spawnLocation.Available = false;
 
-		player.GetComponentInChildren<SpriteRenderer>().color = currentPlayerInfo.Color;
+		player.GetComponentInChildren<SpriteRenderer>().color = m_CurrentPlayerInfo.Color;
 		PlayerController controller = player.GetComponentInChildren<PlayerController>();
-        controller.controller = currentPlayerInfo.ID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
-        controller.controllerID = currentPlayerInfo.ID;
+		controller.controller = m_CurrentPlayerInfo.ID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
+		controller.controllerID = m_CurrentPlayerInfo.ID;
 
-        Debug.Log("Waiting for other players to join game... Press A to join");
-    }
+		Debug.Log("Waiting for other players to join game... Press A to join");
+	}
 
-    void Update()
-    {
-        if(Input.anyKeyDown)
-        {
-            int playerID = FindControllerID();
-            if (playerID != -1)
-            {
-                if (currentPlayerInfo == null)
-                {
-                    JoinSelfPlayer(playerID);
-                }
-                else if (currentPlayerInfo.ID != playerID && !currentPlayerInfo.OpponentPlayers.ContainsKey(playerID))
-                {
-                    SpawnPoint spawnLocation = GetRandomSpawn();
-                    PlayerJoined(playerID, "Player" + playerID, spawnLocation.transform.position, Color.green, 0);
-                    spawnLocation.Available = false;
-                    Debug.Log("player " + playerID + "created");
-                }
-            }
-        }
-    }
+	void Update()
+	{
+		if(!useNetwork && Input.anyKeyDown)
+		{
+			int playerID = FindControllerID();
+			if (playerID != -1)
+			{
+				if (m_CurrentPlayerInfo == null)
+				{
+					JoinSelfPlayer(playerID);
+				}
+				else if (m_CurrentPlayerInfo.ID != playerID && !m_CurrentPlayerInfo.OpponentPlayers.ContainsKey(playerID))
+				{
+					SpawnPoint spawnLocation = GetRandomSpawn();
+					PlayerJoined(playerID, "Player" + playerID, spawnLocation.transform.position, Color.green, 0);
+					spawnLocation.Available = false;
+					Debug.Log("player " + playerID + "created");
+				}
+			}
+		}
+	}
 
-    int FindControllerID()
-    {
-        int controllerID = -1;
-        for (int i = 1; i < 4; i++)
-        {
-            string keyCode = "Joystick" + (i == 0 ? "" : i.ToString()) + "Button0";
-            //Debug.Log("checking: " + keyCode + " : " + Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), keyCode)));
-            if (Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), keyCode)))
-                return i;
-        }
-        if (Input.GetKeyDown(KeyCode.Return))
-            return 5;
-        return controllerID;
-    }
+	int FindControllerID()
+	{
+		int controllerID = -1;
+		for (int i = 1; i < 4; i++)
+		{
+			string keyCode = "Joystick" + (i == 0 ? "" : i.ToString()) + "Button0";
+			//Debug.Log("checking: " + keyCode + " : " + Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), keyCode)));
+			if (Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), keyCode)))
+				return i;
+		}
+		if (Input.GetKeyDown(KeyCode.Return))
+			return 5;
+		return controllerID;
+	}
 
-    void PlayerJoined(int id, string name, Vector3 position, Color color, int score)
-    {
-        Debug.Log("Player " + id + " just joined the game");
-        PlayerInfo newPlayer = new PlayerInfo(id, name, position, color, score);
-        currentPlayerInfo.AddOpponent(newPlayer);
-        GameObject ndplayerTransform = (GameObject)GameObject.Instantiate(PlayerPrefab, newPlayer.Position, Quaternion.identity);
-        ndplayerTransform.GetComponentInChildren<SpriteRenderer>().color = newPlayer.Color;
-        PlayerController controller = ndplayerTransform.GetComponentInChildren<PlayerController>();
-        controller.controller = newPlayer.ID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
-        controller.controllerID = newPlayer.ID;
-    }
+	public void PlayerJoined(int id, string name, Vector3 position, Color color, int score)
+	{
+		
+		Debug.Log("Player " + id + " just joined the game");
+		RegisterNewPlayer(id, name);
+		PlayerInfo newPlayer = SetPlayerInfo(id, name, position, color, score);
+		
+		GameObject ndplayerTransform = (GameObject)GameObject.Instantiate(PlayerPrefab, newPlayer.Position, Quaternion.identity);
+		ndplayerTransform.GetComponentInChildren<SpriteRenderer>().color = newPlayer.Color;
+		PlayerController controller = ndplayerTransform.GetComponentInChildren<PlayerController>();
+		controller.controller = newPlayer.ID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
+		controller.controllerID = newPlayer.ID;
+	}
 
-    void PlayerLeft(int id)
-    {
-        Debug.Log("Player " +  id + " just left the game");
-        currentPlayerInfo.RemoveOpponent(id);
-    }
+	void PlayerLeft(int id)
+	{
+		Debug.Log("Player " +  id + " just left the game");
+		m_CurrentPlayerInfo.RemoveOpponent(id);
+	}
 
-    SpawnPoint GetRandomSpawn()
-    {
-        SpawnPoint sp = LevelSpawns[UnityEngine.Random.Range(0, LevelSpawns.Length)];
-        while(!sp.Available)
-        {
-            sp = LevelSpawns[UnityEngine.Random.Range(0, LevelSpawns.Length)];
-        }
-        return sp;
-    }
+	SpawnPoint GetRandomSpawn()
+	{
+		SpawnPoint sp = LevelSpawns[UnityEngine.Random.Range(0, LevelSpawns.Length)];
+		while(!sp.Available)
+		{
+			sp = LevelSpawns[UnityEngine.Random.Range(0, LevelSpawns.Length)];
+		}
+		return sp;
+	}
+
+	public void RegisterNewPlayer(int id, string name)
+	{
+		var player = new PlayerInfo(id, name, Vector3.zero, Color.black, 0);
+		players.Add(id, player);
+		m_CurrentPlayerInfo.AddOpponent(player);
+	}
+
+	public PlayerInfo SetPlayerInfo(int id, string playerName, Vector3 position, Color color, int score)
+	{
+		if (!players.ContainsKey (id))
+		{
+			RegisterNewPlayer (id, playerName);
+		}
+		PlayerInfo player = players[id];
+		player.Name = playerName;
+		player.Position = position;
+		player.Color = color;
+		player.Score = score;
+		return player;
+	}
+
+	public ClientPlayerInfo CreateMySelf(int playerID)
+	{
+		m_CurrentPlayerInfo = new ClientPlayerInfo(playerID, "Player" + playerID, Vector3.zero, Color.red, 0);
+		return m_CurrentPlayerInfo;
+	}
 }

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 	public event Action<PlayerBehaviour> PlayerCreated;
 	public event Action LevelStart;
 	public event Action ColorChangeWarning;
+	public event Action GameEnded;
 
 	static GameManager gameManager = null;
 	public static GameManager instance {
@@ -223,6 +224,8 @@ public class GameManager : MonoBehaviour {
 	void GameEnd ()
 	{
 		currentLevel = -1;
+		if (GameEnded != null)
+			GameEnded ();
 		Application.LoadLevel("EndGameMenu");
 	}
 
