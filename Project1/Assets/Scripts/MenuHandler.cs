@@ -6,6 +6,6 @@ public class MenuHandler : MonoBehaviour {
 	public MainMenu mainMenu;
 
 	void OnMouseDown() {
-		mainMenu.DoMenu ("start");
+		mainMenu.DoMenu (gameObject.tag);
 	}
 }
