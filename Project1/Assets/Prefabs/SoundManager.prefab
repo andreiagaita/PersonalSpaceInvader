@@ -114,6 +114,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: cb3b4304ed0af417989692ba30a99942, type: 3}
   - key: warning
     clip: {fileID: 8300000, guid: d927c13db7a6246f99e032db3f982a21, type: 3}
+  - key: jump
+    clip: {fileID: 8300000, guid: ccb4c595f3ec2384f891bbc0cc5dd430, type: 3}
+  - key: jump
+    clip: {fileID: 8300000, guid: bec9c69fddf61574b90522cfd43fa57c, type: 3}
+  - key: powerup
+    clip: {fileID: 8300000, guid: 8243244011a62dd4297efa44fd0daeb3, type: 3}
+  - key: jump
+    clip: {fileID: 8300000, guid: 9642b1b66620ea345989f00acebaf548, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

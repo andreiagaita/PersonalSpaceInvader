@@ -5,6 +5,7 @@ using System;
 public class PlayerBehaviour : MonoBehaviour {
 
 	public event Action Died;
+	public event Action<PlayerBehaviour, string> Jumped;
 	public PlayerBehaviour enemy;
 	public GameObject aura;
 	public GameObject arrow;
@@ -57,6 +58,12 @@ public class PlayerBehaviour : MonoBehaviour {
 		if (GameManager.instance)
 			return GameManager.instance.playerColors[(int)playerColor];
 		return Color.green;
+	}
+
+	public void RaiseJumped (string type)
+	{
+		if (Jumped != null)
+			Jumped (this, type);
 	}
 
 	void Respawn()
