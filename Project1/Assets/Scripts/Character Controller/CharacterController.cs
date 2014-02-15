@@ -7,6 +7,8 @@ public class CharacterController : MonoBehaviour
 	public float speed = 10f;
 	public float jumpForce = 5f;
 
+	public GameObject graphic;
+
 	public enum PlayerColor
 	{
 		Red = 0,
@@ -15,8 +17,6 @@ public class CharacterController : MonoBehaviour
 		Orange = 3
 	}
 	public PlayerColor playerColor;
-
-	public float collisionTestDistance = 1f;
 
 	[Flags]
 	private enum CollisionFlags
@@ -27,14 +27,51 @@ public class CharacterController : MonoBehaviour
 		Right = 8
 	}
 	CollisionFlags collisionFlags;
+	public float collisionTestDistance = 1f;
+
+	private Animator graphicAnimator;
+	private Transform graphicTransform;
+
+	private Vector3 graphicOffset;
+	private Vector3 reverseGraphicOffset;
+
+	private Vector3 graphicScale;
+	private Vector3 reverseGraphicScale;
+
+	void Start ()
+	{
+		graphicAnimator = graphic.GetComponent<Animator> ();
+		graphicTransform = graphic.transform;
+
+		graphicOffset = graphicTransform.localPosition;
+		reverseGraphicOffset = new Vector3 (-graphicOffset.x, graphicOffset.y, graphicOffset.z);
+
+		graphicScale = graphicTransform.localScale;
+		reverseGraphicScale = new Vector3 (-graphicScale.x, graphicScale.y, graphicScale.z);
+	}
 
 	void Update ()
 	{
+		graphicAnimator.speed = Mathf.Lerp (1f, 10f, Mathf.InverseLerp (0f, speed, Mathf.Abs (rigidbody2D.velocity.x)));
+
+		if (rigidbody2D.velocity.x > 0)
+		{
+			graphicTransform.localPosition = graphicOffset;
+			graphicTransform.localScale = graphicScale;
+		}
+		else if (rigidbody2D.velocity.x < 0)
+		{
+			graphicTransform.localPosition = reverseGraphicOffset;
+			graphicTransform.localScale = reverseGraphicScale;
+		}
+
 		Vector2 newVelocity = rigidbody2D.velocity;
+
+		float horizontalInput = Input.GetAxis ("Horizontal " + playerColor);
 
 		if (Input.GetButtonDown ("Jump " + playerColor))
 			newVelocity.y = jumpForce;
-		newVelocity.x = Input.GetAxis ("Horizontal " + playerColor) * speed;
+		newVelocity.x = horizontalInput * speed;
 
 		rigidbody2D.velocity = newVelocity;
 	}
