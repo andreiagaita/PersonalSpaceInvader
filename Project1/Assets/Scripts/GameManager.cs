@@ -144,8 +144,7 @@ public class GameManager : MonoBehaviour {
 		players.Shuffle();
 		for (var i = 0; i < players.Count; ++i)
 		{
-			players[i].enemy = players[(i + 1) % players.Count];
-			players[i].enemy.aura.GetComponent<SpriteRenderer>().color = players[i].GetActualPlayerColor();
+			players[i].SetTarget (players[(i + 1) % players.Count]);
 		}
 	}
 	
