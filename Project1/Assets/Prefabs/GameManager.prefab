@@ -38,6 +38,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89423949cd253d4b883e5a61f7952c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 100000, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}
+  playerCount: 4
   soundManagerPrefab: {fileID: 100000, guid: 09c55d3833ec84f40b9447dfbf5ee019, type: 2}
   scoreTextPrefab: {fileID: 13200000, guid: bed3138bb62c34cbd8c3b5b2dbecf31e, type: 2}
   scoreToWin: 10
