@@ -46,6 +46,7 @@ MonoBehaviour:
   - {r: .0243295692, g: .661764741, b: .318868637, a: 1}
   - {r: .904411793, g: .423037201, b: .0532006919, a: 1}
   assignNewTargetsDelay: 20
+  pulsatingAura: {fileID: 100000, guid: e8fe9b77c1de8584799e114fac8e95e3, type: 2}
   spawnPoints: []
   players: []
 --- !u!1001 &100100000
