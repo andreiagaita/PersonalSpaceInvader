@@ -13,7 +13,7 @@ public enum PlayerColor
 
 public class GameManager : MonoBehaviour {
 
-	public event Action<string> PlayerCreated;
+	public event Action<PlayerBehaviour> PlayerCreated;
 	static GameManager gameManager = null;
 	public static GameManager instance {
 		get { return gameManager; }
@@ -25,10 +25,11 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 	public GameObject soundManagerPrefab;
+	public GUIText scoreTextPrefab;
 	
-	public static int scorePlayer1 = 0;
-	public static int scorePlayer2 = 0;
-	public static int scorePlayer3 = 0;
+	public Dictionary<PlayerColor, int> scoreDict = new Dictionary<PlayerColor, int> ();
+	public Dictionary<PlayerColor, GUIText> scoreTexts = new Dictionary<PlayerColor, GUIText> ();
+	
 	public Color[] playerColors;
 	public float assignNewTargetsDelay = 20.0f;
 	private float timeSinceLastTargetReassign = 0f;
@@ -39,20 +40,25 @@ public class GameManager : MonoBehaviour {
 	public List<PlayerBehaviour> players = new List<PlayerBehaviour> ();
 	
 	public void Awake () {
-		if (instance == null)
-		{
-			instance = this;
+		var old = gameManager;
+		instance = this;
+		if (old == null)
 			Instantiate (soundManagerPrefab);
-		}
 	}
 	
 	public void Start () {
 		SpawnPlayers ();
 		AssignTargets ();
-		if (PlayerCreated != null) {
-			foreach (var player in players) {
-				PlayerCreated (player.tag);
-			}
+		
+		for (int i=0; i<players.Count; i++) {
+			var player = players[i];
+			GUIText text = Instantiate (scoreTextPrefab) as GUIText;
+			text.pixelOffset = new Vector2 (40, -10-30*i);
+			text.color = player.GetActualPlayerColor ();
+			text.text = "0";
+			
+			scoreDict[player.playerColor] = 0;
+			scoreTexts[player.playerColor] = text;
 		}
 	}
 
@@ -64,6 +70,13 @@ public class GameManager : MonoBehaviour {
 			AssignTargets();
 			timeSinceLastTargetReassign = 0f;
 		}
+	}
+
+	public void AddPlayer (PlayerBehaviour player)
+	{
+		players.Add (player);
+		if (PlayerCreated != null)
+			PlayerCreated (player);
 	}
 
 	public void SpawnPlayers () {
@@ -83,5 +96,29 @@ public class GameManager : MonoBehaviour {
 			players[i].enemy = players[(i + 1) % players.Count];
 			players[i].enemy.aura.GetComponent<SpriteRenderer>().color = players[i].GetActualPlayerColor();
 		}
+	}
+	
+	public Vector3 GetSpawnPositionFurtestAway () {
+		int spawnIndex = -1;
+		float maxDist = 0;
+		for (int i=0; i<spawnPoints.Count; i++) {
+			float minDist = Mathf.Infinity;
+			for (int j=0; j<players.Count; j++) {
+				float dist = Vector2.Distance (players[j].transform.position, spawnPoints[i].transform.position);
+				minDist = Mathf.Min (minDist, dist);
+			}
+			
+			if (minDist > maxDist)
+			{
+				maxDist = minDist;
+				spawnIndex = i;
+			}
+		}
+		return spawnPoints[spawnIndex].transform.position;
+	}
+	
+	public void AwardPointToPlayer (PlayerBehaviour player) {
+		scoreDict[player.playerColor] += 1;
+		scoreTexts[player.playerColor].text = "" + scoreDict[player.playerColor];
 	}
 }
