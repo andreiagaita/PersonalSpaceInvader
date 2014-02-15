@@ -13,7 +13,7 @@ public enum PlayerColor
 
 public class GameManager : MonoBehaviour {
 
-	public event Action<string> PlayerCreated;
+	public event Action<PlayerBehaviour> PlayerCreated;
 	static GameManager gameManager = null;
 	public static GameManager instance {
 		get { return gameManager; }
@@ -48,11 +48,6 @@ public class GameManager : MonoBehaviour {
 	public void Start () {
 		SpawnPlayers ();
 		AssignTargets ();
-		if (PlayerCreated != null) {
-			foreach (var player in players) {
-				PlayerCreated (player.tag);
-			}
-		}
 	}
 
 	public void Update()
@@ -63,6 +58,13 @@ public class GameManager : MonoBehaviour {
 			AssignTargets();
 			timeSinceLastTargetReassign = 0f;
 		}
+	}
+
+	public void AddPlayer (PlayerBehaviour player)
+	{
+		players.Add (player);
+		if (PlayerCreated != null)
+			PlayerCreated (player);
 	}
 
 	public void SpawnPlayers () {

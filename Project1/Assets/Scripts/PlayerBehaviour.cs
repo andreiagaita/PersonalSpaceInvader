@@ -15,7 +15,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	void Awake () {
 		if (GameManager.instance)
-			GameManager.instance.players.Add (this);
+			GameManager.instance.AddPlayer (this);
 	}
 	
 	void Start () {
