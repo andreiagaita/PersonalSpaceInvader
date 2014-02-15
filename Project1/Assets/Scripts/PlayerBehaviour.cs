@@ -14,7 +14,8 @@ public class PlayerBehaviour : MonoBehaviour {
 	private float distanceLimit; 
 
 	void Awake () {
-		GameManager.instance.players.Add (this);
+		if (GameManager.instance)
+			GameManager.instance.players.Add (this);
 	}
 	
 	void Start () {
@@ -23,6 +24,8 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 	
 	void Update () {
+		if (!enemy) return;
+
 		playerAuraDistance = Vector3.Distance (enemy.transform.position, transform.position);
 		if (playerAuraDistance < distanceLimit)
 		{
@@ -40,7 +43,9 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	public Color GetActualPlayerColor()
 	{
-		return GameManager.instance.playerColors[(int)playerColor];
+		if (GameManager.instance)
+			return GameManager.instance.playerColors[(int)playerColor];
+		return Color.green;
 	}
 
 	void AdjustScore()

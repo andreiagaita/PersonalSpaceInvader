@@ -10,7 +10,16 @@ public class CharacterController : MonoBehaviour
 	public float jumpForce = 5f;
 
 	public GameObject graphic;
+
+	private bool canJump = true;
 	
+	public PlayerColor playerColor
+	{
+		get 
+		{
+			return GetComponent<PlayerBehaviour>().GetPlayerColor();
+		}
+	}
 
 	[Flags]
 	private enum CollisionFlags
@@ -22,6 +31,7 @@ public class CharacterController : MonoBehaviour
 	}
 	CollisionFlags collisionFlags;
 	public float collisionTestDistance = 1f;
+	public float collisionTestCenterOffset = 0.4f;
 
 	private Animator graphicAnimator;
 	private Transform graphicTransform;
@@ -46,6 +56,9 @@ public class CharacterController : MonoBehaviour
 
 	void Update ()
 	{
+		if ((collisionFlags & (CollisionFlags.Below | CollisionFlags.Left | CollisionFlags.Right)) != 0)
+			canJump = true;
+
 		graphicAnimator.speed = Mathf.Lerp (1f, 10f, Mathf.InverseLerp (0f, speed, Mathf.Abs (rigidbody2D.velocity.x)));
 
 		if (rigidbody2D.velocity.x > 0)
@@ -61,43 +74,21 @@ public class CharacterController : MonoBehaviour
 
 		Vector2 newVelocity = rigidbody2D.velocity;
 
-		float horizontalInput = Input.GetAxis ("Horizontal " + GetComponent<PlayerBehaviour>().GetPlayerColor());
+		float horizontalInput = Input.GetAxis ("Horizontal " + playerColor);
 
-		if (Input.GetButtonDown ("Jump " + GetComponent<PlayerBehaviour>().GetPlayerColor()))
+		if (canJump && Input.GetButtonDown ("Jump " + playerColor))
 		{
 			newVelocity.y = jumpForce;
 			if (Jumped != null)
 				Jumped ("normal");
+
+			canJump = false;
 		}
-		newVelocity.x = horizontalInput * speed;
+
+		if ((collisionFlags & (CollisionFlags.Left | CollisionFlags.Right)) == 0)
+			newVelocity.x = horizontalInput * speed;
 
 		rigidbody2D.velocity = newVelocity;
-	}
-
-	void OnDrawGizmos ()
-	{
-		Gizmos.color = Color.green;
-		Gizmos.DrawRay (transform.position, Vector3.up * collisionTestDistance);
-		Gizmos.DrawRay (transform.position, Vector3.down * collisionTestDistance);
-		Gizmos.DrawRay (transform.position, Vector3.left * collisionTestDistance);
-		Gizmos.DrawRay (transform.position, Vector3.right * collisionTestDistance);
-
-		Gizmos.color = Color.red;
-		switch (collisionFlags)
-		{
-		case CollisionFlags.Above:
-			Gizmos.DrawRay (transform.position, Vector3.up * collisionTestDistance);
-			break;
-		case CollisionFlags.Below:
-			Gizmos.DrawRay (transform.position, Vector3.down * collisionTestDistance);
-			break;
-		case CollisionFlags.Left:
-			Gizmos.DrawRay (transform.position, Vector3.left * collisionTestDistance);
-			break;
-		case CollisionFlags.Right:
-			Gizmos.DrawRay (transform.position, Vector3.right * collisionTestDistance);
-			break;
-		}
 	}
 
 	void FixedUpdate ()
@@ -109,21 +100,37 @@ public class CharacterController : MonoBehaviour
 	{
 		collisionFlags = 0;
 
-		if (DirectionalCollisionTest (Vector3.down))
+		if ((DirectionalCollisionTest (new Vector2 (collisionTestCenterOffset, 0f), Vector3.down)
+		    || DirectionalCollisionTest (new Vector2 (-collisionTestCenterOffset, 0f), Vector3.down))
+		    && rigidbody2D.velocity.y <= 0)
 			collisionFlags |= CollisionFlags.Below;
-
-		if (DirectionalCollisionTest (Vector3.up))
+		
+		if ((DirectionalCollisionTest (new Vector2 (collisionTestCenterOffset, 0f), Vector3.up)
+		    || DirectionalCollisionTest (new Vector2 (-collisionTestCenterOffset, 0f), Vector3.up))
+		    && rigidbody2D.velocity.y >= 0)
 			collisionFlags |= CollisionFlags.Above;
-
-		if (DirectionalCollisionTest (Vector3.right))
+		
+		if ((DirectionalCollisionTest (new Vector2 (0f, collisionTestCenterOffset), Vector3.right)
+		    || DirectionalCollisionTest (new Vector2 (0f, -collisionTestCenterOffset), Vector3.right))
+		    && rigidbody2D.velocity.x >= 0)
 			collisionFlags |= CollisionFlags.Right;
-
-		if (DirectionalCollisionTest (Vector3.left))
+		
+		if ((DirectionalCollisionTest (new Vector2 (0f, collisionTestCenterOffset), Vector3.left)
+		     || DirectionalCollisionTest (new Vector2 (0f, -collisionTestCenterOffset), Vector3.left))
+		    && rigidbody2D.velocity.x <= 0)
 			collisionFlags |= CollisionFlags.Left;
 	}
 
-	private bool DirectionalCollisionTest (Vector2 direction)
+	private bool DirectionalCollisionTest (Vector2 localPosition, Vector2 direction)
 	{
-		return Physics2D.Raycast (transform.position, direction, collisionTestDistance, 1 << LayerMask.NameToLayer ("Environment"));
+		Vector2 position = (Vector2)transform.position + localPosition;
+
+		bool hit = Physics2D.Raycast (position, direction, collisionTestDistance, 1 << LayerMask.NameToLayer ("Environment"));
+		if (hit)
+			Debug.DrawRay (position, direction * collisionTestDistance, Color.red);
+		else
+			Debug.DrawRay (position, direction * collisionTestDistance, Color.green);
+	
+		return hit;
 	}
 }

@@ -8,7 +8,9 @@ public class MouseFollow : MonoBehaviour {
 
 	void Start()
 	{
-		target = transform.root.gameObject.GetComponent<PlayerBehaviour>().enemy.transform;
+		var enemy = transform.root.gameObject.GetComponent<PlayerBehaviour>().enemy;
+		if (enemy)
+			target = enemy.transform;
 	}
 
 	void Update () 
@@ -18,6 +20,9 @@ public class MouseFollow : MonoBehaviour {
 
 	private void RotateTowardsTarget(Transform target)
 	{
+		if (!target)
+			return;
+
 		var direction = (target.position - transform.position).normalized;
 		var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
 		angle = Mathf.LerpAngle(transform.rotation.eulerAngles.z, angle, Time.deltaTime * rotationSpeed);

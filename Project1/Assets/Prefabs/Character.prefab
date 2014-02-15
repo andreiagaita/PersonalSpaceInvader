@@ -196,9 +196,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   jumpForce: 30
-  graphic: {fileID: 0}
-  playerColor: 2
+  graphic: {fileID: 100008}
   collisionTestDistance: .600000024
+  collisionTestCenterOffset: .49000001
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,7 +210,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61d0673f79aa47347b8bec0ad5b7a1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   rotationSpeed: 4
 --- !u!114 &11400004
 MonoBehaviour:
@@ -227,6 +226,7 @@ MonoBehaviour:
   aura: {fileID: 100004}
   arrow: {fileID: 100002}
   spawnLocation: {fileID: 0}
+  playerColor: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
