@@ -1,35 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GrowAura : MonoBehaviour 
+public class GrowAura : PowerUpBase
 {
 	public float auraScale = 2f;
-	public float durationOfPowerUp = 10.0f;
 	private Vector3 originalScale;
-	private float elapsedTime = 0f;
-	private bool powerUpPicked = false;
 	private GameObject aura;
 
-	void Update()
+	public override void StartEffect (GameObject player)
 	{
-		if (powerUpPicked)
-		{
-			elapsedTime += Time.deltaTime;
-			if (elapsedTime > durationOfPowerUp)
-			{
-				aura.transform.localScale = originalScale;
-				DestroyImmediate(gameObject);
-			}
-		}
-	}
-
-	void OnCollisionEnter2D (Collision2D col) 
-	{
-		aura = col.gameObject.GetComponent<PlayerBehaviour>().aura;
+		aura = player.GetComponent<PlayerBehaviour>().aura;
 		originalScale = aura.transform.localScale;
 		aura.transform.localScale *= auraScale;
-		GetComponent<SpriteRenderer>().enabled = false;
-		GetComponent<BoxCollider2D>().enabled = false;
-		powerUpPicked = true;
+	}
+
+	public override void StopEffect (GameObject player)
+	{
+		aura.transform.localScale = originalScale;
 	}
 }
