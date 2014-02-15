@@ -65,8 +65,7 @@ public class SoundManager : MonoBehaviour {
 		var clip = FetchClip ("hit");
 		if (clip == null)
 			return;
-		audio.clip = clip;
-		audio.Play ();
+		audio.PlayOneShot (clip);
 	}
 
 	void PlayerJumped (string jumptype)
@@ -74,7 +73,6 @@ public class SoundManager : MonoBehaviour {
 		var clip = FetchClip ("jump");
 		if (clip == null)
 			return;
-		audio.clip = clip;
-		audio.Play ();
+		audio.PlayOneShot (clip);
 	}
 }
