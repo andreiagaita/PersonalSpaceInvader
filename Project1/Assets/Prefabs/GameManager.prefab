@@ -23,7 +23,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.29232669, y: 6.12995815, z: -4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -38,11 +38,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89423949cd253d4b883e5a61f7952c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundManagerPrefab: {fileID: 100000, guid: 09c55d3833ec84f40b9447dfbf5ee019, type: 2}
+  scoreTextprefab: {fileID: 100000, guid: bed3138bb62c34cbd8c3b5b2dbecf31e, type: 2}
   playerColors:
   - {r: .588235259, g: .0346020721, b: .0346020721, a: 1}
   - {r: .0600388758, g: .0367106311, b: .713235259, a: 1}
   - {r: .0243295692, g: .661764741, b: .318868637, a: 1}
   - {r: .904411793, g: .423037201, b: .0532006919, a: 1}
+  assignNewTargetsDelay: 20
   spawnPoints: []
   players: []
 --- !u!1001 &100100000

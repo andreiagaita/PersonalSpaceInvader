@@ -15,7 +15,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	void Awake () {
 		if (GameManager.instance)
-			GameManager.instance.players.Add (this);
+			GameManager.instance.AddPlayer (this);
 	}
 	
 	void Start () {
@@ -27,13 +27,17 @@ public class PlayerBehaviour : MonoBehaviour {
 		if (!enemy) return;
 
 		playerAuraDistance = Vector3.Distance (enemy.transform.position, transform.position);
-		if (playerAuraDistance < distanceLimit)
-		{
-			if (Died != null)
-				Died ();
-			AdjustScore();
-			RespawnEnemy();
+		if (playerAuraDistance < distanceLimit) {
+			enemy.Die ();
+			if (GameManager.instance)
+				GameManager.instance.AwardPointToPlayer (this);
 		}
+	}
+	
+	public void Die () {
+		if (Died != null)
+			Died ();
+		Respawn();
 	}
 
 	public PlayerColor GetPlayerColor()
@@ -48,28 +52,9 @@ public class PlayerBehaviour : MonoBehaviour {
 		return Color.green;
 	}
 
-	void AdjustScore()
+	void Respawn()
 	{
-		switch (gameObject.tag)
-		{
-			case "Player1" : GameManager.scorePlayer1--; break;
-			case "Player2" : GameManager.scorePlayer2--; break;
-			case "Player3" : GameManager.scorePlayer3--; break;
-		}
-		switch (enemy.tag)
-		{
-			case "Player1" : GameManager.scorePlayer1++; break;
-			case "Player2" : GameManager.scorePlayer2++; break;
-			case "Player3" : GameManager.scorePlayer3++; break;
-		}
-		Debug.Log ("P1: " + GameManager.scorePlayer1 +
-		           " P2: " + GameManager.scorePlayer2 +
-		           " P3: " + GameManager.scorePlayer3);
-	}
-
-	void RespawnEnemy()
-	{
-		enemy.transform.position = enemy.GetComponent<PlayerBehaviour>().spawnLocation.position;
-		transform.position = spawnLocation.position;
+		if (GameManager.instance)
+			transform.position = GameManager.instance.GetSpawnPositionFurtestAway ();
 	}
 }

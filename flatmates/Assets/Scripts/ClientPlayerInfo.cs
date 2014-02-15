@@ -27,7 +27,7 @@ public class ClientPlayerInfo : PlayerInfo
         }
 
         // TODO: probably need to operate on this distance value to figure out the visibility
-        float distanceValue = GetDistance(Position, player.Position);
+       /* float distanceValue = GetDistance(Position, player.Position);
         if (!VisibilityMatrix.ContainsKey(ID))
         {
             VisibilityMatrix.Add(ID, new Dictionary<PlayerID, float>());
@@ -41,7 +41,7 @@ public class ClientPlayerInfo : PlayerInfo
             VisibilityMatrix[player.ID].Add(ID, 0);
         }
         VisibilityMatrix[ID][player.ID] = distanceValue;
-        VisibilityMatrix[player.ID][ID] = distanceValue;
+        VisibilityMatrix[player.ID][ID] = distanceValue;*/
     }
 
     public void RemoveOpponent(PlayerID id)
