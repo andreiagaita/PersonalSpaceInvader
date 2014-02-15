@@ -222,9 +222,7 @@ public class GameManager : MonoBehaviour {
 
 	public void NextLevel ()
 	{
-		currentLevel++;
-		if (currentLevel > levels.Count)
-			currentLevel = 0;
+		currentLevel = UnityEngine.Random.Range (0, levels.Count - 1);
 
 		if (LevelStart != null)
 			LevelStart ();
