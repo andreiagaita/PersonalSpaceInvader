@@ -6,6 +6,7 @@ public class XInputController : MonoBehaviour
 	public int playerNumber;
 
 	// xinput
+	public bool XInputEnabled = false;
 	[HideInInspector]
 	public bool controllerReady;
 	bool playerIndexSet = false;
@@ -15,6 +16,9 @@ public class XInputController : MonoBehaviour
 
 	public void Update ()
 	{
+		if (!XInputEnabled)
+			return;
+
 		// Find a PlayerIndex
 		if (!playerIndexSet || !prevState.IsConnected)
 		{
