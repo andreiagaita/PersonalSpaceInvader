@@ -10,15 +10,7 @@ public class CharacterController : MonoBehaviour
 	public float jumpForce = 5f;
 
 	public GameObject graphic;
-
-	public enum PlayerColor
-	{
-		Red = 0,
-		Blue = 1,
-		Green = 2,
-		Orange = 3
-	}
-	public PlayerColor playerColor;
+	
 
 	[Flags]
 	private enum CollisionFlags
@@ -69,9 +61,9 @@ public class CharacterController : MonoBehaviour
 
 		Vector2 newVelocity = rigidbody2D.velocity;
 
-		float horizontalInput = Input.GetAxis ("Horizontal " + playerColor);
+		float horizontalInput = Input.GetAxis ("Horizontal " + GetComponent<PlayerBehaviour>().GetPlayerColor());
 
-		if (Input.GetButtonDown ("Jump " + playerColor))
+		if (Input.GetButtonDown ("Jump " + GetComponent<PlayerBehaviour>().GetPlayerColor()))
 		{
 			newVelocity.y = jumpForce;
 			if (Jumped != null)
