@@ -4,8 +4,6 @@ using System.Collections;
 
 public class CharacterController : MonoBehaviour
 {
-	public event Action<string> Jumped;
-
 	public float speed = 10f;
 	public float jumpForce = 5f;
 
@@ -75,8 +73,7 @@ public class CharacterController : MonoBehaviour
 		if (canJump && Input.GetButtonDown ("Jump " + playerColor))
 		{
 			newVelocity.y = jumpForce;
-			if (Jumped != null)
-				Jumped ("normal");
+			GetComponent<PlayerBehaviour>().RaiseJumped ("normal");
 		}
 
 		if (ShouldApplyHorizontalInput (horizontalInput))
