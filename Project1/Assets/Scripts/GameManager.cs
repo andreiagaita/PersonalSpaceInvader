@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
 
 	public event Action<PlayerBehaviour> PlayerCreated;
 	public event Action LevelStart;
+	public event Action ColorChangeWarning;
 
 	static GameManager gameManager = null;
 	public static GameManager instance {
@@ -68,14 +69,14 @@ public class GameManager : MonoBehaviour {
 	public void Start ()
 	{
 		InitLevels ();
-		if (levels.Contains (Application.loadedLevelName))
-			InitLevel ();
+		currentLevel = levels.FindIndex ((k) => Application.loadedLevelName == k);
+		InitLevel ();
 	}
 	
 	public void OnLevelWasLoaded (int level)
 	{
-		if (levels.Contains (Application.loadedLevelName))
-			InitLevel ();
+		currentLevel = levels.FindIndex ((k) => Application.loadedLevelName == k);
+		InitLevel ();
 	}
 
 	private void InitLevels ()
@@ -86,7 +87,7 @@ public class GameManager : MonoBehaviour {
 	private void InitLevel ()
 	{
 		if (currentLevel < 0)
-			currentLevel = 0;
+			return;
 
 		gameRoundEnded = false;
 		SpawnPlayers ();
@@ -106,6 +107,9 @@ public class GameManager : MonoBehaviour {
 
 	public void Update()
 	{
+		if (currentLevel < 0)
+			return;
+
 		if (!gameRoundEnded)
 		{
 			timeSinceLastTargetReassign += Time.deltaTime;
@@ -198,6 +202,8 @@ public class GameManager : MonoBehaviour {
 
 	private void NotifyIncomingTargetReassignments()
 	{
+		if (ColorChangeWarning != null)
+			ColorChangeWarning ();
 		pulsatingAuras = new GameObject[players.Count];
 		for (var i = 0; i < players.Count; ++i)
 		{
@@ -216,7 +222,7 @@ public class GameManager : MonoBehaviour {
 
 	void GameEnd ()
 	{
-		currentLevel = 0;
+		currentLevel = -1;
 		Application.LoadLevel("EndGameMenu");
 	}
 

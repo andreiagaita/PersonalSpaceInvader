@@ -21,8 +21,6 @@ public class VisibilityRaycaster : MonoBehaviour
 			{
 				Dispatcher.SendMessage("Player" + i, "PlayerIsVisible", name);
 				Dispatcher.SendMessage(name, "DidSawPlayer", "Player" + i);
-
-				Debug.Log(name + " saw player: " + i + " : " + position);
 			}
 		}
 	}
