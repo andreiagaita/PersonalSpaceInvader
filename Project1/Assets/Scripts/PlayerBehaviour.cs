@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerBehaviour : MonoBehaviour {
 
+	public event Action Died;
 	public Transform enemyAura;
 	public Transform spawnLocation;
 	private float playerAuraDistance = 0f;
@@ -25,6 +27,8 @@ public class PlayerBehaviour : MonoBehaviour {
 		playerAuraDistance = Vector3.Distance (enemyAura.position, transform.position);
 		if (playerAuraDistance < distanceLimit)
 		{
+			if (Died != null)
+				Died ();
 			AdjustScore();
 			RespawnEnemy();
 		}
