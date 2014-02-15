@@ -43,10 +43,18 @@ public class LevelEditor : Editor {
 			Rect tileRect = new Rect (x, y, tileSize-2, tileSize-2);
 			Texture tex = level.sprites[i].texture;
 			Rect uv = level.sprites[i].textureRect;
+			
+			if (uv.width < uv.height)
+				rect.width *= uv.width / uv.height;
+			if (uv.height < uv.height)
+				rect.width *= uv.height / uv.width;
+			
 			uv.width /= tex.width;
 			uv.x /= tex.width;
 			uv.height /= tex.height;
 			uv.y /= tex.height;
+			
+			
 			
 			if (GUI.Button (tileRect, GUIContent.none, GUIStyle.none))
 				selectedTile = i;
