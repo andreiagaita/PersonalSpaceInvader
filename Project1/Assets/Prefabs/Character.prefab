@@ -198,6 +198,7 @@ MonoBehaviour:
   graphic: {fileID: 100008}
   playerColor: 2
   collisionTestDistance: .600000024
+  collisionTestCenterOffset: .49000001
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
