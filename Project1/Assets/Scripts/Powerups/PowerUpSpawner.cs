@@ -4,9 +4,14 @@ using System.Collections;
 public class PowerUpSpawner : MonoBehaviour {
 
 	public GameObject[] powerUps;
-	public float delayBetweenSpawns = 10f;
+	private float delayBetweenSpawns;
 	private float timeSinceLastSpawn = 0f;
 	private GameObject currentPowerUp;
+
+	void Start()
+	{
+		delayBetweenSpawns = Random.Range(5, 15);
+	}
 
 	void Update () {
 		timeSinceLastSpawn += Time.deltaTime;
