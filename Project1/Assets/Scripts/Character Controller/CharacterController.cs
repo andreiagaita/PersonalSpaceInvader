@@ -7,6 +7,15 @@ public class CharacterController : MonoBehaviour
 	public float speed = 10f;
 	public float jumpForce = 5f;
 
+	public enum PlayerColor
+	{
+		Red = 0,
+		Blue = 1,
+		Green = 2,
+		Orange = 3
+	}
+	public PlayerColor playerColor;
+
 	public float collisionTestDistance = 1f;
 
 	[Flags]
@@ -23,9 +32,9 @@ public class CharacterController : MonoBehaviour
 	{
 		Vector2 newVelocity = rigidbody2D.velocity;
 
-		if (Input.GetButtonDown ("Jump"))
+		if (Input.GetButtonDown ("Jump " + playerColor))
 			newVelocity.y = jumpForce;
-		newVelocity.x = Input.GetAxis ("Horizontal") * speed;
+		newVelocity.x = Input.GetAxis ("Horizontal " + playerColor) * speed;
 
 		rigidbody2D.velocity = newVelocity;
 	}
