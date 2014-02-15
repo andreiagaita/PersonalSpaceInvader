@@ -3102,6 +3102,7 @@ GameObject:
   - 50: {fileID: 812112256}
   - 61: {fileID: 812112255}
   - 114: {fileID: 812112254}
+  - 114: {fileID: 812112259}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -3195,6 +3196,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1828675193}
   m_GameObject: {fileID: 812112252}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &812112259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 812112252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e180953f1f9c240a771107108e2401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAura: {fileID: 701569356}
 --- !u!1001 &813303394
 Prefab:
   m_ObjectHideFlags: 0
@@ -5682,6 +5695,7 @@ GameObject:
   - 50: {fileID: 1587379432}
   - 61: {fileID: 1587379431}
   - 114: {fileID: 1587379430}
+  - 114: {fileID: 1587379435}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -5775,6 +5789,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 2129961438}
   m_GameObject: {fileID: 1587379428}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1587379435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1587379428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e180953f1f9c240a771107108e2401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAura: {fileID: 457447139}
 --- !u!1 &1605682734
 GameObject:
   m_ObjectHideFlags: 0
