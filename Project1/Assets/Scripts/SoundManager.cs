@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class SoundManager : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public List<AudioKeyValue> clips;
+	Dictionary<string, AudioClip> jumpClipsPerPlayer = new Dictionary<string, AudioClip> ();
 
 	static SoundManager soundManager = null;
 	public static SoundManager instance {
@@ -37,20 +39,28 @@ public class SoundManager : MonoBehaviour {
 		GameManager.instance.PlayerCreated += HookupPlayerSounds;
 		GameManager.instance.LevelStart += LevelStart;
 		GameManager.instance.ColorChangeWarning += ColorWarning;
+		GameManager.instance.GameEnded += GameEnded;
+		GameManager.instance.PlayerDestroyed += UnhookPlayerSounds;
 	}
 
 	void HookupPlayerSounds (PlayerBehaviour player)
 	{
 		player.Died += PlayerDied;
-		player.GetComponent<CharacterController>().Jumped += PlayerJumped;
+
+		var list = clips.FindAll ((obj) => obj.key == "jump").Select (x => x.clip).Except (jumpClipsPerPlayer.Values).ToArray ();
+		if (list.Length == 0)
+			jumpClipsPerPlayer.Add (player.GetPlayerColor ().ToString (), clips.First (x => x.key == "jump").clip);
+		else
+			jumpClipsPerPlayer.Add (player.GetPlayerColor ().ToString (), list[0]);
+		player.Jumped += PlayerJumped;
 	}
 
 	void UnhookPlayerSounds (PlayerBehaviour player)
 	{
 		player.Died -= PlayerDied;
-		player.GetComponent<CharacterController>().Jumped -= PlayerJumped;
+		player.Jumped -= PlayerJumped;
+		jumpClipsPerPlayer.Remove (player.GetPlayerColor ().ToString ());
 	}
-
 
 	void PlayClip (string type)
 	{
@@ -66,9 +76,10 @@ public class SoundManager : MonoBehaviour {
 		PlayClip ("hit");
 	}
 
-	void PlayerJumped (string jumptype)
+	void PlayerJumped (PlayerBehaviour player, string jumptype)
 	{
-		PlayClip ("jump");
+		var clip = jumpClipsPerPlayer[player.GetPlayerColor ().ToString ()];
+		audio.PlayOneShot (clip);
 	}
 
 	void LevelStart ()
@@ -79,5 +90,11 @@ public class SoundManager : MonoBehaviour {
 	void ColorWarning ()
 	{
 		PlayClip ("warning");
+	}
+
+	void GameEnded ()
+	{
+		audio.Stop ();
+		PlayClip ("end");
 	}
 }

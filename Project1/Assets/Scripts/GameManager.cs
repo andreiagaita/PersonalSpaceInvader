@@ -14,8 +14,10 @@ public enum PlayerColor
 public class GameManager : MonoBehaviour {
 
 	public event Action<PlayerBehaviour> PlayerCreated;
+	public event Action<PlayerBehaviour> PlayerDestroyed;
 	public event Action LevelStart;
 	public event Action ColorChangeWarning;
+	public event Action GameEnded;
 
 	static GameManager gameManager = null;
 	public static GameManager instance {
@@ -136,6 +138,11 @@ public class GameManager : MonoBehaviour {
 
 	public void RemovePlayers ()
 	{
+		if (PlayerDestroyed != null)
+		{
+			foreach (var p in players)
+				PlayerDestroyed (p);
+		}
 		players.Clear ();
 	}
 
@@ -223,6 +230,8 @@ public class GameManager : MonoBehaviour {
 	void GameEnd ()
 	{
 		currentLevel = -1;
+		if (GameEnded != null)
+			GameEnded ();
 		Application.LoadLevel("EndGameMenu");
 	}
 

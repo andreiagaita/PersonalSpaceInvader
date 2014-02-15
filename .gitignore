@@ -18,3 +18,4 @@ flatmates/Build/
 /flatmates/Assembly-CSharp.csproj
 /flatmates/Assembly-CSharp-Editor.csproj
 /flatmates/Assembly-CSharp-Editor.csproj
+*.suo
