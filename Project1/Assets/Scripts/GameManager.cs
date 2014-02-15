@@ -14,6 +14,7 @@ public enum PlayerColor
 public class GameManager : MonoBehaviour {
 
 	public event Action<PlayerBehaviour> PlayerCreated;
+	public event Action<PlayerBehaviour> PlayerDestroyed;
 	public event Action LevelStart;
 	public event Action ColorChangeWarning;
 	public event Action GameEnded;
@@ -59,6 +60,12 @@ public class GameManager : MonoBehaviour {
 	public List<GameObject> spawnPoints = new List<GameObject> ();
 	[HideInInspector]
 	public List<PlayerBehaviour> players = new List<PlayerBehaviour> ();
+	[HideInInspector]
+	public List<Transform> powerUpLocations = new List<Transform> ();
+	public GameObject[] powerUps;
+	private float powerUpDuration = 10f;
+	private float timeSincePowerUpSpawn = 0f;
+	private GameObject currentPowerUp;
 	
 	public void Awake () {
 		var old = gameManager;
@@ -125,6 +132,18 @@ public class GameManager : MonoBehaviour {
 				DestroyPulsatingAuraCircles();
 				timeSinceLastTargetReassign = 0f;
 			}
+
+			timeSincePowerUpSpawn += Time.deltaTime;
+			if (timeSincePowerUpSpawn > powerUpDuration)
+			{
+				var powerUpIndex = UnityEngine.Random.Range (0, powerUps.Length);
+				var locationIndex = UnityEngine.Random.Range (0, powerUpLocations.Count);
+				if (currentPowerUp != null)
+					Destroy(currentPowerUp);
+				currentPowerUp = Instantiate(powerUps[powerUpIndex], powerUpLocations[locationIndex].position, Quaternion.identity) as GameObject;
+				timeSincePowerUpSpawn = 0;
+				powerUpDuration = UnityEngine.Random.Range (5, 15);
+			}
 		}
 	}
 
@@ -137,6 +156,11 @@ public class GameManager : MonoBehaviour {
 
 	public void RemovePlayers ()
 	{
+		if (PlayerDestroyed != null)
+		{
+			foreach (var p in players)
+				PlayerDestroyed (p);
+		}
 		players.Clear ();
 	}
 
@@ -148,6 +172,16 @@ public class GameManager : MonoBehaviour {
 	public void RemoveSpawnPoints ()
 	{
 		spawnPoints.Clear();
+	}
+
+	public void AddPowerUpLocation (Transform powerUpLocation)
+	{
+		powerUpLocations.Add(powerUpLocation);
+	}
+
+	public void RemovePowerUpLocations ()
+	{
+		powerUpLocations.Clear();
 	}
 	
 	public void SpawnPlayers () {
@@ -193,12 +227,18 @@ public class GameManager : MonoBehaviour {
 		if (scoreDict[player.playerColor] == scoreToWin)
 		{
 			winningPlayerColor = player.playerColor;
-			gameRoundEnded = true;
+			ResetState ();
 			RemovePlayers ();
 			RemoveSpawnPoints();
+			RemovePowerUpLocations ();
 			GameEnd ();
-
 		}
+	}
+
+	private void ResetState ()
+	{
+		gameRoundEnded = true;
+		timeSinceLastTargetReassign = 0f;
 	}
 
 	private void NotifyIncomingTargetReassignments()
@@ -217,7 +257,7 @@ public class GameManager : MonoBehaviour {
 	private void DestroyPulsatingAuraCircles()
 	{
 		for (var i = 0; i < players.Count; ++i)
-			DestroyImmediate(pulsatingAuras[i]);
+			Destroy(pulsatingAuras[i]);
 		aurasPulsating = false;
 	}
 

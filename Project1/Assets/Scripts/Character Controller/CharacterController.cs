@@ -4,8 +4,6 @@ using System.Collections;
 
 public class CharacterController : MonoBehaviour
 {
-	public event Action<string> Jumped;
-
 	public float speed = 10f;
 	public float jumpForce = 5f;
 
@@ -75,8 +73,7 @@ public class CharacterController : MonoBehaviour
 		if (canJump && Input.GetButtonDown ("Jump " + playerColor))
 		{
 			newVelocity.y = jumpForce;
-			if (Jumped != null)
-				Jumped ("normal");
+			GetComponent<PlayerBehaviour>().RaiseJumped ("normal");
 		}
 
 		if (ShouldApplyHorizontalInput (horizontalInput))
@@ -101,6 +98,19 @@ public class CharacterController : MonoBehaviour
 			graphicTransform.localPosition = reverseGraphicOffset;
 			graphicTransform.localScale = reverseGraphicScale;
 		}
+
+		Vector3 newPosition = transform.position;
+		if (transform.position.x < -0.5f && rigidbody2D.velocity.x < 0)
+			newPosition = new Vector3 (newPosition.x + 32f, newPosition.y, newPosition.z);
+		else if (transform.position.x > 31.5f && rigidbody2D.velocity.x > 0)
+			newPosition = new Vector3 (newPosition.x - 32f, newPosition.y, newPosition.z);
+
+		if (transform.position.y < -0.5f && rigidbody2D.velocity.y < 0)
+			newPosition = new Vector3 (newPosition.x, newPosition.y + 24f, newPosition.z);
+		else if (transform.position.y > 23.5f && rigidbody2D.velocity.y > 0)
+			newPosition = new Vector3 (newPosition.x, newPosition.y - 24f, newPosition.z);
+
+		transform.position = newPosition;
 	}
 
 	private bool ShouldApplyHorizontalInput (float horizontalInput)
