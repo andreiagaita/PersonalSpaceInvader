@@ -6428,7 +6428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  jumpForce: 30
+  jumpForce: 35
   jumpableTimeCooldown: .100000001
   graphic: {fileID: 1947565981}
   collisionTestDistance: .699999988
@@ -6476,8 +6476,9 @@ MonoBehaviour:
   enemy: {fileID: 0}
   aura: {fileID: 1948640203}
   arrow: {fileID: 1904018436}
+  graphic: {fileID: 1947565984}
   spawnLocation: {fileID: 0}
-  playerColor: 1
+  playerColor: 0
 --- !u!1 &729352648
 GameObject:
   m_ObjectHideFlags: 0
@@ -7429,7 +7430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  jumpForce: 30
+  jumpForce: 35
   jumpableTimeCooldown: .100000001
   graphic: {fileID: 669210481}
   collisionTestDistance: .699999988
@@ -7477,8 +7478,9 @@ MonoBehaviour:
   enemy: {fileID: 0}
   aura: {fileID: 457447138}
   arrow: {fileID: 258525617}
+  graphic: {fileID: 669210484}
   spawnLocation: {fileID: 0}
-  playerColor: 0
+  playerColor: 1
 --- !u!1 &827969087
 GameObject:
   m_ObjectHideFlags: 0
@@ -14549,7 +14551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  jumpForce: 30
+  jumpForce: 35
   jumpableTimeCooldown: .100000001
   graphic: {fileID: 611038681}
   collisionTestDistance: .699999988
@@ -14597,6 +14599,7 @@ MonoBehaviour:
   enemy: {fileID: 0}
   aura: {fileID: 701569354}
   arrow: {fileID: 120052575}
+  graphic: {fileID: 611038684}
   spawnLocation: {fileID: 0}
   playerColor: 2
 --- !u!1001 &1591804175
@@ -17990,7 +17993,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}
       propertyPath: playerColor
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}

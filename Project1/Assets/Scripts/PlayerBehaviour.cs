@@ -8,6 +8,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	public PlayerBehaviour enemy;
 	public GameObject aura;
 	public GameObject arrow;
+	public SpriteRenderer graphic;
 	public Transform spawnLocation;
 	public PlayerColor playerColor;
 	private float playerAuraDistance = 0f;
@@ -21,6 +22,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	void Start () {
 		distanceLimit = (aura.renderer.bounds.size.x) / 2;
 		aura.GetComponent<SpriteRenderer>().color = GetActualPlayerColor();
+		graphic.color = GetActualPlayerColor ();
 	}
 	
 	void Update () {
