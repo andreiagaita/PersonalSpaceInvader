@@ -194,8 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14371bb7f5e6f40cfb9cda74199f4b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  jumpForce: 35
+  speed: 14
+  jumpForce: 28
   jumpableTimeCooldown: .100000001
   graphic: {fileID: 100008}
   collisionTestDistance: .699999988

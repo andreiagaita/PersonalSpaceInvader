@@ -36,6 +36,8 @@ public class SoundManager : MonoBehaviour {
 		instance = this;
 		GameManager.instance.PlayerCreated += HookupPlayerSounds;
 		GameManager.instance.LevelStart += LevelStart;
+		GameManager.instance.ColorChangeWarning += ColorWarning;
+		GameManager.instance.GameEnded += GameEnded;
 	}
 
 	void HookupPlayerSounds (PlayerBehaviour player)
@@ -49,7 +51,6 @@ public class SoundManager : MonoBehaviour {
 		player.Died -= PlayerDied;
 		player.GetComponent<CharacterController>().Jumped -= PlayerJumped;
 	}
-
 
 	void PlayClip (string type)
 	{
@@ -73,5 +74,16 @@ public class SoundManager : MonoBehaviour {
 	void LevelStart ()
 	{
 		PlayClip ("start");
+	}
+
+	void ColorWarning ()
+	{
+		PlayClip ("warning");
+	}
+
+	void GameEnded ()
+	{
+		audio.Stop ();
+		PlayClip ("end");
 	}
 }
