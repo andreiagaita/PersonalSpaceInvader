@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-internal class PlayerController : XInputController
+internal class PlayerController : MonoBehaviour
 {
 	public float force;
 	public float speed;
@@ -9,12 +9,14 @@ internal class PlayerController : XInputController
 	public enum ControllerType { None, Xbox, Keyboard }
 	public ControllerType controller;
 
+    public int controllerID = 0;
+
 	public void Update()
 	{
-		base.Update();
+        //base.Update();
 
-		if (controller == ControllerType.Xbox && !controllerReady)
-			return;
+        //if (controller == ControllerType.Xbox && !controllerReady)
+        //    return;
 
 		float horizontal = 0;
 		float vertical = 0;
@@ -22,13 +24,15 @@ internal class PlayerController : XInputController
 		switch (controller)
 		{
 			case ControllerType.Keyboard:
-				horizontal = Input.GetAxis("P" + playerNumber + "Horizontal");
-				vertical = Input.GetAxis("P" + playerNumber + "Vertical");
+                horizontal = (Input.GetKeyDown(KeyCode.RightArrow) ? 1 : 0) - (Input.GetKeyDown(KeyCode.LeftArrow) ? 1 : 0);
+                vertical = (Input.GetKeyDown(KeyCode.UpArrow) ? 1 : 0) - (Input.GetKeyDown(KeyCode.DownArrow) ? 1 : 0);
 				break;
 
 			case ControllerType.Xbox:
-				horizontal = state.ThumbSticks.Left.X;
-				vertical = state.ThumbSticks.Left.Y;
+                //horizontal = state.ThumbSticks.Left.X;
+                //vertical = state.ThumbSticks.Left.Y;
+                horizontal = Input.GetAxis("P" + controllerID + "Horizontal");
+                vertical = Input.GetAxis("P" + controllerID + "Vertical");
 				break;
 		}
 
