@@ -26,11 +26,11 @@ public class MenuHandler : MonoBehaviour {
 		if (selected && Input.GetButtonDown ("Menu Select"))
 			mainMenu.DoMenu (gameObject.tag);
 
-		if (selected && Mathf.Abs (Input.GetAxis ("Menu Vertical")) > 0.1f)
+		if (selected && Mathf.Abs (Input.GetAxis ("Menu Move")) > 0.1f)
 		{
 			selected = false;
 
-			if (Input.GetAxis ("Menu Vertical") < 0)
+			if (Input.GetAxis ("Menu Move") < 0)
 				previous.Select ();
 			else
 				next.Select ();
