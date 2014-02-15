@@ -1,7 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public static class GameManager {
+public class GameManager : MonoBehaviour {
+	
+	
+	public static GameManager instance = null;
+	
+	public void Awake () {
+		instance = this;
+	}
+	
 	public static int playersAlive = 3;
 	public static int scorePlayer1 = 0;
 	public static int scorePlayer2 = 0;
