@@ -37,22 +37,22 @@ public class PlayerBehaviour : MonoBehaviour {
 	void KillEnemy()
 	{
 		GameManager.playersAlive--;
-		DestroyImmediate(enemy);
+		DestroyImmediate(gameObject);
 	}
 
 	void AdjustScore()
 	{
 		switch (gameObject.tag)
 		{
-			case "Player1" : GameManager.scorePlayer1++; break;
-			case "Player2" : GameManager.scorePlayer2++; break;
-			case "Player3" : GameManager.scorePlayer3++; break;
-		}
-		switch (enemy.tag)
-		{
 			case "Player1" : GameManager.scorePlayer1--; break;
 			case "Player2" : GameManager.scorePlayer2--; break;
 			case "Player3" : GameManager.scorePlayer3--; break;
+		}
+		switch (enemy.tag)
+		{
+			case "Player1" : GameManager.scorePlayer1++; break;
+			case "Player2" : GameManager.scorePlayer2++; break;
+			case "Player3" : GameManager.scorePlayer3++; break;
 		}
 		Debug.Log ("P1: " + GameManager.scorePlayer1 +
 		           " P2: " + GameManager.scorePlayer2 +
