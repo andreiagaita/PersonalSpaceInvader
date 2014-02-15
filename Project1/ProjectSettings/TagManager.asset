@@ -6,6 +6,11 @@ TagManager:
   - Player1
   - Player2
   - Player3
+  - start
+  - credits
+  - yes
+  - no
+  - quit
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

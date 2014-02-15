@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400008}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PhotonPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2055,7 +2055,7 @@ MonoBehaviour:
   synchronization: 1
   onSerializeTransformOption: 3
   onSerializeRigidBodyOption: 2
-  instantiationId: 0
+  instantiationId: -1
 --- !u!1002 &11400007
 EditorExtensionImpl:
   serializedVersion: 6

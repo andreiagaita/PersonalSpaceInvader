@@ -5,16 +5,12 @@ using System.Collections.Generic;
 [CustomEditor (typeof (Level))]
 public class LevelEditor : Editor {
 
-	int selectedBrush = 0;
-	GameObject selectedBrushPrefab
-	{
-		get
-		{
-			if (selectedBrush < 1)
-				return null;
-			return (target as Level).brushPrefabs[selectedBrush-1];
-		}
-	}
+	int selectedTile = -1;
+	Sprite selectedSprite { get {
+		if (selectedTile < 0)
+			return null;
+		return level.sprites[selectedTile];
+	} }
 	
 	Vector2 lastMousePos = Vector2.zero;
 	Level level;
@@ -30,12 +26,44 @@ public class LevelEditor : Editor {
 	
 	public override void OnInspectorGUI ()
 	{
-		// Brush toolbar
-		string[] brushNames = new string[level.brushPrefabs.Count + 1];
-		brushNames[0] = "Empty";
-		for (int i=0; i<level.brushPrefabs.Count; i++)
-			brushNames[i+1] = level.brushPrefabs[i].name;
-		selectedBrush = GUILayout.Toolbar (selectedBrush, brushNames);
+		if (GUILayout.Toggle (selectedTile == -1, "NONE"))
+			selectedTile = -1;
+		
+		int tileSize = 32 + 2;
+		
+		Rect rect = EditorGUILayout.GetControlRect ();
+		rect.width = Screen.width - 40;
+		int cols = Mathf.FloorToInt (rect.width / tileSize);
+		int rows = Mathf.CeilToInt (level.sprites.Count / (float)cols);
+		
+		GUILayoutUtility.GetRect (cols*tileSize, rows*tileSize);
+		for (int i=0; i<level.sprites.Count; i++) {
+			float x = (i % cols) * tileSize + rect.x;
+			float y = (i / cols) * tileSize + rect.y;
+			Rect tileRect = new Rect (x, y, tileSize-2, tileSize-2);
+			Texture tex = level.sprites[i].texture;
+			Rect uv = level.sprites[i].textureRect;
+			
+			if (uv.width < uv.height)
+				rect.width *= uv.width / uv.height;
+			if (uv.height < uv.height)
+				rect.width *= uv.height / uv.width;
+			
+			uv.width /= tex.width;
+			uv.x /= tex.width;
+			uv.height /= tex.height;
+			uv.y /= tex.height;
+			
+			
+			
+			if (GUI.Button (tileRect, GUIContent.none, GUIStyle.none))
+				selectedTile = i;
+			
+			if (selectedTile == i)
+				GUI.DrawTexture (new Rect (tileRect.x-1, tileRect.y-2, tileSize+2, tileSize+2), EditorGUIUtility.whiteTexture);
+			
+			GUI.DrawTextureWithTexCoords (tileRect, tex, uv);
+		}
 		
 		DrawDefaultInspector ();
 	}
@@ -57,7 +85,7 @@ public class LevelEditor : Editor {
 		int id = GUIUtility.GetControlID (FocusType.Passive);
 		
 		if (Event.current.type == EventType.MouseDown) {
-			SetTile (mousePos, selectedBrushPrefab);
+			SetTile (mousePos, selectedSprite);
 			EditorGUIUtility.hotControl = id;
 		}
 		if (Event.current.type == EventType.MouseUp) {
@@ -68,7 +96,7 @@ public class LevelEditor : Editor {
 			if (EditorGUIUtility.hotControl == id) {
 				if (mousePos != lastMousePos) {
 					lastMousePos = mousePos;
-					SetTile (mousePos, selectedBrushPrefab);
+					SetTile (mousePos, selectedSprite);
 				}
 			}
 		}
@@ -77,7 +105,7 @@ public class LevelEditor : Editor {
 			Event.current.Use ();
 	}
 	
-	void SetTile (Vector2 pos, GameObject brushPrefab) {
+	void SetTile (Vector2 pos, Sprite sprite) {
 		for (int i=level.tiles.Count-1; i>=0; i--) {
 			GameObject go = level.tiles[i];
 			if (go == null) {
@@ -91,10 +119,11 @@ public class LevelEditor : Editor {
 			}
 		}	
 		
-		if (brushPrefab != null) {
-			GameObject instance = PrefabUtility.InstantiatePrefab (brushPrefab) as GameObject;
+		if (sprite != null) {
+			GameObject instance = PrefabUtility.InstantiatePrefab (level.defaultBrushPrefab) as GameObject;
 			instance.transform.position = pos;
 			instance.transform.parent = level.transform;
+			instance.GetComponent<SpriteRenderer> ().sprite = sprite;
 			level.tiles.Add (instance);
 		}
 		Event.current.Use ();

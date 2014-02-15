@@ -35,6 +35,8 @@ public class SoundManager : MonoBehaviour {
 	void Awake () {
 		instance = this;
 		GameManager.instance.PlayerCreated += HookupPlayerSounds;
+		GameManager.instance.LevelStart += LevelStart;
+		GameManager.instance.ColorChangeWarning += ColorWarning;
 	}
 
 	void HookupPlayerSounds (PlayerBehaviour player)
@@ -50,29 +52,32 @@ public class SoundManager : MonoBehaviour {
 	}
 
 
-	AudioClip FetchClip (string type)
+	void PlayClip (string type)
 	{
 		var list = clips.FindAll ((obj) => obj.key == type);
 		if (list.Count == 0)
-			return null;
-		else if (list.Count > 1)
-			return list[UnityEngine.Random.Range (0, list.Count - 1)].clip;
-		return list[0].clip;
+			return;
+		var clip = list.Count == 1 ? list[0].clip : list[UnityEngine.Random.Range (0, list.Count - 1)].clip;
+		audio.PlayOneShot (clip);
 	}
 
 	void PlayerDied ()
 	{
-		var clip = FetchClip ("hit");
-		if (clip == null)
-			return;
-		audio.PlayOneShot (clip);
+		PlayClip ("hit");
 	}
 
 	void PlayerJumped (string jumptype)
 	{
-		var clip = FetchClip ("jump");
-		if (clip == null)
-			return;
-		audio.PlayOneShot (clip);
+		PlayClip ("jump");
+	}
+
+	void LevelStart ()
+	{
+		PlayClip ("start");
+	}
+
+	void ColorWarning ()
+	{
+		PlayClip ("warning");
 	}
 }

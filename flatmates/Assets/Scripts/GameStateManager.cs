@@ -9,9 +9,9 @@ public class GameStateManager : GameScript
     private ClientPlayerInfo currentPlayerInfo;
     private Dictionary<Guid, PickupObject> GamePickups = new Dictionary<Guid, PickupObject>();
 
-    public Transform PlayerPrefab;
-
-    bool ndPlayerJoin = false;
+    public GameObject PlayerPrefab;
+	public bool fake2Player = true;
+	public bool useNetwork = false;
 
     private SpawnPoint[] LevelSpawns;
 
@@ -19,8 +19,21 @@ public class GameStateManager : GameScript
     {
         base.Start();
 
-        // create myself
-        currentPlayerInfo = new ClientPlayerInfo(1, "Player1", Vector3.zero, Color.red, 0);
+        //if (useNetwork)
+        //    Subscribe ("Network", "OnJoinedRoom", JoinSelfPlayer);
+        //else
+        //    JoinSelfPlayer();
+        Debug.Log("Waiting for host to join game... Press A to join");
+    }
+
+	public void JoinSelfPlayer (int playerID)
+	{
+
+        //int playerID = 1;
+		if (useNetwork)
+			playerID = PhotonNetwork.player.ID;
+
+		currentPlayerInfo = new ClientPlayerInfo(playerID, "Player" + playerID, Vector3.zero, Color.red, 0);
         Debug.Log("host player created");
 
         LevelSpawns = GameObject.FindObjectsOfType<SpawnPoint>();
@@ -34,25 +47,60 @@ public class GameStateManager : GameScript
         }
 
         SpawnPoint spawnLocation = GetRandomSpawn();
-        Transform playerTransform = (Transform)GameObject.Instantiate(PlayerPrefab, spawnLocation.transform.position, Quaternion.identity);
+		GameObject player = null;
+		if (useNetwork)
+			player = PhotonNetwork.Instantiate(PlayerPrefab.name, spawnLocation.transform.position, Quaternion.identity, 0);
+		else
+		
+			player = Instantiate (PlayerPrefab, spawnLocation.transform.position, Quaternion.identity) as GameObject;
+
+        Debug.Log("player: " + player);
+		player.name = "Player" + playerID;
         spawnLocation.Available = false;
 
-        playerTransform.GetComponentInChildren<SpriteRenderer>().color = currentPlayerInfo.Color;
-        PlayerController controller = playerTransform.GetComponentInChildren<PlayerController>();
-        controller.controller =  PlayerController.ControllerType.Keyboard;
-        controller.playerNumber = currentPlayerInfo.ID;
+		player.GetComponentInChildren<SpriteRenderer>().color = currentPlayerInfo.Color;
+		PlayerController controller = player.GetComponentInChildren<PlayerController>();
+        controller.controller = currentPlayerInfo.ID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
+        controller.controllerID = currentPlayerInfo.ID;
+
+        Debug.Log("Waiting for other players to join game... Press A to join");
     }
 
     void Update()
     {
-        if (Time.realtimeSinceStartup > 2 && !ndPlayerJoin)
+        if(Input.anyKeyDown)
         {
-            SpawnPoint spawnLocation = GetRandomSpawn();
-            PlayerJoined(2, "Player2", spawnLocation.transform.position, Color.green, 0);
-            spawnLocation.Available = false;
-            Debug.Log("2nd player created");
-            ndPlayerJoin = true;
+            int playerID = FindControllerID();
+            if (playerID != -1)
+            {
+                if (currentPlayerInfo == null)
+                {
+                    JoinSelfPlayer(playerID);
+                }
+                else if (currentPlayerInfo.ID != playerID && !currentPlayerInfo.OpponentPlayers.ContainsKey(playerID))
+                {
+                    SpawnPoint spawnLocation = GetRandomSpawn();
+                    PlayerJoined(playerID, "Player" + playerID, spawnLocation.transform.position, Color.green, 0);
+                    spawnLocation.Available = false;
+                    Debug.Log("player " + playerID + "created");
+                }
+            }
         }
+    }
+
+    int FindControllerID()
+    {
+        int controllerID = -1;
+        for (int i = 1; i < 4; i++)
+        {
+            string keyCode = "Joystick" + (i == 0 ? "" : i.ToString()) + "Button0";
+            //Debug.Log("checking: " + keyCode + " : " + Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), keyCode)));
+            if (Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), keyCode)))
+                return i;
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+            return 5;
+        return controllerID;
     }
 
     void PlayerJoined(int id, string name, Vector3 position, Color color, int score)
@@ -60,11 +108,11 @@ public class GameStateManager : GameScript
         Debug.Log("Player " + id + " just joined the game");
         PlayerInfo newPlayer = new PlayerInfo(id, name, position, color, score);
         currentPlayerInfo.AddOpponent(newPlayer);
-        Transform ndplayerTransform = (Transform)GameObject.Instantiate(PlayerPrefab, newPlayer.Position, Quaternion.identity);
+        GameObject ndplayerTransform = (GameObject)GameObject.Instantiate(PlayerPrefab, newPlayer.Position, Quaternion.identity);
         ndplayerTransform.GetComponentInChildren<SpriteRenderer>().color = newPlayer.Color;
         PlayerController controller = ndplayerTransform.GetComponentInChildren<PlayerController>();
-        controller.controller = PlayerController.ControllerType.Xbox;
-        controller.playerNumber = newPlayer.ID;
+        controller.controller = newPlayer.ID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
+        controller.controllerID = newPlayer.ID;
     }
 
     void PlayerLeft(int id)
