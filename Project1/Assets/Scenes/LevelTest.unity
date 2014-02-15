@@ -84,7 +84,7 @@ GameObject:
   - 4: {fileID: 5528794}
   - 212: {fileID: 5528796}
   - 61: {fileID: 5528795}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - 4: {fileID: 11485626}
   - 212: {fileID: 11485628}
   - 61: {fileID: 11485627}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   - 4: {fileID: 19556920}
   - 212: {fileID: 19556922}
   - 61: {fileID: 19556921}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   - 4: {fileID: 30769927}
   - 212: {fileID: 30769929}
   - 61: {fileID: 30769928}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +430,7 @@ GameObject:
   - 4: {fileID: 31462019}
   - 212: {fileID: 31462021}
   - 61: {fileID: 31462020}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   - 4: {fileID: 38051774}
   - 212: {fileID: 38051776}
   - 61: {fileID: 38051775}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,7 +648,7 @@ GameObject:
   - 4: {fileID: 45354241}
   - 212: {fileID: 45354243}
   - 61: {fileID: 45354242}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -802,7 +802,7 @@ GameObject:
   - 4: {fileID: 54294795}
   - 212: {fileID: 54294797}
   - 61: {fileID: 54294796}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -911,7 +911,7 @@ GameObject:
   - 4: {fileID: 77369619}
   - 212: {fileID: 77369621}
   - 61: {fileID: 77369620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1065,7 +1065,7 @@ GameObject:
   - 4: {fileID: 113104319}
   - 212: {fileID: 113104321}
   - 61: {fileID: 113104320}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1144,7 +1144,7 @@ Transform:
   m_GameObject: {fileID: 120052575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .200000003, y: .699999988, z: 1}
+  m_LocalScale: {x: .699999988, y: .699999988, z: 1}
   m_Children: []
   m_Father: {fileID: 701569356}
 --- !u!114 &120052577
@@ -1180,9 +1180,9 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 86f445d76bbeb104cae53a873c21eb8e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b904bf702f723465cab9a8eed834483b, type: 3}
   m_Color: {r: .433823526, g: .0510380603, b: .0510380603, a: 1}
 --- !u!1 &142715093
 GameObject:
@@ -1194,7 +1194,7 @@ GameObject:
   - 4: {fileID: 142715094}
   - 212: {fileID: 142715096}
   - 61: {fileID: 142715095}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1303,7 +1303,7 @@ GameObject:
   - 4: {fileID: 160783853}
   - 212: {fileID: 160783855}
   - 61: {fileID: 160783854}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1412,7 +1412,7 @@ GameObject:
   - 4: {fileID: 167158758}
   - 212: {fileID: 167158760}
   - 61: {fileID: 167158759}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1476,7 +1476,7 @@ GameObject:
   - 4: {fileID: 173546338}
   - 212: {fileID: 173546340}
   - 61: {fileID: 173546339}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1540,7 +1540,7 @@ GameObject:
   - 4: {fileID: 177170697}
   - 212: {fileID: 177170699}
   - 61: {fileID: 177170698}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1603,11 +1603,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.02357888
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.60400176
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1648,7 +1648,7 @@ GameObject:
   - 4: {fileID: 191151192}
   - 212: {fileID: 191151194}
   - 61: {fileID: 191151193}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1802,7 +1802,7 @@ GameObject:
   - 4: {fileID: 203900445}
   - 212: {fileID: 203900447}
   - 61: {fileID: 203900446}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1866,7 +1866,7 @@ GameObject:
   - 4: {fileID: 205035665}
   - 212: {fileID: 205035667}
   - 61: {fileID: 205035666}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2020,7 +2020,7 @@ GameObject:
   - 4: {fileID: 217685206}
   - 212: {fileID: 217685208}
   - 61: {fileID: 217685207}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2273,7 +2273,7 @@ Transform:
   m_GameObject: {fileID: 258525617}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .200000003, y: .699999988, z: 1}
+  m_LocalScale: {x: .699999988, y: .699999988, z: 1}
   m_Children: []
   m_Father: {fileID: 457447139}
 --- !u!114 &258525619
@@ -2309,9 +2309,9 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 86f445d76bbeb104cae53a873c21eb8e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b904bf702f723465cab9a8eed834483b, type: 3}
   m_Color: {r: .433823526, g: .0510380603, b: .0510380603, a: 1}
 --- !u!1001 &271462746
 Prefab:
@@ -2363,7 +2363,7 @@ GameObject:
   - 4: {fileID: 272754493}
   - 212: {fileID: 272754495}
   - 61: {fileID: 272754494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2427,7 +2427,7 @@ GameObject:
   - 4: {fileID: 279338185}
   - 212: {fileID: 279338187}
   - 61: {fileID: 279338186}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2491,7 +2491,7 @@ GameObject:
   - 4: {fileID: 281377196}
   - 212: {fileID: 281377198}
   - 61: {fileID: 281377197}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2645,7 +2645,7 @@ GameObject:
   - 4: {fileID: 296754462}
   - 212: {fileID: 296754464}
   - 61: {fileID: 296754463}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2799,7 +2799,7 @@ GameObject:
   - 4: {fileID: 307378629}
   - 212: {fileID: 307378631}
   - 61: {fileID: 307378630}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3043,7 +3043,7 @@ GameObject:
   - 4: {fileID: 348346605}
   - 212: {fileID: 348346607}
   - 61: {fileID: 348346606}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3107,7 +3107,7 @@ GameObject:
   - 4: {fileID: 359015384}
   - 212: {fileID: 359015386}
   - 61: {fileID: 359015385}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3171,7 +3171,7 @@ GameObject:
   - 4: {fileID: 363020605}
   - 212: {fileID: 363020607}
   - 61: {fileID: 363020606}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3235,7 +3235,7 @@ GameObject:
   - 4: {fileID: 366669408}
   - 212: {fileID: 366669410}
   - 61: {fileID: 366669409}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3344,7 +3344,7 @@ GameObject:
   - 4: {fileID: 374339851}
   - 212: {fileID: 374339853}
   - 61: {fileID: 374339852}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3408,7 +3408,7 @@ GameObject:
   - 4: {fileID: 379899686}
   - 212: {fileID: 379899688}
   - 61: {fileID: 379899687}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3742,7 +3742,7 @@ GameObject:
   - 4: {fileID: 422631837}
   - 212: {fileID: 422631839}
   - 61: {fileID: 422631838}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3851,7 +3851,7 @@ GameObject:
   - 4: {fileID: 435785920}
   - 212: {fileID: 435785922}
   - 61: {fileID: 435785921}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3915,7 +3915,7 @@ GameObject:
   - 4: {fileID: 449745084}
   - 212: {fileID: 449745086}
   - 61: {fileID: 449745085}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4062,7 +4062,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 02b6cabf4daa24148b19663ae314ad54, type: 3}
   m_Color: {r: .757352948, g: .105806671, b: .105806671, a: 1}
@@ -4076,7 +4076,7 @@ GameObject:
   - 4: {fileID: 462160575}
   - 212: {fileID: 462160577}
   - 61: {fileID: 462160576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4230,7 +4230,7 @@ GameObject:
   - 4: {fileID: 478674558}
   - 212: {fileID: 478674560}
   - 61: {fileID: 478674559}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4339,7 +4339,7 @@ GameObject:
   - 4: {fileID: 487801132}
   - 212: {fileID: 487801134}
   - 61: {fileID: 487801133}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4448,7 +4448,7 @@ GameObject:
   - 4: {fileID: 497771680}
   - 212: {fileID: 497771682}
   - 61: {fileID: 497771681}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4512,7 +4512,7 @@ GameObject:
   - 4: {fileID: 502117500}
   - 212: {fileID: 502117502}
   - 61: {fileID: 502117501}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4621,7 +4621,7 @@ GameObject:
   - 4: {fileID: 518215414}
   - 212: {fileID: 518215416}
   - 61: {fileID: 518215415}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4815,7 +4815,7 @@ GameObject:
   - 4: {fileID: 547527979}
   - 212: {fileID: 547527981}
   - 61: {fileID: 547527980}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4879,7 +4879,7 @@ GameObject:
   - 4: {fileID: 571873814}
   - 212: {fileID: 571873816}
   - 61: {fileID: 571873815}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4943,7 +4943,7 @@ GameObject:
   - 4: {fileID: 583701169}
   - 212: {fileID: 583701171}
   - 61: {fileID: 583701170}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5091,7 +5091,7 @@ GameObject:
   - 4: {fileID: 589938024}
   - 212: {fileID: 589938026}
   - 61: {fileID: 589938025}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5298,7 +5298,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: ef74775b5ff504d918f9cabb258d3668, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5357,7 +5357,7 @@ GameObject:
   - 4: {fileID: 624397369}
   - 212: {fileID: 624397371}
   - 61: {fileID: 624397370}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5421,7 +5421,7 @@ GameObject:
   - 4: {fileID: 638409963}
   - 212: {fileID: 638409965}
   - 61: {fileID: 638409964}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5620,7 +5620,7 @@ GameObject:
   - 4: {fileID: 647642339}
   - 212: {fileID: 647642341}
   - 61: {fileID: 647642340}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5684,7 +5684,7 @@ GameObject:
   - 4: {fileID: 650616384}
   - 212: {fileID: 650616386}
   - 61: {fileID: 650616385}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5748,7 +5748,7 @@ GameObject:
   - 4: {fileID: 651315412}
   - 212: {fileID: 651315414}
   - 61: {fileID: 651315413}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5812,7 +5812,7 @@ GameObject:
   - 4: {fileID: 652943347}
   - 212: {fileID: 652943349}
   - 61: {fileID: 652943348}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5921,7 +5921,7 @@ GameObject:
   - 4: {fileID: 667873455}
   - 212: {fileID: 667873457}
   - 61: {fileID: 667873456}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6083,7 +6083,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: ef74775b5ff504d918f9cabb258d3668, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6187,7 +6187,7 @@ GameObject:
   - 4: {fileID: 694738542}
   - 212: {fileID: 694738544}
   - 61: {fileID: 694738543}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6322,7 +6322,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 02b6cabf4daa24148b19663ae314ad54, type: 3}
   m_Color: {r: .757352948, g: .105806671, b: .105806671, a: 1}
@@ -6409,7 +6409,7 @@ Transform:
   m_PrefabInternal: {fileID: 184976631}
   m_GameObject: {fileID: 714971739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.02357888, y: 3.60400176, z: 0}
+  m_LocalPosition: {x: 8, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 805149989}
@@ -6429,8 +6429,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   jumpForce: 30
+  jumpableTimeCooldown: .100000001
   graphic: {fileID: 1947565981}
-  collisionTestDistance: .600000024
+  collisionTestDistance: .699999988
   collisionTestCenterOffset: .49000001
 --- !u!58 &714971742
 CircleCollider2D:
@@ -6487,7 +6488,7 @@ GameObject:
   - 4: {fileID: 729352649}
   - 212: {fileID: 729352651}
   - 61: {fileID: 729352650}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6776,7 +6777,7 @@ GameObject:
   - 4: {fileID: 762151686}
   - 212: {fileID: 762151688}
   - 61: {fileID: 762151687}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6885,7 +6886,7 @@ GameObject:
   - 4: {fileID: 772171077}
   - 212: {fileID: 772171079}
   - 61: {fileID: 772171078}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7039,7 +7040,7 @@ GameObject:
   - 4: {fileID: 798916734}
   - 212: {fileID: 798916736}
   - 61: {fileID: 798916735}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7103,7 +7104,7 @@ GameObject:
   - 4: {fileID: 799221362}
   - 212: {fileID: 799221364}
   - 61: {fileID: 799221363}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7284,7 +7285,7 @@ GameObject:
   - 4: {fileID: 805957216}
   - 212: {fileID: 805957218}
   - 61: {fileID: 805957217}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7409,7 +7410,7 @@ Transform:
   m_PrefabInternal: {fileID: 1828675193}
   m_GameObject: {fileID: 812112252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.94398928, y: 2.34902334, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1744550544}
@@ -7429,8 +7430,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   jumpForce: 30
+  jumpableTimeCooldown: .100000001
   graphic: {fileID: 669210481}
-  collisionTestDistance: .600000024
+  collisionTestDistance: .699999988
   collisionTestCenterOffset: .49000001
 --- !u!58 &812112255
 CircleCollider2D:
@@ -7487,7 +7489,7 @@ GameObject:
   - 4: {fileID: 827969088}
   - 212: {fileID: 827969090}
   - 61: {fileID: 827969089}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7596,7 +7598,7 @@ GameObject:
   - 4: {fileID: 830873513}
   - 212: {fileID: 830873515}
   - 61: {fileID: 830873514}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7654,7 +7656,7 @@ SpriteRenderer:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
-  m_PrefabInternal: {fileID: 1490316301}
+  m_PrefabInternal: {fileID: 1809036741}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 834012914}
@@ -7671,7 +7673,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: 9aa68168ed149034ab9f4864de713a88,
     type: 2}
-  m_PrefabInternal: {fileID: 1490316301}
+  m_PrefabInternal: {fileID: 1809036741}
   m_GameObject: {fileID: 834012912}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -7680,11 +7682,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundManagerPrefab: {fileID: 100000, guid: 09c55d3833ec84f40b9447dfbf5ee019, type: 2}
   scoreTextPrefab: {fileID: 13200000, guid: bed3138bb62c34cbd8c3b5b2dbecf31e, type: 2}
+  scoreToWin: 10
+  winningPlayerColor: 0
   playerColors:
-  - {r: .588235259, g: .0346020721, b: .0346020721, a: 1}
-  - {r: .0600388758, g: .0367106311, b: .713235259, a: 1}
-  - {r: .0243295692, g: .661764741, b: .318868637, a: 1}
-  - {r: .904411793, g: .423037201, b: .0532006919, a: 1}
+  - {r: .764705896, g: 0, b: 0, a: 1}
+  - {r: 0, g: .296551704, b: 1, a: 1}
+  - {r: 0, g: .625, b: .288793147, a: 1}
+  - {r: .941176474, g: .525760651, b: 0, a: 1}
   assignNewTargetsDelay: 20
   pulsatingAura: {fileID: 100000, guid: e8fe9b77c1de8584799e114fac8e95e3, type: 2}
   spawnPoints: []
@@ -7693,7 +7697,7 @@ MonoBehaviour:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
-  m_PrefabInternal: {fileID: 1490316301}
+  m_PrefabInternal: {fileID: 1809036741}
   m_GameObject: {fileID: 834012912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -7710,7 +7714,7 @@ GameObject:
   - 4: {fileID: 837498071}
   - 212: {fileID: 837498073}
   - 61: {fileID: 837498072}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7774,7 +7778,7 @@ GameObject:
   - 4: {fileID: 838295761}
   - 212: {fileID: 838295763}
   - 61: {fileID: 838295762}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7838,7 +7842,7 @@ GameObject:
   - 4: {fileID: 842870844}
   - 212: {fileID: 842870846}
   - 61: {fileID: 842870845}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7902,7 +7906,7 @@ GameObject:
   - 4: {fileID: 849177203}
   - 212: {fileID: 849177205}
   - 61: {fileID: 849177204}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8078,7 +8082,7 @@ GameObject:
   - 4: {fileID: 903036693}
   - 212: {fileID: 903036695}
   - 61: {fileID: 903036694}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8142,7 +8146,7 @@ GameObject:
   - 4: {fileID: 910998529}
   - 212: {fileID: 910998531}
   - 61: {fileID: 910998530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8251,7 +8255,7 @@ GameObject:
   - 4: {fileID: 916700355}
   - 212: {fileID: 916700357}
   - 61: {fileID: 916700356}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8315,7 +8319,7 @@ GameObject:
   - 4: {fileID: 920964451}
   - 212: {fileID: 920964453}
   - 61: {fileID: 920964452}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8688,7 +8692,7 @@ GameObject:
   - 4: {fileID: 962488510}
   - 212: {fileID: 962488512}
   - 61: {fileID: 962488511}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8752,7 +8756,7 @@ GameObject:
   - 4: {fileID: 967988754}
   - 212: {fileID: 967988756}
   - 61: {fileID: 967988755}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8861,7 +8865,7 @@ GameObject:
   - 4: {fileID: 979689054}
   - 212: {fileID: 979689056}
   - 61: {fileID: 979689055}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8915,6 +8919,56 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300210, guid: 48f47f9b5ce4944d5b8966f44b0d0482, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &986970957
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 986970959}
+  - 212: {fileID: 986970958}
+  m_Layer: 0
+  m_Name: bg_grasslands
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &986970958
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 986970957}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: -100
+  m_SortingLayerID: 0
+  m_Sprite: {fileID: 21300000, guid: 4827a881992334de6ac2f59fa9400ef3, type: 3}
+  m_Color: {r: .250980407, g: .250980407, b: .250980407, a: 1}
+--- !u!4 &986970959
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 986970957}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &989240959
 GameObject:
   m_ObjectHideFlags: 0
@@ -8925,7 +8979,7 @@ GameObject:
   - 4: {fileID: 989240960}
   - 212: {fileID: 989240962}
   - 61: {fileID: 989240961}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9034,7 +9088,7 @@ GameObject:
   - 4: {fileID: 997898840}
   - 212: {fileID: 997898842}
   - 61: {fileID: 997898841}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9098,7 +9152,7 @@ GameObject:
   - 4: {fileID: 1009330049}
   - 212: {fileID: 1009330051}
   - 61: {fileID: 1009330050}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9252,7 +9306,7 @@ GameObject:
   - 4: {fileID: 1014199141}
   - 212: {fileID: 1014199143}
   - 61: {fileID: 1014199142}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9451,7 +9505,7 @@ GameObject:
   - 4: {fileID: 1032598863}
   - 212: {fileID: 1032598865}
   - 61: {fileID: 1032598864}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9515,7 +9569,7 @@ GameObject:
   - 4: {fileID: 1038798007}
   - 212: {fileID: 1038798009}
   - 61: {fileID: 1038798008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9579,7 +9633,7 @@ GameObject:
   - 4: {fileID: 1054117517}
   - 212: {fileID: 1054117519}
   - 61: {fileID: 1054117518}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9643,7 +9697,7 @@ GameObject:
   - 4: {fileID: 1075703662}
   - 212: {fileID: 1075703664}
   - 61: {fileID: 1075703663}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9752,7 +9806,7 @@ GameObject:
   - 4: {fileID: 1077805612}
   - 212: {fileID: 1077805614}
   - 61: {fileID: 1077805613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9816,7 +9870,7 @@ GameObject:
   - 4: {fileID: 1080340898}
   - 212: {fileID: 1080340900}
   - 61: {fileID: 1080340899}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10144,7 +10198,7 @@ GameObject:
   - 4: {fileID: 1138690927}
   - 212: {fileID: 1138690929}
   - 61: {fileID: 1138690928}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10208,7 +10262,7 @@ GameObject:
   - 4: {fileID: 1140224401}
   - 212: {fileID: 1140224403}
   - 61: {fileID: 1140224402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10272,7 +10326,7 @@ GameObject:
   - 4: {fileID: 1144297271}
   - 212: {fileID: 1144297273}
   - 61: {fileID: 1144297272}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10336,7 +10390,7 @@ GameObject:
   - 4: {fileID: 1148195010}
   - 212: {fileID: 1148195012}
   - 61: {fileID: 1148195011}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10400,7 +10454,7 @@ GameObject:
   - 4: {fileID: 1157170208}
   - 212: {fileID: 1157170210}
   - 61: {fileID: 1157170209}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10464,7 +10518,7 @@ GameObject:
   - 4: {fileID: 1157549954}
   - 212: {fileID: 1157549956}
   - 61: {fileID: 1157549955}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10528,7 +10582,7 @@ GameObject:
   - 4: {fileID: 1158870886}
   - 212: {fileID: 1158870888}
   - 61: {fileID: 1158870887}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10682,7 +10736,7 @@ GameObject:
   - 4: {fileID: 1184129661}
   - 212: {fileID: 1184129663}
   - 61: {fileID: 1184129662}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10746,7 +10800,7 @@ GameObject:
   - 4: {fileID: 1184717033}
   - 212: {fileID: 1184717035}
   - 61: {fileID: 1184717034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10810,7 +10864,7 @@ GameObject:
   - 4: {fileID: 1188755375}
   - 212: {fileID: 1188755377}
   - 61: {fileID: 1188755376}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10919,7 +10973,7 @@ GameObject:
   - 4: {fileID: 1191449745}
   - 212: {fileID: 1191449747}
   - 61: {fileID: 1191449746}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11028,7 +11082,7 @@ GameObject:
   - 4: {fileID: 1196693968}
   - 212: {fileID: 1196693970}
   - 61: {fileID: 1196693969}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11092,7 +11146,7 @@ GameObject:
   - 4: {fileID: 1207232593}
   - 212: {fileID: 1207232595}
   - 61: {fileID: 1207232594}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11246,7 +11300,7 @@ GameObject:
   - 4: {fileID: 1243629248}
   - 212: {fileID: 1243629250}
   - 61: {fileID: 1243629249}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11355,7 +11409,7 @@ GameObject:
   - 4: {fileID: 1271097375}
   - 212: {fileID: 1271097377}
   - 61: {fileID: 1271097376}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11419,7 +11473,7 @@ GameObject:
   - 4: {fileID: 1279341468}
   - 212: {fileID: 1279341470}
   - 61: {fileID: 1279341469}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11528,7 +11582,7 @@ GameObject:
   - 4: {fileID: 1296495705}
   - 212: {fileID: 1296495707}
   - 61: {fileID: 1296495706}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11592,7 +11646,7 @@ GameObject:
   - 4: {fileID: 1306669965}
   - 212: {fileID: 1306669967}
   - 61: {fileID: 1306669966}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11971,7 +12025,7 @@ GameObject:
   - 4: {fileID: 1356248456}
   - 212: {fileID: 1356248458}
   - 61: {fileID: 1356248457}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12080,7 +12134,7 @@ GameObject:
   - 4: {fileID: 1366899796}
   - 212: {fileID: 1366899798}
   - 61: {fileID: 1366899797}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12324,7 +12378,7 @@ GameObject:
   - 4: {fileID: 1386636576}
   - 212: {fileID: 1386636578}
   - 61: {fileID: 1386636577}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12388,7 +12442,7 @@ GameObject:
   - 4: {fileID: 1388169553}
   - 212: {fileID: 1388169555}
   - 61: {fileID: 1388169554}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12497,7 +12551,7 @@ GameObject:
   - 4: {fileID: 1391758712}
   - 212: {fileID: 1391758714}
   - 61: {fileID: 1391758713}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12561,7 +12615,7 @@ GameObject:
   - 4: {fileID: 1394531322}
   - 212: {fileID: 1394531324}
   - 61: {fileID: 1394531323}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12625,7 +12679,7 @@ GameObject:
   - 4: {fileID: 1395107905}
   - 212: {fileID: 1395107907}
   - 61: {fileID: 1395107906}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12779,7 +12833,7 @@ GameObject:
   - 4: {fileID: 1407642903}
   - 212: {fileID: 1407642905}
   - 61: {fileID: 1407642904}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12843,7 +12897,7 @@ GameObject:
   - 4: {fileID: 1419534742}
   - 212: {fileID: 1419534744}
   - 61: {fileID: 1419534743}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12907,7 +12961,7 @@ GameObject:
   - 4: {fileID: 1422431015}
   - 212: {fileID: 1422431017}
   - 61: {fileID: 1422431016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13061,7 +13115,7 @@ GameObject:
   - 4: {fileID: 1440894626}
   - 212: {fileID: 1440894628}
   - 61: {fileID: 1440894627}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13170,7 +13224,7 @@ GameObject:
   - 4: {fileID: 1451364488}
   - 212: {fileID: 1451364490}
   - 61: {fileID: 1451364489}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13265,7 +13319,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: .0196078438}
+  m_BackGroundColor: {r: .203921571, g: .239215687, b: .243137255, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -13306,7 +13360,7 @@ GameObject:
   - 4: {fileID: 1469949878}
   - 212: {fileID: 1469949880}
   - 61: {fileID: 1469949879}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13370,7 +13424,7 @@ GameObject:
   - 4: {fileID: 1474607159}
   - 212: {fileID: 1474607161}
   - 61: {fileID: 1474607160}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13469,46 +13523,6 @@ Prefab:
   m_RootGameObject: {fileID: 1032598862}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1001 &1490316301
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
-  m_RootGameObject: {fileID: 834012912}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1 &1494315284
 GameObject:
   m_ObjectHideFlags: 0
@@ -13519,7 +13533,7 @@ GameObject:
   - 4: {fileID: 1494315285}
   - 212: {fileID: 1494315287}
   - 61: {fileID: 1494315286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13583,7 +13597,7 @@ GameObject:
   - 4: {fileID: 1502851515}
   - 212: {fileID: 1502851517}
   - 61: {fileID: 1502851516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13782,7 +13796,7 @@ GameObject:
   - 4: {fileID: 1522098356}
   - 212: {fileID: 1522098358}
   - 61: {fileID: 1522098357}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13846,7 +13860,7 @@ GameObject:
   - 4: {fileID: 1532451322}
   - 212: {fileID: 1532451324}
   - 61: {fileID: 1532451323}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13910,7 +13924,7 @@ GameObject:
   - 4: {fileID: 1537417981}
   - 212: {fileID: 1537417983}
   - 61: {fileID: 1537417982}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14064,7 +14078,7 @@ GameObject:
   - 4: {fileID: 1546495534}
   - 212: {fileID: 1546495536}
   - 61: {fileID: 1546495535}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14128,7 +14142,7 @@ GameObject:
   - 4: {fileID: 1547202515}
   - 212: {fileID: 1547202517}
   - 61: {fileID: 1547202516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14192,7 +14206,7 @@ GameObject:
   - 4: {fileID: 1550820910}
   - 212: {fileID: 1550820912}
   - 61: {fileID: 1550820911}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14256,7 +14270,7 @@ GameObject:
   - 4: {fileID: 1565524631}
   - 212: {fileID: 1565524633}
   - 61: {fileID: 1565524632}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14516,7 +14530,7 @@ Transform:
   m_PrefabInternal: {fileID: 2129961438}
   m_GameObject: {fileID: 1587379428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.50791073, y: 2.32693577, z: 0}
+  m_LocalPosition: {x: 4, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 854129595}
@@ -14536,8 +14550,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   jumpForce: 30
+  jumpableTimeCooldown: .100000001
   graphic: {fileID: 611038681}
-  collisionTestDistance: .600000024
+  collisionTestDistance: .699999988
   collisionTestCenterOffset: .49000001
 --- !u!58 &1587379431
 CircleCollider2D:
@@ -14639,7 +14654,7 @@ GameObject:
   - 4: {fileID: 1593929680}
   - 212: {fileID: 1593929682}
   - 61: {fileID: 1593929681}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14738,68 +14753,6 @@ Prefab:
   m_RootGameObject: {fileID: 1717014972}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1 &1615837088
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1615837090}
-  - 108: {fileID: 1615837089}
-  m_Layer: 0
-  m_Name: Directional light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &1615837089
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1615837088}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: .5
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_Strength: 1
-    m_Bias: .0500000007
-    m_Softness: 4
-    m_SoftnessFade: 1
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_ActuallyLightmapped: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 1
-  m_ShadowSamples: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
-  m_IndirectIntensity: 1
-  m_AreaSize: {x: 1, y: 1}
---- !u!4 &1615837090
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1615837088}
-  m_LocalRotation: {x: .408217937, y: -.234569728, z: .109381661, w: .875426114}
-  m_LocalPosition: {x: -5.68654394, y: 2.60502338, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
 --- !u!1 &1619173105
 GameObject:
   m_ObjectHideFlags: 0
@@ -14810,7 +14763,7 @@ GameObject:
   - 4: {fileID: 1619173106}
   - 212: {fileID: 1619173108}
   - 61: {fileID: 1619173107}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15009,7 +14962,7 @@ GameObject:
   - 4: {fileID: 1638958477}
   - 212: {fileID: 1638958479}
   - 61: {fileID: 1638958478}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15073,7 +15026,7 @@ GameObject:
   - 4: {fileID: 1651662196}
   - 212: {fileID: 1651662198}
   - 61: {fileID: 1651662197}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15272,7 +15225,7 @@ GameObject:
   - 4: {fileID: 1665441984}
   - 212: {fileID: 1665441986}
   - 61: {fileID: 1665441985}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15714,181 +15667,181 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1157549954}
+  - {fileID: 1819947402}
+  - {fileID: 1784817759}
+  - {fileID: 1469949878}
+  - {fileID: 462160575}
+  - {fileID: 1760927961}
+  - {fileID: 1819103338}
+  - {fileID: 191151192}
+  - {fileID: 1962475746}
+  - {fileID: 842870844}
+  - {fileID: 307378629}
   - {fileID: 11485626}
   - {fileID: 2067284879}
   - {fileID: 1196693968}
   - {fileID: 838295761}
+  - {fileID: 5528794}
   - {fileID: 1924425936}
   - {fileID: 1748167680}
   - {fileID: 1356248456}
   - {fileID: 1918841996}
+  - {fileID: 1440894626}
+  - {fileID: 1783372098}
+  - {fileID: 1714166679}
+  - {fileID: 772171077}
+  - {fileID: 1144297271}
+  - {fileID: 1394531322}
+  - {fileID: 1038798007}
+  - {fileID: 1391758712}
+  - {fileID: 667873455}
   - {fileID: 1820440623}
+  - {fileID: 272754493}
   - {fileID: 2093198537}
+  - {fileID: 1784396768}
+  - {fileID: 1148195010}
+  - {fileID: 1306669965}
+  - {fileID: 1366899796}
+  - {fileID: 2092043368}
+  - {fileID: 903036693}
   - {fileID: 799221362}
+  - {fileID: 1537417981}
+  - {fileID: 2136849843}
+  - {fileID: 1419534742}
+  - {fileID: 142715094}
+  - {fileID: 2069627928}
+  - {fileID: 1054117517}
+  - {fileID: 1688864976}
+  - {fileID: 837498071}
+  - {fileID: 2087341026}
+  - {fileID: 487801132}
   - {fileID: 1950946400}
+  - {fileID: 1651662196}
+  - {fileID: 173546338}
   - {fileID: 1690796546}
+  - {fileID: 694738542}
+  - {fileID: 1138690927}
+  - {fileID: 547527979}
+  - {fileID: 1986060333}
+  - {fileID: 38051774}
+  - {fileID: 296754462}
+  - {fileID: 1474607159}
+  - {fileID: 54294795}
+  - {fileID: 1502851515}
+  - {fileID: 624397369}
+  - {fileID: 502117500}
+  - {fileID: 1709812713}
+  - {fileID: 1014199141}
+  - {fileID: 348346605}
   - {fileID: 19556920}
+  - {fileID: 583701169}
+  - {fileID: 1619173106}
+  - {fileID: 1964252052}
   - {fileID: 1739587775}
+  - {fileID: 1550820910}
+  - {fileID: 849177203}
+  - {fileID: 177170697}
   - {fileID: 1828572651}
+  - {fileID: 1547202515}
   - {fileID: 1422431015}
+  - {fileID: 1388169553}
+  - {fileID: 1207232593}
+  - {fileID: 160783853}
+  - {fileID: 920964451}
+  - {fileID: 203900445}
+  - {fileID: 2142822348}
+  - {fileID: 31462019}
+  - {fileID: 1692361220}
   - {fileID: 1565524631}
+  - {fileID: 1714593035}
+  - {fileID: 1971307782}
   - {fileID: 2076414908}
+  - {fileID: 1928650450}
+  - {fileID: 1158870886}
+  - {fileID: 1969865551}
   - {fileID: 1974677026}
+  - {fileID: 1075703662}
+  - {fileID: 1800508488}
+  - {fileID: 652943347}
+  - {fileID: 1184717033}
+  - {fileID: 729352649}
+  - {fileID: 205035665}
   - {fileID: 589938024}
+  - {fileID: 1696654893}
+  - {fileID: 1009330049}
+  - {fileID: 647642339}
   - {fileID: 989240960}
   - {fileID: 1803011700}
+  - {fileID: 435785920}
+  - {fileID: 1755720584}
+  - {fileID: 77369619}
   - {fileID: 979689054}
+  - {fileID: 449745084}
+  - {fileID: 374339851}
+  - {fileID: 1451364488}
+  - {fileID: 798916734}
   - {fileID: 1032598863}
   - {fileID: 1777875814}
+  - {fileID: 2143143928}
+  - {fileID: 30769927}
   - {fileID: 167158758}
+  - {fileID: 422631837}
+  - {fileID: 497771680}
+  - {fileID: 217685206}
   - {fileID: 916700355}
   - {fileID: 1546495534}
+  - {fileID: 1976411437}
   - {fileID: 1717014973}
+  - {fileID: 1758425992}
+  - {fileID: 1839154592}
+  - {fileID: 1243629248}
+  - {fileID: 827969088}
+  - {fileID: 279338185}
+  - {fileID: 910998529}
+  - {fileID: 478674558}
+  - {fileID: 1992125467}
+  - {fileID: 997898840}
+  - {fileID: 1184129661}
   - {fileID: 967988754}
+  - {fileID: 1140224401}
   - {fileID: 830873513}
+  - {fileID: 1386636576}
   - {fileID: 962488510}
   - {fileID: 366669408}
+  - {fileID: 1279341468}
+  - {fileID: 281377196}
+  - {fileID: 1080340898}
+  - {fileID: 1638958477}
+  - {fileID: 1077805612}
+  - {fileID: 1188755375}
+  - {fileID: 1407642903}
+  - {fileID: 651315412}
+  - {fileID: 113104319}
+  - {fileID: 45354241}
+  - {fileID: 1532451322}
+  - {fileID: 1271097375}
+  - {fileID: 762151686}
+  - {fileID: 518215414}
+  - {fileID: 1522098356}
+  - {fileID: 1494315285}
+  - {fileID: 1191449745}
+  - {fileID: 1593929680}
   - {fileID: 359015384}
+  - {fileID: 379899686}
+  - {fileID: 363020605}
+  - {fileID: 1665441984}
+  - {fileID: 571873814}
+  - {fileID: 805957216}
+  - {fileID: 2019426850}
+  - {fileID: 1296495705}
+  - {fileID: 1395107905}
+  - {fileID: 638409963}
+  - {fileID: 650616384}
   - {fileID: 1991811888}
   - {fileID: 1157170208}
-  - {fileID: 1014199141}
-  - {fileID: 910998529}
-  - {fileID: 497771680}
-  - {fileID: 1451364488}
-  - {fileID: 729352649}
-  - {fileID: 1391758712}
-  - {fileID: 1969865551}
-  - {fileID: 1306669965}
-  - {fileID: 422631837}
-  - {fileID: 1758425992}
-  - {fileID: 379899686}
-  - {fileID: 1550820910}
-  - {fileID: 38051774}
   - {fileID: 1688480312}
-  - {fileID: 1075703662}
   - {fileID: 2146875575}
-  - {fileID: 1494315285}
-  - {fileID: 1819947402}
-  - {fileID: 1191449745}
-  - {fileID: 1038798007}
-  - {fileID: 1522098356}
-  - {fileID: 1077805612}
-  - {fileID: 2019426850}
-  - {fileID: 5528794}
-  - {fileID: 1651662196}
-  - {fileID: 30769927}
-  - {fileID: 1638958477}
-  - {fileID: 1783372098}
-  - {fileID: 191151192}
-  - {fileID: 805957216}
-  - {fileID: 487801132}
-  - {fileID: 374339851}
-  - {fileID: 624397369}
-  - {fileID: 1665441984}
-  - {fileID: 1714593035}
-  - {fileID: 1148195010}
-  - {fileID: 583701169}
-  - {fileID: 837498071}
-  - {fileID: 1296495705}
-  - {fileID: 1692361220}
-  - {fileID: 652943347}
-  - {fileID: 1537417981}
-  - {fileID: 1395107905}
-  - {fileID: 1388169553}
-  - {fileID: 903036693}
-  - {fileID: 1784396768}
-  - {fileID: 1964252052}
-  - {fileID: 363020605}
-  - {fileID: 1184717033}
-  - {fileID: 772171077}
-  - {fileID: 1407642903}
-  - {fileID: 1271097375}
-  - {fileID: 435785920}
-  - {fileID: 2143143928}
-  - {fileID: 205035665}
-  - {fileID: 1760927961}
-  - {fileID: 2087341026}
-  - {fileID: 694738542}
-  - {fileID: 296754462}
-  - {fileID: 1144297271}
-  - {fileID: 1971307782}
-  - {fileID: 1593929680}
-  - {fileID: 113104319}
-  - {fileID: 1976411437}
-  - {fileID: 1386636576}
-  - {fileID: 2069627928}
-  - {fileID: 173546338}
-  - {fileID: 547527979}
-  - {fileID: 272754493}
-  - {fileID: 1839154592}
-  - {fileID: 920964451}
-  - {fileID: 1054117517}
-  - {fileID: 1366899796}
-  - {fileID: 518215414}
-  - {fileID: 762151686}
-  - {fileID: 849177203}
-  - {fileID: 348346605}
-  - {fileID: 571873814}
-  - {fileID: 1709812713}
-  - {fileID: 1502851515}
-  - {fileID: 638409963}
-  - {fileID: 997898840}
-  - {fileID: 203900445}
-  - {fileID: 54294795}
-  - {fileID: 142715094}
-  - {fileID: 281377196}
-  - {fileID: 1784817759}
-  - {fileID: 45354241}
-  - {fileID: 1474607159}
-  - {fileID: 798916734}
-  - {fileID: 842870844}
-  - {fileID: 1140224401}
-  - {fileID: 1188755375}
-  - {fileID: 160783853}
-  - {fileID: 1992125467}
-  - {fileID: 1547202515}
-  - {fileID: 1207232593}
-  - {fileID: 279338185}
-  - {fileID: 307378629}
-  - {fileID: 647642339}
-  - {fileID: 827969088}
-  - {fileID: 1688864976}
-  - {fileID: 1714166679}
-  - {fileID: 1243629248}
-  - {fileID: 1532451322}
-  - {fileID: 449745084}
-  - {fileID: 650616384}
-  - {fileID: 1696654893}
-  - {fileID: 1619173106}
-  - {fileID: 667873455}
-  - {fileID: 1080340898}
-  - {fileID: 1184129661}
-  - {fileID: 31462019}
-  - {fileID: 1419534742}
-  - {fileID: 1138690927}
-  - {fileID: 1009330049}
-  - {fileID: 1158870886}
-  - {fileID: 1755720584}
-  - {fileID: 478674558}
-  - {fileID: 2136849843}
-  - {fileID: 1962475746}
-  - {fileID: 1928650450}
-  - {fileID: 1394531322}
-  - {fileID: 2092043368}
-  - {fileID: 1819103338}
-  - {fileID: 1986060333}
-  - {fileID: 2142822348}
-  - {fileID: 651315412}
-  - {fileID: 502117500}
-  - {fileID: 177170697}
-  - {fileID: 1800508488}
-  - {fileID: 217685206}
-  - {fileID: 1279341468}
-  - {fileID: 77369619}
-  - {fileID: 1440894626}
-  - {fileID: 1157549954}
-  - {fileID: 462160575}
-  - {fileID: 1469949878}
   - {fileID: 256646640}
   - {fileID: 956386869}
   - {fileID: 584049928}
@@ -15994,7 +15947,7 @@ GameObject:
   - 4: {fileID: 1688480312}
   - 212: {fileID: 1688480314}
   - 61: {fileID: 1688480313}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16058,7 +16011,7 @@ GameObject:
   - 4: {fileID: 1688864976}
   - 212: {fileID: 1688864978}
   - 61: {fileID: 1688864977}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16122,7 +16075,7 @@ GameObject:
   - 4: {fileID: 1690796546}
   - 212: {fileID: 1690796548}
   - 61: {fileID: 1690796547}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16231,7 +16184,7 @@ GameObject:
   - 4: {fileID: 1692361220}
   - 212: {fileID: 1692361222}
   - 61: {fileID: 1692361221}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16295,7 +16248,7 @@ GameObject:
   - 4: {fileID: 1696654893}
   - 212: {fileID: 1696654895}
   - 61: {fileID: 1696654894}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16404,7 +16357,7 @@ GameObject:
   - 4: {fileID: 1709812713}
   - 212: {fileID: 1709812715}
   - 61: {fileID: 1709812714}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16468,7 +16421,7 @@ GameObject:
   - 4: {fileID: 1714166679}
   - 212: {fileID: 1714166681}
   - 61: {fileID: 1714166680}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16532,7 +16485,7 @@ GameObject:
   - 4: {fileID: 1714593035}
   - 212: {fileID: 1714593037}
   - 61: {fileID: 1714593036}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16596,7 +16549,7 @@ GameObject:
   - 4: {fileID: 1717014973}
   - 212: {fileID: 1717014975}
   - 61: {fileID: 1717014974}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16705,7 +16658,7 @@ GameObject:
   - 4: {fileID: 1739587775}
   - 212: {fileID: 1739587777}
   - 61: {fileID: 1739587776}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16796,7 +16749,7 @@ GameObject:
   - 4: {fileID: 1748167680}
   - 212: {fileID: 1748167682}
   - 61: {fileID: 1748167681}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16860,7 +16813,7 @@ GameObject:
   - 4: {fileID: 1755720584}
   - 212: {fileID: 1755720586}
   - 61: {fileID: 1755720585}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16924,7 +16877,7 @@ GameObject:
   - 4: {fileID: 1758425992}
   - 212: {fileID: 1758425994}
   - 61: {fileID: 1758425993}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16988,7 +16941,7 @@ GameObject:
   - 4: {fileID: 1760927961}
   - 212: {fileID: 1760927963}
   - 61: {fileID: 1760927962}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17097,7 +17050,7 @@ GameObject:
   - 4: {fileID: 1777875814}
   - 212: {fileID: 1777875816}
   - 61: {fileID: 1777875815}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17161,7 +17114,7 @@ GameObject:
   - 4: {fileID: 1783372098}
   - 212: {fileID: 1783372097}
   - 61: {fileID: 1783372096}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17225,7 +17178,7 @@ GameObject:
   - 4: {fileID: 1784396768}
   - 212: {fileID: 1784396770}
   - 61: {fileID: 1784396769}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17289,7 +17242,7 @@ GameObject:
   - 4: {fileID: 1784817759}
   - 212: {fileID: 1784817761}
   - 61: {fileID: 1784817760}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17443,7 +17396,7 @@ GameObject:
   - 4: {fileID: 1800508488}
   - 212: {fileID: 1800508490}
   - 61: {fileID: 1800508489}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17507,7 +17460,7 @@ GameObject:
   - 4: {fileID: 1803011700}
   - 212: {fileID: 1803011702}
   - 61: {fileID: 1803011701}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17696,6 +17649,46 @@ Prefab:
   m_RootGameObject: {fileID: 1279341467}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1001 &1809036741
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
+  m_RootGameObject: {fileID: 834012912}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1819103337
 GameObject:
   m_ObjectHideFlags: 0
@@ -17706,7 +17699,7 @@ GameObject:
   - 4: {fileID: 1819103338}
   - 212: {fileID: 1819103340}
   - 61: {fileID: 1819103339}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17770,7 +17763,7 @@ GameObject:
   - 4: {fileID: 1819947402}
   - 212: {fileID: 1819947404}
   - 61: {fileID: 1819947403}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17834,7 +17827,7 @@ GameObject:
   - 4: {fileID: 1820440623}
   - 212: {fileID: 1820440625}
   - 61: {fileID: 1820440624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17898,7 +17891,7 @@ GameObject:
   - 4: {fileID: 1828572651}
   - 212: {fileID: 1828572653}
   - 61: {fileID: 1828572652}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17961,11 +17954,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 4.94398928
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.34902334
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}
       propertyPath: m_LocalPosition.z
@@ -18059,7 +18052,7 @@ GameObject:
   - 4: {fileID: 1839154592}
   - 212: {fileID: 1839154594}
   - 61: {fileID: 1839154593}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18448,7 +18441,7 @@ Transform:
   m_GameObject: {fileID: 1904018436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .200000003, y: .699999988, z: 1}
+  m_LocalScale: {x: .699999988, y: .699999988, z: 1}
   m_Children: []
   m_Father: {fileID: 1948640205}
 --- !u!114 &1904018438
@@ -18484,9 +18477,9 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 86f445d76bbeb104cae53a873c21eb8e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b904bf702f723465cab9a8eed834483b, type: 3}
   m_Color: {r: .433823526, g: .0510380603, b: .0510380603, a: 1}
 --- !u!1001 &1906962365
 Prefab:
@@ -18633,7 +18626,7 @@ GameObject:
   - 4: {fileID: 1918841996}
   - 212: {fileID: 1918841998}
   - 61: {fileID: 1918841997}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18697,7 +18690,7 @@ GameObject:
   - 4: {fileID: 1924425936}
   - 212: {fileID: 1924425938}
   - 61: {fileID: 1924425937}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18761,7 +18754,7 @@ GameObject:
   - 4: {fileID: 1928650450}
   - 212: {fileID: 1928650452}
   - 61: {fileID: 1928650451}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18923,7 +18916,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: ef74775b5ff504d918f9cabb258d3668, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -18963,7 +18956,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 02b6cabf4daa24148b19663ae314ad54, type: 3}
   m_Color: {r: .757352948, g: .105806671, b: .105806671, a: 1}
@@ -19034,7 +19027,7 @@ GameObject:
   - 4: {fileID: 1950946400}
   - 212: {fileID: 1950946402}
   - 61: {fileID: 1950946401}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19143,7 +19136,7 @@ GameObject:
   - 4: {fileID: 1962475746}
   - 212: {fileID: 1962475748}
   - 61: {fileID: 1962475747}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19207,7 +19200,7 @@ GameObject:
   - 4: {fileID: 1964252052}
   - 212: {fileID: 1964252054}
   - 61: {fileID: 1964252053}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19271,7 +19264,7 @@ GameObject:
   - 4: {fileID: 1969865551}
   - 212: {fileID: 1969865553}
   - 61: {fileID: 1969865552}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19335,7 +19328,7 @@ GameObject:
   - 4: {fileID: 1971307782}
   - 212: {fileID: 1971307784}
   - 61: {fileID: 1971307783}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19399,7 +19392,7 @@ GameObject:
   - 4: {fileID: 1974677026}
   - 212: {fileID: 1974677028}
   - 61: {fileID: 1974677027}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19463,7 +19456,7 @@ GameObject:
   - 4: {fileID: 1976411437}
   - 212: {fileID: 1976411439}
   - 61: {fileID: 1976411438}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19572,7 +19565,7 @@ GameObject:
   - 4: {fileID: 1986060333}
   - 212: {fileID: 1986060335}
   - 61: {fileID: 1986060334}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19636,7 +19629,7 @@ GameObject:
   - 4: {fileID: 1991811888}
   - 212: {fileID: 1991811890}
   - 61: {fileID: 1991811889}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19700,7 +19693,7 @@ GameObject:
   - 4: {fileID: 1992125467}
   - 212: {fileID: 1992125469}
   - 61: {fileID: 1992125468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19944,7 +19937,7 @@ GameObject:
   - 4: {fileID: 2019426850}
   - 212: {fileID: 2019426852}
   - 61: {fileID: 2019426851}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20233,7 +20226,7 @@ GameObject:
   - 4: {fileID: 2067284879}
   - 212: {fileID: 2067284881}
   - 61: {fileID: 2067284880}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20297,7 +20290,7 @@ GameObject:
   - 4: {fileID: 2069627928}
   - 212: {fileID: 2069627930}
   - 61: {fileID: 2069627929}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20406,7 +20399,7 @@ GameObject:
   - 4: {fileID: 2076414908}
   - 212: {fileID: 2076414910}
   - 61: {fileID: 2076414909}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20460,6 +20453,56 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300210, guid: 48f47f9b5ce4944d5b8966f44b0d0482, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &2083650577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2083650579}
+  - 212: {fileID: 2083650578}
+  m_Layer: 0
+  m_Name: bg_grasslands
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &2083650578
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2083650577}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: -100
+  m_SortingLayerID: 0
+  m_Sprite: {fileID: 21300000, guid: 4827a881992334de6ac2f59fa9400ef3, type: 3}
+  m_Color: {r: .250980407, g: .250980407, b: .250980407, a: 1}
+--- !u!4 &2083650579
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2083650577}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 32, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &2087341025
 GameObject:
   m_ObjectHideFlags: 0
@@ -20470,7 +20513,7 @@ GameObject:
   - 4: {fileID: 2087341026}
   - 212: {fileID: 2087341028}
   - 61: {fileID: 2087341027}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20534,7 +20577,7 @@ GameObject:
   - 4: {fileID: 2092043368}
   - 212: {fileID: 2092043370}
   - 61: {fileID: 2092043369}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20598,7 +20641,7 @@ GameObject:
   - 4: {fileID: 2093198537}
   - 212: {fileID: 2093198539}
   - 61: {fileID: 2093198538}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20841,11 +20884,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 9.50791073
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.32693577
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}
       propertyPath: m_LocalPosition.z
@@ -20984,7 +21027,7 @@ GameObject:
   - 4: {fileID: 2136849843}
   - 212: {fileID: 2136849845}
   - 61: {fileID: 2136849844}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21048,7 +21091,7 @@ GameObject:
   - 4: {fileID: 2142822348}
   - 212: {fileID: 2142822350}
   - 61: {fileID: 2142822349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21112,7 +21155,7 @@ GameObject:
   - 4: {fileID: 2143143928}
   - 212: {fileID: 2143143930}
   - 61: {fileID: 2143143929}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21221,7 +21264,7 @@ GameObject:
   - 4: {fileID: 2146875575}
   - 212: {fileID: 2146875577}
   - 61: {fileID: 2146875576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DefaultTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

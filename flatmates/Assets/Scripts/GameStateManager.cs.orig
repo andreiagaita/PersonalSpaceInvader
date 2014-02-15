@@ -19,21 +19,32 @@ public class GameStateManager : GameScript
     {
         base.Start();
 
+<<<<<<< HEAD
+	    //Subscribe ("Network", "OnJoinedRoom", JoinSelfPlayer);
+
+		//JoinSelfPlayer();
+
+        Debug.Log("Waiting for host to join game... Press A to join");
+=======
 		if (useNetwork)
 			Subscribe ("Network", "OnJoinedRoom", JoinSelfPlayer);
 		else
 			JoinSelfPlayer();
-        Debug.Log("Waiting for host to join game... Press A to join");
+>>>>>>> e8065b06d2ef4ab5f59ec16f2dfec20a7fd08dcb
     }
 
 	public void JoinSelfPlayer (int playerID)
 	{
 
+<<<<<<< HEAD
+        currentPlayerInfo = new ClientPlayerInfo(playerID, "Player" + playerID, Vector3.zero, Color.red, 0);
+=======
 		int playerID = 1;
 		if (useNetwork)
 			playerID = PhotonNetwork.player.ID;
 
 		currentPlayerInfo = new ClientPlayerInfo(playerID, "Player" + playerID, Vector3.zero, Color.red, 0);
+>>>>>>> e8065b06d2ef4ab5f59ec16f2dfec20a7fd08dcb
         Debug.Log("host player created");
 
         LevelSpawns = GameObject.FindObjectsOfType<SpawnPoint>();

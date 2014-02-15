@@ -20,7 +20,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	
 	void Start () {
 		distanceLimit = (aura.renderer.bounds.size.x) / 2;
-		arrow.GetComponent<SpriteRenderer>().color = GetActualPlayerColor();
+		aura.GetComponent<SpriteRenderer>().color = GetActualPlayerColor();
 	}
 	
 	void Update () {
@@ -32,6 +32,11 @@ public class PlayerBehaviour : MonoBehaviour {
 			if (GameManager.instance)
 				GameManager.instance.AwardPointToPlayer (this);
 		}
+	}
+	
+	public void SetTarget (PlayerBehaviour target) {
+		enemy = target;
+		arrow.GetComponent<SpriteRenderer>().color = enemy.GetActualPlayerColor();
 	}
 	
 	public void Die () {

@@ -14,6 +14,8 @@ public enum PlayerColor
 public class GameManager : MonoBehaviour {
 
 	public event Action<PlayerBehaviour> PlayerCreated;
+	public event Action LevelStart;
+
 	static GameManager gameManager = null;
 	public static GameManager instance {
 		get { return gameManager; }
@@ -30,8 +32,13 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 	}
+
 	public GameObject soundManagerPrefab;
 	public GUIText scoreTextPrefab;
+	public int scoreToWin = 20;
+	[HideInInspector]
+	public PlayerColor winningPlayerColor;
+	private bool gameRoundEnded = false;
 	
 	public Dictionary<PlayerColor, int> scoreDict = new Dictionary<PlayerColor, int> ();
 	public Dictionary<PlayerColor, GUIText> scoreTexts = new Dictionary<PlayerColor, GUIText> ();
@@ -43,6 +50,8 @@ public class GameManager : MonoBehaviour {
 	private bool aurasPulsating = false;
 	private float timeSinceLastTargetReassign = 0f;
 	private float pulsatingAuraNotificationLength = 3.0f;
+	private List<string> levels = new List<string> ();
+	private int currentLevel = -1;
 
 	[HideInInspector]
 	public List<GameObject> spawnPoints = new List<GameObject> ();
@@ -58,16 +67,28 @@ public class GameManager : MonoBehaviour {
 
 	public void Start ()
 	{
-		InitLevel ();
+		InitLevels ();
+		if (levels.Contains (Application.loadedLevelName))
+			InitLevel ();
 	}
 	
-	public void OnLevelWasLoaded (int level) 
+	public void OnLevelWasLoaded (int level)
 	{
-		InitLevel ();
+		if (levels.Contains (Application.loadedLevelName))
+			InitLevel ();
+	}
+
+	private void InitLevels ()
+	{
+		levels.Add ("LevelTest");
 	}
 
 	private void InitLevel ()
 	{
+		if (currentLevel < 0)
+			currentLevel = 0;
+
+		gameRoundEnded = false;
 		SpawnPlayers ();
 		AssignTargets ();
 		
@@ -85,17 +106,20 @@ public class GameManager : MonoBehaviour {
 
 	public void Update()
 	{
-		timeSinceLastTargetReassign += Time.deltaTime;
-		if (!aurasPulsating && (timeSinceLastTargetReassign > assignNewTargetsDelay - pulsatingAuraNotificationLength))
+		if (!gameRoundEnded)
 		{
-			NotifyIncomingTargetReassignments();
-		}
+			timeSinceLastTargetReassign += Time.deltaTime;
+			if (!aurasPulsating && (timeSinceLastTargetReassign > assignNewTargetsDelay - pulsatingAuraNotificationLength))
+			{
+				NotifyIncomingTargetReassignments();
+			}
 
-		if (timeSinceLastTargetReassign > assignNewTargetsDelay)
-		{
-			AssignTargets();
-			DestroyPulsatingAuraCircles();
-			timeSinceLastTargetReassign = 0f;
+			if (timeSinceLastTargetReassign > assignNewTargetsDelay)
+			{
+				AssignTargets();
+				DestroyPulsatingAuraCircles();
+				timeSinceLastTargetReassign = 0f;
+			}
 		}
 	}
 
@@ -106,6 +130,21 @@ public class GameManager : MonoBehaviour {
 			PlayerCreated (player);
 	}
 
+	public void RemovePlayers ()
+	{
+		players.Clear ();
+	}
+
+	public void AddSpawnPoint(GameObject spawnPoint)
+	{
+		spawnPoints.Add (spawnPoint);
+	}
+
+	public void RemoveSpawnPoints ()
+	{
+		spawnPoints.Clear();
+	}
+	
 	public void SpawnPlayers () {
 		List<GameObject> randomSpawnPoints = new List<GameObject> (spawnPoints);
 		randomSpawnPoints.Shuffle ();
@@ -120,8 +159,7 @@ public class GameManager : MonoBehaviour {
 		players.Shuffle();
 		for (var i = 0; i < players.Count; ++i)
 		{
-			players[i].enemy = players[(i + 1) % players.Count];
-			players[i].enemy.aura.GetComponent<SpriteRenderer>().color = players[i].GetActualPlayerColor();
+			players[i].SetTarget (players[(i + 1) % players.Count]);
 		}
 	}
 	
@@ -147,6 +185,15 @@ public class GameManager : MonoBehaviour {
 	public void AwardPointToPlayer (PlayerBehaviour player) {
 		scoreDict[player.playerColor] += 1;
 		scoreTexts[player.playerColor].text = "" + scoreDict[player.playerColor];
+		if (scoreDict[player.playerColor] == scoreToWin)
+		{
+			winningPlayerColor = player.playerColor;
+			gameRoundEnded = true;
+			RemovePlayers ();
+			RemoveSpawnPoints();
+			GameEnd ();
+
+		}
 	}
 
 	private void NotifyIncomingTargetReassignments()
@@ -165,5 +212,21 @@ public class GameManager : MonoBehaviour {
 		for (var i = 0; i < players.Count; ++i)
 			DestroyImmediate(pulsatingAuras[i]);
 		aurasPulsating = false;
+	}
+
+	void GameEnd ()
+	{
+		currentLevel = 0;
+		Application.LoadLevel("EndGameMenu");
+	}
+
+	public void NextLevel ()
+	{
+		currentLevel = UnityEngine.Random.Range (0, levels.Count - 1);
+
+		if (LevelStart != null)
+			LevelStart ();
+
+		Application.LoadLevel (levels[currentLevel]);
 	}
 }
