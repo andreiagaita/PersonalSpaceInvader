@@ -9,9 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 50: {fileID: 5000000}
-  - 61: {fileID: 6100000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400004}
+  - 58: {fileID: 5800000}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -91,7 +91,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.89517903, y: 0, z: -2.32888412}
+  m_LocalPosition: {x: 2.02357888, y: 3.60400176, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400006}
@@ -158,8 +158,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
---- !u!61 &6100000
-BoxCollider2D:
+--- !u!58 &5800000
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -167,7 +167,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1, y: 1}
+  m_Radius: .560000002
   m_Center: {x: 0, y: 0}
 --- !u!95 &9500000
 Animator:
@@ -197,7 +197,7 @@ MonoBehaviour:
   speed: 15
   jumpForce: 30
   graphic: {fileID: 100008}
-  collisionTestDistance: .600000024
+  collisionTestDistance: .649999976
   collisionTestCenterOffset: .49000001
 --- !u!114 &11400002
 MonoBehaviour:
@@ -226,7 +226,7 @@ MonoBehaviour:
   aura: {fileID: 100004}
   arrow: {fileID: 100002}
   spawnLocation: {fileID: 0}
-  playerColor: 0
+  playerColor: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
