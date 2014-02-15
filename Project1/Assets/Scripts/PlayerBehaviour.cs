@@ -18,7 +18,7 @@ public class PlayerBehaviour : MonoBehaviour {
 			Debug.Log(GameManager.playersAlive);
 			if (GameManager.playersAlive > 2)
 			{
-				KillPlayer();
+				KillEnemy();
 			}
 			else
 			{
@@ -27,9 +27,9 @@ public class PlayerBehaviour : MonoBehaviour {
 		}
 	}
 
-	void KillPlayer()
+	void KillEnemy()
 	{
 		GameManager.playersAlive--;
-		DestroyImmediate(gameObject);
+		DestroyImmediate(enemyAura.transform.root.gameObject);
 	}
 }

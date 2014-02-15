@@ -2,5 +2,5 @@
 using System.Collections;
 
 public static class GameManager {
-	public static int playersAlive = 2;
+	public static int playersAlive = 3;
 }
