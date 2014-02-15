@@ -7291,7 +7291,7 @@ Transform:
   m_PrefabInternal: {fileID: 1828675193}
   m_GameObject: {fileID: 812112252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.94398928, y: 2.34902334, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1744550544}
@@ -7688,7 +7688,6 @@ MonoBehaviour:
   - {r: .0243295692, g: .661764741, b: .318868637, a: 1}
   - {r: .904411793, g: .423037201, b: .0532006919, a: 1}
   assignNewTargetsDelay: 20
-  pulsatingAura: {fileID: 100000, guid: e8fe9b77c1de8584799e114fac8e95e3, type: 2}
   spawnPoints: []
   players: []
 --- !u!4 &834012914
@@ -14584,7 +14583,6 @@ GameObject:
   - 20: {fileID: 1469479536}
   - 92: {fileID: 1469479535}
   - 124: {fileID: 1469479534}
-  - 81: {fileID: 1469479533}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -14592,13 +14590,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1469479533
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1469479532}
-  m_Enabled: 1
 --- !u!124 &1469479534
 Behaviour:
   m_ObjectHideFlags: 0
@@ -15057,10 +15048,6 @@ Prefab:
       value: 
       objectReference: {fileID: 13200000, guid: bed3138bb62c34cbd8c3b5b2dbecf31e,
         type: 2}
-    - target: {fileID: 11400000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
-      propertyPath: assignNewTargetsDelay
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9aa68168ed149034ab9f4864de713a88, type: 2}
   m_RootGameObject: {fileID: 834012912}
@@ -18454,11 +18441,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4.94398928
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.34902334
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cbc42147e368c483fa3eeee15ab83090, type: 2}
       propertyPath: m_LocalPosition.z

@@ -4,15 +4,15 @@ using System.Collections.Generic;
 
 public class ClientPlayerInfo : PlayerInfo
 {
-    public Dictionary<PlayerID, PlayerInfo> OpponentPlayers;
-    public Dictionary<PlayerID, Dictionary<PlayerID, float>> VisibilityMatrix;
+    public Dictionary<int, PlayerInfo> OpponentPlayers;
+    public Dictionary<int, Dictionary<int, float>> VisibilityMatrix;
 
-    public ClientPlayerInfo(PlayerID id, string name, Vector3 position, Color color, int score)
+    public ClientPlayerInfo(int id, string name, Vector3 position, Color color, int score)
         : base(id, name, position, color, score)
     {
-        OpponentPlayers = new Dictionary<PlayerID, PlayerInfo>();
-        VisibilityMatrix = new Dictionary<PlayerID, Dictionary<PlayerID, float>>();
-        VisibilityMatrix.Add(ID, new Dictionary<PlayerID, float>());
+        OpponentPlayers = new Dictionary<int, PlayerInfo>();
+        VisibilityMatrix = new Dictionary<int, Dictionary<int, float>>();
+        VisibilityMatrix.Add(ID, new Dictionary<int, float>());
     }
 
     public void AddOpponent(PlayerInfo player)
@@ -44,7 +44,7 @@ public class ClientPlayerInfo : PlayerInfo
         VisibilityMatrix[player.ID][ID] = distanceValue;*/
     }
 
-    public void RemoveOpponent(PlayerID id)
+    public void RemoveOpponent(int id)
     {
         if (OpponentPlayers.ContainsKey(id))
         {

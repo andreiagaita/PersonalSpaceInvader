@@ -19,9 +19,15 @@ public class GameManager : MonoBehaviour {
 		get { return gameManager; }
 		private set {
 			if (gameManager != null)
-				Destroy (gameManager.gameObject);
-			gameManager = value;
-			DontDestroyOnLoad (gameManager.gameObject);
+			{
+				Destroy (value.gameObject);
+				value.enabled = false;
+			}
+			else
+			{
+				gameManager = value;
+				DontDestroyOnLoad (gameManager.gameObject);
+			}
 		}
 	}
 	public GameObject soundManagerPrefab;
@@ -50,7 +56,7 @@ public class GameManager : MonoBehaviour {
 			Instantiate (soundManagerPrefab);
 	}
 	
-	public void Start () {
+	public void OnLevelWasLoaded (int level) {
 		SpawnPlayers ();
 		AssignTargets ();
 		
