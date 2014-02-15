@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour {
 		switch (menu) {
 		case "start":
 		case "yes":
-			Application.LoadLevel ("LevelTest");
+			GameManager.instance.NextLevel ();
 			break;
 		case "no":
 			Application.LoadLevel ("MainMenu");

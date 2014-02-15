@@ -40,13 +40,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundManagerPrefab: {fileID: 100000, guid: 09c55d3833ec84f40b9447dfbf5ee019, type: 2}
   scoreTextPrefab: {fileID: 13200000, guid: bed3138bb62c34cbd8c3b5b2dbecf31e, type: 2}
-  scoreToWin: 20
+  scoreToWin: 10
   winningPlayerColor: 0
   playerColors:
-  - {r: .889705896, g: .268220156, b: .268220156, a: 1}
-  - {r: .0367106311, g: .433294058, b: .713235259, a: 1}
-  - {r: .222534597, g: .720588207, b: .47327894, a: 1}
-  - {r: .911764681, g: .562963843, b: .294982702, a: 1}
+  - {r: .764705896, g: 0, b: 0, a: 1}
+  - {r: 0, g: .296551704, b: 1, a: 1}
+  - {r: 0, g: .625, b: .288793147, a: 1}
+  - {r: .941176474, g: .525760651, b: 0, a: 1}
   assignNewTargetsDelay: 20
   pulsatingAura: {fileID: 100000, guid: e8fe9b77c1de8584799e114fac8e95e3, type: 2}
   spawnPoints: []

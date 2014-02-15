@@ -14,6 +14,8 @@ public enum PlayerColor
 public class GameManager : MonoBehaviour {
 
 	public event Action<PlayerBehaviour> PlayerCreated;
+	public event Action LevelStart;
+
 	static GameManager gameManager = null;
 	public static GameManager instance {
 		get { return gameManager; }
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 	}
+
 	public GameObject soundManagerPrefab;
 	public GUIText scoreTextPrefab;
 	public int scoreToWin = 20;
@@ -47,6 +50,8 @@ public class GameManager : MonoBehaviour {
 	private bool aurasPulsating = false;
 	private float timeSinceLastTargetReassign = 0f;
 	private float pulsatingAuraNotificationLength = 3.0f;
+	private List<string> levels = new List<string> ();
+	private int currentLevel = -1;
 
 	[HideInInspector]
 	public List<GameObject> spawnPoints = new List<GameObject> ();
@@ -62,17 +67,27 @@ public class GameManager : MonoBehaviour {
 
 	public void Start ()
 	{
-		InitLevel ();
+		InitLevels ();
+		if (levels.Contains (Application.loadedLevelName))
+			InitLevel ();
 	}
 	
-	public void OnLevelWasLoaded (int level) 
+	public void OnLevelWasLoaded (int level)
 	{
-		if (Application.loadedLevelName.Equals("LevelTest"))
+		if (levels.Contains (Application.loadedLevelName))
 			InitLevel ();
+	}
+
+	private void InitLevels ()
+	{
+		levels.Add ("LevelTest");
 	}
 
 	private void InitLevel ()
 	{
+		if (currentLevel < 0)
+			currentLevel = 0;
+
 		gameRoundEnded = false;
 		SpawnPlayers ();
 		AssignTargets ();
@@ -176,7 +191,8 @@ public class GameManager : MonoBehaviour {
 			gameRoundEnded = true;
 			RemovePlayers ();
 			RemoveSpawnPoints();
-			Application.LoadLevel("EndGameMenu");
+			GameEnd ();
+
 		}
 	}
 
@@ -196,5 +212,21 @@ public class GameManager : MonoBehaviour {
 		for (var i = 0; i < players.Count; ++i)
 			DestroyImmediate(pulsatingAuras[i]);
 		aurasPulsating = false;
+	}
+
+	void GameEnd ()
+	{
+		currentLevel = 0;
+		Application.LoadLevel("EndGameMenu");
+	}
+
+	public void NextLevel ()
+	{
+		currentLevel = UnityEngine.Random.Range (0, levels.Count - 1);
+
+		if (LevelStart != null)
+			LevelStart ();
+
+		Application.LoadLevel (levels[currentLevel]);
 	}
 }
