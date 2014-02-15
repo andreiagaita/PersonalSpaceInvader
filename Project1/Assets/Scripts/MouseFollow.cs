@@ -6,14 +6,11 @@ public class MouseFollow : MonoBehaviour {
 	public Transform target;
 	public float rotationSpeed = 0.1f;
 
-	void Start ()
-	{
-		if (!target)
-			Debug.LogError("You need to assign a target to the AuraSpike object");
-	}
-
 	void Update () 
 	{
+		if (!target)
+			return;
+
 		RotateTowardsTarget(target);
 	}
 

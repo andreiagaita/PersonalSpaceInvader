@@ -16,28 +16,15 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 	
 	void Update () {
+		if (!enemyAura || !spawnLocation)
+			return;
+
 		playerAuraDistance = Vector3.Distance (enemyAura.position, transform.position);
 		if (playerAuraDistance < distanceLimit)
 		{
 			AdjustScore();
 			RespawnEnemy();
-			Debug.Log(GameManager.playersAlive);
-			if (GameManager.playersAlive > 2)
-			{
-				//KillEnemy();
-				//re-assign player colors
-			}
-			else
-			{
-				//Display screen with winners
-			}
 		}
-	}
-
-	void KillEnemy()
-	{
-		GameManager.playersAlive--;
-		DestroyImmediate(gameObject);
 	}
 
 	void AdjustScore()
