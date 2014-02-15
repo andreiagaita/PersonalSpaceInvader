@@ -15,11 +15,28 @@ public class SoundManager : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Awake () {
-		if (instance == null)
-			instance = this;
+		instance = this;
+		GameManager.instance.PlayerCreated += HookupPlayerSounds;
 	}
 
-	public void Start () {
+	void HookupPlayerSounds (PlayerBehaviour player)
+	{
+		player.Died += PlayerDied;
+		player.GetComponent<CharacterController>().Jumped += PlayerJumped;
+	}
 
+	void UnhookPlayerSounds (PlayerBehaviour player)
+	{
+		player.Died -= PlayerDied;
+		player.GetComponent<CharacterController>().Jumped -= PlayerJumped;
+	}
+
+	void PlayerDied ()
+	{
+
+	}
+
+	void PlayerJumped (string jumptype)
+	{
 	}
 }
