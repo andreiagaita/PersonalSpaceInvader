@@ -91,7 +91,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.02357888, y: 3.60400176, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400006}
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  jumpForce: 30
+  jumpForce: 35
   jumpableTimeCooldown: .100000001
   graphic: {fileID: 100008}
   collisionTestDistance: .699999988
@@ -226,8 +226,9 @@ MonoBehaviour:
   enemy: {fileID: 0}
   aura: {fileID: 100004}
   arrow: {fileID: 100002}
+  graphic: {fileID: 21200004}
   spawnLocation: {fileID: 0}
-  playerColor: 1
+  playerColor: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
