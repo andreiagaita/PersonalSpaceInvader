@@ -123,7 +123,6 @@ GameObject:
   - 20: {fileID: 665193631}
   - 92: {fileID: 665193630}
   - 124: {fileID: 665193629}
-  - 81: {fileID: 665193628}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -131,13 +130,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &665193628
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 665193627}
-  m_Enabled: 1
 --- !u!124 &665193629
 Behaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundManagerPrefab: {fileID: 100000, guid: 09c55d3833ec84f40b9447dfbf5ee019, type: 2}
+  scoreTextPrefab: {fileID: 13200000, guid: bed3138bb62c34cbd8c3b5b2dbecf31e, type: 2}
   playerColors:
   - {r: .588235259, g: .0346020721, b: .0346020721, a: 1}
   - {r: .0600388758, g: .0367106311, b: .713235259, a: 1}
