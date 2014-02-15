@@ -98,6 +98,19 @@ public class CharacterController : MonoBehaviour
 			graphicTransform.localPosition = reverseGraphicOffset;
 			graphicTransform.localScale = reverseGraphicScale;
 		}
+
+		Vector3 newPosition = transform.position;
+		if (transform.position.x < -0.5f && rigidbody2D.velocity.x < 0)
+			newPosition = new Vector3 (newPosition.x + 32f, newPosition.y, newPosition.z);
+		else if (transform.position.x > 31.5f && rigidbody2D.velocity.x > 0)
+			newPosition = new Vector3 (newPosition.x - 32f, newPosition.y, newPosition.z);
+
+		if (transform.position.y < -0.5f && rigidbody2D.velocity.y < 0)
+			newPosition = new Vector3 (newPosition.x, newPosition.y + 24f, newPosition.z);
+		else if (transform.position.y > 23.5f && rigidbody2D.velocity.y > 0)
+			newPosition = new Vector3 (newPosition.x, newPosition.y - 24f, newPosition.z);
+
+		transform.position = newPosition;
 	}
 
 	private bool ShouldApplyHorizontalInput (float horizontalInput)

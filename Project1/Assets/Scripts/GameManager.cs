@@ -227,13 +227,18 @@ public class GameManager : MonoBehaviour {
 		if (scoreDict[player.playerColor] == scoreToWin)
 		{
 			winningPlayerColor = player.playerColor;
-			gameRoundEnded = true;
+			ResetState ();
 			RemovePlayers ();
 			RemoveSpawnPoints();
 			RemovePowerUpLocations ();
 			GameEnd ();
-
 		}
+	}
+
+	private void ResetState ()
+	{
+		gameRoundEnded = true;
+		timeSinceLastTargetReassign = 0f;
 	}
 
 	private void NotifyIncomingTargetReassignments()

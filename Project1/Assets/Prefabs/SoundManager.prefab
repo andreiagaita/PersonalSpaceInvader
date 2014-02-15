@@ -122,6 +122,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 8243244011a62dd4297efa44fd0daeb3, type: 3}
   - key: jump
     clip: {fileID: 8300000, guid: 9642b1b66620ea345989f00acebaf548, type: 3}
+  - key: end
+    clip: {fileID: 8300000, guid: e04a8ef9c5242e24f8f309abf1d5ec69, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
