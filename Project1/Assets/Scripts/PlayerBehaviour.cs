@@ -27,14 +27,16 @@ public class PlayerBehaviour : MonoBehaviour {
 		if (!enemy) return;
 
 		playerAuraDistance = Vector3.Distance (enemy.transform.position, transform.position);
-		if (playerAuraDistance < distanceLimit)
+		if (playerAuraDistance < distanceLimit) {
 			enemy.Die ();
+			if (GameManager.instance)
+				GameManager.instance.AwardPointToPlayer (this);
+		}
 	}
 	
 	public void Die () {
 		if (Died != null)
 			Died ();
-		AdjustScore();
 		Respawn();
 	}
 
@@ -48,25 +50,6 @@ public class PlayerBehaviour : MonoBehaviour {
 		if (GameManager.instance)
 			return GameManager.instance.playerColors[(int)playerColor];
 		return Color.green;
-	}
-
-	void AdjustScore()
-	{
-		/*switch (gameObject.tag)
-		{
-			case "Player1" : GameManager.scorePlayer1--; break;
-			case "Player2" : GameManager.scorePlayer2--; break;
-			case "Player3" : GameManager.scorePlayer3--; break;
-		}
-		switch (enemy.tag)
-		{
-			case "Player1" : GameManager.scorePlayer1++; break;
-			case "Player2" : GameManager.scorePlayer2++; break;
-			case "Player3" : GameManager.scorePlayer3++; break;
-		}
-		Debug.Log ("P1: " + GameManager.scorePlayer1 +
-		           " P2: " + GameManager.scorePlayer2 +
-		           " P3: " + GameManager.scorePlayer3);*/
 	}
 
 	void Respawn()

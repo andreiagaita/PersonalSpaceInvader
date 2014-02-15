@@ -25,10 +25,11 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 	public GameObject soundManagerPrefab;
+	public GUIText scoreTextPrefab;
 	
-	public static int scorePlayer1 = 0;
-	public static int scorePlayer2 = 0;
-	public static int scorePlayer3 = 0;
+	public Dictionary<PlayerColor, int> scoreDict = new Dictionary<PlayerColor, int> ();
+	public Dictionary<PlayerColor, GUIText> scoreTexts = new Dictionary<PlayerColor, GUIText> ();
+	
 	public Color[] playerColors;
 	public float assignNewTargetsDelay = 20.0f;
 	private float timeSinceLastTargetReassign = 0f;
@@ -53,6 +54,17 @@ public class GameManager : MonoBehaviour {
 			foreach (var player in players) {
 				PlayerCreated (player.tag);
 			}
+		}
+		
+		for (int i=0; i<players.Count; i++) {
+			var player = players[i];
+			GUIText text = Instantiate (scoreTextPrefab) as GUIText;
+			text.pixelOffset = new Vector2 (40, -10-30*i);
+			text.color = player.GetActualPlayerColor ();
+			text.text = "0";
+			
+			scoreDict[player.playerColor] = 0;
+			scoreTexts[player.playerColor] = text;
 		}
 	}
 
@@ -102,5 +114,10 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 		return spawnPoints[spawnIndex].transform.position;
+	}
+	
+	public void AwardPointToPlayer (PlayerBehaviour player) {
+		scoreDict[player.playerColor] += 1;
+		scoreTexts[player.playerColor].text = "" + scoreDict[player.playerColor];
 	}
 }
