@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour {
 	}
 	public GameObject soundManagerPrefab;
 	public GUIText scoreTextPrefab;
+	public int scoreToWin = 20;
+	[HideInInspector]
+	public PlayerColor winningPlayerColor;
+	private bool gameRoundEnded = false;
 	
 	public Dictionary<PlayerColor, int> scoreDict = new Dictionary<PlayerColor, int> ();
 	public Dictionary<PlayerColor, GUIText> scoreTexts = new Dictionary<PlayerColor, GUIText> ();
@@ -63,11 +67,13 @@ public class GameManager : MonoBehaviour {
 	
 	public void OnLevelWasLoaded (int level) 
 	{
-		InitLevel ();
+		if (gameRoundEnded && Application.loadedLevelName.Equals("LevelTest"))
+			InitLevel ();
 	}
 
 	private void InitLevel ()
 	{
+		gameRoundEnded = false;
 		SpawnPlayers ();
 		AssignTargets ();
 		
@@ -85,17 +91,20 @@ public class GameManager : MonoBehaviour {
 
 	public void Update()
 	{
-		timeSinceLastTargetReassign += Time.deltaTime;
-		if (!aurasPulsating && (timeSinceLastTargetReassign > assignNewTargetsDelay - pulsatingAuraNotificationLength))
+		if (!gameRoundEnded)
 		{
-			NotifyIncomingTargetReassignments();
-		}
+			timeSinceLastTargetReassign += Time.deltaTime;
+			if (!aurasPulsating && (timeSinceLastTargetReassign > assignNewTargetsDelay - pulsatingAuraNotificationLength))
+			{
+				NotifyIncomingTargetReassignments();
+			}
 
-		if (timeSinceLastTargetReassign > assignNewTargetsDelay)
-		{
-			AssignTargets();
-			DestroyPulsatingAuraCircles();
-			timeSinceLastTargetReassign = 0f;
+			if (timeSinceLastTargetReassign > assignNewTargetsDelay)
+			{
+				AssignTargets();
+				DestroyPulsatingAuraCircles();
+				timeSinceLastTargetReassign = 0f;
+			}
 		}
 	}
 
@@ -147,6 +156,12 @@ public class GameManager : MonoBehaviour {
 	public void AwardPointToPlayer (PlayerBehaviour player) {
 		scoreDict[player.playerColor] += 1;
 		scoreTexts[player.playerColor].text = "" + scoreDict[player.playerColor];
+		if (scoreDict[player.playerColor] == scoreToWin)
+		{
+			winningPlayerColor = player.playerColor;
+			gameRoundEnded = true;
+			Application.LoadLevel("EndGameMenu");
+		}
 	}
 
 	private void NotifyIncomingTargetReassignments()

@@ -196,8 +196,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   jumpForce: 30
+  jumpableTimeCooldown: .100000001
   graphic: {fileID: 100008}
-  collisionTestDistance: .600000024
+  collisionTestDistance: .699999988
   collisionTestCenterOffset: .49000001
 --- !u!114 &11400002
 MonoBehaviour:
