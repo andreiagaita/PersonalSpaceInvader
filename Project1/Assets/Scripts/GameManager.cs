@@ -199,12 +199,17 @@ public class GameManager : MonoBehaviour {
 		if (scoreDict[player.playerColor] == scoreToWin)
 		{
 			winningPlayerColor = player.playerColor;
-			gameRoundEnded = true;
+			ResetState ();
 			RemovePlayers ();
 			RemoveSpawnPoints();
 			GameEnd ();
-
 		}
+	}
+
+	private void ResetState ()
+	{
+		gameRoundEnded = true;
+		timeSinceLastTargetReassign = 0f;
 	}
 
 	private void NotifyIncomingTargetReassignments()
@@ -223,7 +228,7 @@ public class GameManager : MonoBehaviour {
 	private void DestroyPulsatingAuraCircles()
 	{
 		for (var i = 0; i < players.Count; ++i)
-			DestroyImmediate(pulsatingAuras[i]);
+			Destroy(pulsatingAuras[i]);
 		aurasPulsating = false;
 	}
 

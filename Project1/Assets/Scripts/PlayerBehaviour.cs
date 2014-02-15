@@ -12,6 +12,9 @@ public class PlayerBehaviour : MonoBehaviour {
 	public SpriteRenderer graphic;
 	public Transform spawnLocation;
 	public PlayerColor playerColor;
+	[HideInInspector]
+	public PowerUpBase activePowerUp;
+
 	private float playerAuraDistance = 0f;
 	private float distanceLimit; 
 
