@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,20 +35,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e89423949cd253d4b883e5a61f7952c1, type: 3}
+  m_Script: {fileID: 11500000, guid: 248353c28ff77eb48bcd40de51a10002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundManagerPrefab: {fileID: 100000, guid: 09c55d3833ec84f40b9447dfbf5ee019, type: 2}
-  scoreTextPrefab: {fileID: 13200000, guid: bed3138bb62c34cbd8c3b5b2dbecf31e, type: 2}
-  playerColors:
-  - {r: .588235259, g: .0346020721, b: .0346020721, a: 1}
-  - {r: .0600388758, g: .0367106311, b: .713235259, a: 1}
-  - {r: .0243295692, g: .661764741, b: .318868637, a: 1}
-  - {r: .904411793, g: .423037201, b: .0532006919, a: 1}
-  assignNewTargetsDelay: 20
-  pulsatingAura: {fileID: 100000, guid: e8fe9b77c1de8584799e114fac8e95e3, type: 2}
-  spawnPoints: []
-  players: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

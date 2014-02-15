@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 655ddd07c2aaf74448c5302054d9c1b5
+guid: c3e97175e67308e4782ea22be33bc861
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -23,27 +23,32 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
-    filterMode: 0
+    filterMode: -1
     aniso: 1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
+  alignment: 0
   spritePivot: {x: .5, y: .5}
-  spritePixelsToUnits: 10
+  spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
-  buildTargetSettings:
-  - buildTarget: iPhone
-    maxTextureSize: 1024
-    textureFormat: -2
-    compressionQuality: 50
+  buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: hollowCircle_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 3
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
   spritePackingTag: 
   userData: 
