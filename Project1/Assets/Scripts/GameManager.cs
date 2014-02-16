@@ -78,12 +78,16 @@ public class GameManager : MonoBehaviour {
 
 	public void Start ()
 	{
+		if (!enabled)
+			return;
 		currentLevel = levels.FindIndex ((k) => Application.loadedLevelName == k);
 		InitLevel ();
 	}
 	
 	public void OnLevelWasLoaded (int level)
 	{
+		if (!enabled)
+			return;
 		currentLevel = levels.FindIndex ((k) => Application.loadedLevelName == k);
 		InitLevel ();
 	}
