@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: RadialLight
-  m_Shader: {fileID: 4800000, guid: 2788c68aee2db794b8368d67b723873e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 19caaff5bab3e4943bbbf0463d460753, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -20,7 +20,11 @@ Material:
           m_Texture: {fileID: 2800000, guid: f4e4634b9f4f24249b10d4c8eb320bc0, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
-    m_Floats: {}
+    m_Floats:
+      data:
+        first:
+          name: PixelSnap
+        second: 0
     m_Colors:
       data:
         first:
