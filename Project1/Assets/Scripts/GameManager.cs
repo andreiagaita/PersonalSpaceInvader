@@ -90,11 +90,11 @@ public class GameManager : MonoBehaviour {
 	private void InitLevels ()
 	{
 		levels.Add ("Level1");
-		levels.Add ("Level2");
+//		levels.Add ("Level2");
 		levels.Add ("Level3");
 		levels.Add ("Level4");
 		levels.Add ("Level5");
-		levels.Add ("Level6");
+//		levels.Add ("Level6");
 		levels.Add ("Level7");
 	}
 
