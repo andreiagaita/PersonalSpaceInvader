@@ -22,7 +22,7 @@ public class NetworkManager : MonoBehaviour
 		bool isMaster = PhotonNetwork.room.playerCount == 1;
 		Debug.Log ("Is master: " + isMaster);
 		PlayerInfo myself = gameStateManager.CreateMySelf (PhotonNetwork.player.ID, isMaster);
-		photonView.RPC("SetPlayerInfo", PhotonTargets.Others, myself.Name, myself.Position,myself.Score);
+		photonView.RPC("SetPlayerInfo", PhotonTargets.Others, myself.Name, myself.Position,myself.Score, myself.currentState);
     }
 
 	void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
