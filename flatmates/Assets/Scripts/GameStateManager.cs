@@ -327,7 +327,14 @@ public class GameStateManager : GameScript
 			controller.myAnimation = PlayerIdleClips[player.AnimationIndex];
 		}
 		controller.enabled = false;
-		
+
+		PlayerRoom[] rooms = FindObjectsOfType<PlayerRoom>();
+		foreach (var room in rooms)
+		{
+			BoxCollider2D box = room.GetComponent<BoxCollider2D>();
+			if (box.OverlapPoint(player.Position))
+				room.owner = player.ID;
+		}
 	}
 
 	public void MoveRemotePlayer (int id, Vector3 position)
