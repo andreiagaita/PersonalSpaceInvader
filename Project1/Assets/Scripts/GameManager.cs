@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System;
@@ -230,6 +231,8 @@ public class GameManager : MonoBehaviour {
 				spawnIndex = i;
 			}
 		}
+		if (spawnIndex < 0)
+			return Vector3.one * -100;
 		return spawnPoints[spawnIndex].transform.position;
 	}
 	
@@ -243,7 +246,7 @@ public class GameManager : MonoBehaviour {
 			RemovePlayers ();
 			RemoveSpawnPoints();
 			RemovePowerUpLocations ();
-			GameEnd ();
+			StartCoroutine ("GameEnd");
 		}
 	}
 
@@ -269,11 +272,19 @@ public class GameManager : MonoBehaviour {
 		aurasPulsating = false;
 	}
 
-	void GameEnd ()
+	IEnumerator GameEnd ()
 	{
 		currentLevel = -1;
 		if (GameEnded != null)
 			GameEnded ();
+		
+		foreach (var player in players)
+			player.GetComponent<CharacterController> ().enabled = false;
+		
+		Time.timeScale = 0.10f;
+		yield return new WaitForSeconds (0.7f);
+		Time.timeScale = 1;
+		
 		Application.LoadLevel("EndGameMenu");
 	}
 
