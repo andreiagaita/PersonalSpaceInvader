@@ -9,22 +9,26 @@ internal class PlayerController : MonoBehaviour
 	public enum ControllerType { None, Xbox, Keyboard }
 	public ControllerType controller;
 
-    public int controllerID = 0;
-    public int playerID = 0;
+	public int controllerID = 0;
+	public int playerID = 0;
+	Animator myAnimator;
+	public AnimationClip myAnimation;
+	private bool AnimationSet = false;
 
 	private Transform myTransform;
 
-	void OnEnable ()
+	void OnEnable()
 	{
-		myTransform = GetComponent<Transform> ();
+		myTransform = GetComponent<Transform>();
+		myAnimator = GetComponent<Animator>();
 	}
 
 	public void Update()
 	{
-        //base.Update();
+		//base.Update();
 
-        //if (controller == ControllerType.Xbox && !controllerReady)
-        //    return;
+		//if (controller == ControllerType.Xbox && !controllerReady)
+		//    return;
 
 		float horizontal = 0;
 		float vertical = 0;
@@ -32,23 +36,29 @@ internal class PlayerController : MonoBehaviour
 		switch (controller)
 		{
 			case ControllerType.Keyboard:
-                horizontal = (Input.GetKey(KeyCode.RightArrow) ? 1 : 0) - (Input.GetKey(KeyCode.LeftArrow) ? 1 : 0);
-                vertical = (Input.GetKey(KeyCode.UpArrow) ? 1 : 0) - (Input.GetKey(KeyCode.DownArrow) ? 1 : 0);
+				horizontal = (Input.GetKey(KeyCode.RightArrow) ? 1 : 0) - (Input.GetKey(KeyCode.LeftArrow) ? 1 : 0);
+				vertical = (Input.GetKey(KeyCode.UpArrow) ? 1 : 0) - (Input.GetKey(KeyCode.DownArrow) ? 1 : 0);
 				break;
 
 			case ControllerType.Xbox:
-                //horizontal = state.ThumbSticks.Left.X;
-                //vertical = state.ThumbSticks.Left.Y;
-                horizontal = Input.GetAxis("P" + controllerID + "Horizontal");
-                vertical = Input.GetAxis("P" + controllerID + "Vertical");
+				//horizontal = state.ThumbSticks.Left.X;
+				//vertical = state.ThumbSticks.Left.Y;
+				horizontal = Input.GetAxis("P" + controllerID + "Horizontal");
+				vertical = Input.GetAxis("P" + controllerID + "Vertical");
 				break;
 		}
 
 		rigidbody2D.AddForce(new Vector2(horizontal * force, vertical * force));
 		rigidbody2D.velocity = new Vector2(Mathf.Clamp(rigidbody2D.velocity.x, -speed, speed), Mathf.Clamp(rigidbody2D.velocity.y, -speed, speed));
+
+		if (myAnimator != null && myAnimation != null && !AnimationSet)
+		{
+			Debug.Log("playing animation : " + myAnimation.name);
+			myAnimator.Play(myAnimation.name);
+		}
 	}
 
-	public void FixedUpdate ()
+	public void FixedUpdate()
 	{
 		Dispatcher.SendMessage("Player", "Moved", playerID, myTransform.position);
 	}

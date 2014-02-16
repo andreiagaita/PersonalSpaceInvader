@@ -36,9 +36,9 @@ GUIText:
   m_Enabled: 1
   serializedVersion: 3
   m_Text: 20
-  m_Anchor: 2
+  m_Anchor: 4
   m_Alignment: 2
-  m_PixelOffset: {x: 30, y: -10}
+  m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
   m_TabSize: 4
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}

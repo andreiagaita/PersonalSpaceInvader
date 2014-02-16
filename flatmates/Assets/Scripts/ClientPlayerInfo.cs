@@ -8,8 +8,8 @@ public class ClientPlayerInfo : PlayerInfo
 	public Dictionary<int, PlayerInfo> OpponentPlayers;
 	public Dictionary<int, Dictionary<int, float>> VisibilityMatrix;
 
-	public ClientPlayerInfo(int id, string name, Vector3 position, Color color, int score, bool master)
-		: base(id, name, position, color, score, master)
+	public ClientPlayerInfo(int id, string name, Vector3 position, Color color, int score, int animationIndex, bool master)
+		: base(id, name, position, color, score, animationIndex, master)
 	{
 		OpponentPlayers = new Dictionary<int, PlayerInfo>();
 		VisibilityMatrix = new Dictionary<int, Dictionary<int, float>>();

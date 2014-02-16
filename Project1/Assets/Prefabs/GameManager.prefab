@@ -50,7 +50,12 @@ MonoBehaviour:
   - {r: 0, g: .625, b: .288793147, a: 1}
   - {r: .941176474, g: .525760651, b: 0, a: 1}
   assignNewTargetsDelay: 20
-  pulsatingAura: {fileID: 100000, guid: e8fe9b77c1de8584799e114fac8e95e3, type: 2}
+  levels:
+  - Level1
+  - Level3
+  - Level4
+  - Level5
+  - Level7
   spawnPoints: []
   players: []
   powerUpLocations: []

@@ -256,7 +256,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ae2ae75639cb8944dba9f16b7c8b48f5, type: 2}
   m_CullingMode: 0
@@ -302,6 +302,7 @@ MonoBehaviour:
   controller: 2
   controllerID: 0
   playerID: 0
+  myAnimation: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
