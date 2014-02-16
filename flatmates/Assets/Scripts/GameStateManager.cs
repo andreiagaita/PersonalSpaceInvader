@@ -367,11 +367,17 @@ public class GameStateManager : GameScript
 			ClientPlayerInfo localPlayer = player as ClientPlayerInfo;
 
 			
-
 			if (localPlayer != null)
 			{
 				localPlayer.gameObject.GetComponent<PlayerController> ().enabled = true;
 			}
 		}
+	}
+
+	public void PlayerPickItem (int playerId, int itemId)
+	{
+		PickupItem item = itemManager.GetItemById (itemId);
+
+		item.PickUp (playerId);
 	}
 }

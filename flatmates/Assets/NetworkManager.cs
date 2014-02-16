@@ -12,13 +12,18 @@ public class NetworkManager : MonoBehaviour
 	{
 		photonView = PhotonView.Get(this);
 
+		//Setup phase
 		Dispatcher.Subscribe ("Player",  "Ready",         OnLocalPlayerReady);
 		Dispatcher.Subscribe ("Player",  "SetSpawnPoint", OnSpawnPointSet);
 		Dispatcher.Subscribe ("Item",    "Spawn",         OnItemSpawn);
 		Dispatcher.Subscribe ("World",   "DataReady",     OnWorldDataReady);
 		Dispatcher.Subscribe ("Player",  "WorldReady",    OnWorldReady);
 		Dispatcher.Subscribe ("Match",   "Start",         OnMatchStart);
-		Dispatcher.Subscribe ("Player",  "Moved",         OnPlayerMove);
+
+		//Interactive phase
+		Dispatcher.Subscribe("Player", "Moved", OnPlayerMove);
+		Dispatcher.Subscribe("PickupObject", "PlayerDidPickupItem", OnPlayerPickupItem);
+
 	}
 
 	void OnJoinedRoom()
@@ -120,6 +125,8 @@ public class NetworkManager : MonoBehaviour
 		gameStateManager.StartMatch();
 	}
 
+
+
 	private void OnPlayerMove(Subscription subscription)
 	{
 		//Debug.Log ("Send Player Move");
@@ -135,4 +142,16 @@ public class NetworkManager : MonoBehaviour
 		gameStateManager.MoveRemotePlayer(messageInfo.sender.ID, position);
 	}
 
+	private void OnPlayerPickupItem(Subscription subscription)
+	{
+		int playerId = subscription.Read<int> (0);
+		int itemId = subscription.Read<int>(1);
+		photonView.RPC("PlayerPickUpItem", PhotonTargets.Others, playerId, itemId);
+	}
+
+	[RPC]
+	void PlayerPickUpItem(int playerId, int itemId, PhotonMessageInfo messageInfo)
+	{
+		gameStateManager.PlayerPickItem(playerId, itemId);
+	}
 }

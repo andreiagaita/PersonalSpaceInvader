@@ -32,4 +32,5 @@ MonoBehaviour:
   - SetWorldDataReady
   - StartMatch
   - SpawnItem
+  - PlayerPickUpItem
   DisableAutoOpenWizard: 0

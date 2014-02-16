@@ -21,8 +21,11 @@ public class VisibilityRaycaster : MonoBehaviour
 
 			Vector3 position = player.gameObject.transform.position;
 
+			Debug.Log ("Comparing " + gameObject.name + " to " + player.gameObject.name);
+
 			if (IsPlayerVisible(position))
 			{
+				Debug.Log ("visible");
 				Dispatcher.SendMessage(player.gameObject.name, "PlayerIsVisible", m_Myself.ID);
 				Dispatcher.SendMessage(name, "DidSawPlayer", player.gameObject.name);
 			}

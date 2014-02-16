@@ -3,35 +3,43 @@ using System.Collections;
 
 public class PickupItem : PickupObject
 {
+	private Vector3 m_PlayerOffset;
+
 	void Start()
 	{
+		m_PlayerOffset = Vector3.up * 2;
 		base.Start();
 	}
 
 	void OnTriggerEnter2D (Collider2D hit)
 	{
 		if (hit.gameObject.layer == LayerMask.NameToLayer("ItemCollector"))
-            Pickup(hit.transform.parent.gameObject);
+            OnPickup(hit.transform.parent.gameObject);
 	}
 
 	void OnTriggerStay2D(Collider2D hit)
 	{
 		if (hit.gameObject.layer == LayerMask.NameToLayer("ItemCollector"))
-			Pickup(hit.transform.parent.gameObject);
+			OnPickup(hit.transform.parent.gameObject);
 	}
 
-	private void Pickup (GameObject playerObject)
+	private void OnPickup (GameObject playerObject)
 	{
         int playerID = playerObject.GetComponent<PlayerController>().playerID;
         if (IsCollected || playerID == Owner)
 			return;
 
-        Holder = playerID;
-        SendMessage("PickupObject", "PlayerDidPickupItem", playerID, name);
+		PickUp (playerID);
+        SendMessage("PickupObject", "PlayerDidPickupItem", playerID, ID);
+	}
+
+	public void PickUp (int playerID)
+	{
+		Holder = playerID;
 		IsCollected = true;
 
 		Subscribe("Player" + Holder, "PlayerIsVisible", Drop);
-        Subscribe("Player" + Holder, "DidEnterRoom", DidEnterRoom);
+		Subscribe("Player" + Holder, "DidEnterRoom", DidEnterRoom);
 	}
 
 	private void Drop (Subscription subscription)
@@ -43,7 +51,12 @@ public class PickupItem : PickupObject
 
 		subscription.UnSubscribe();
 
+		PlayerInfo player = GameStateManager.Instance.GetPlayerByID (Holder);
+		transform.position = player.gameObject.transform.position - m_PlayerOffset;
+
 		IsCollected = false;
+		Holder = 0;
+		
 	}
 
 	void DidEnterRoom(Subscription subscription)
@@ -52,7 +65,8 @@ public class PickupItem : PickupObject
 
 		IsCollected = false;
 
-		Destroy(gameObject);
+		//Destroy(gameObject);
+		gameObject.SetActive (false);
 	}
 
 	private void Update()
@@ -60,6 +74,11 @@ public class PickupItem : PickupObject
 		if (!IsCollected)
 			return;
 
-        transform.position = BlackBoard.Read<Vector3>("Player" + Holder, "PublicPosition") + Vector3.up * 2;
+		if (Holder == 0)
+			return;
+
+		PlayerInfo player = GameStateManager.Instance.GetPlayerByID (Holder);
+
+		transform.position = player.gameObject.transform.position + m_PlayerOffset;
 	}
 }

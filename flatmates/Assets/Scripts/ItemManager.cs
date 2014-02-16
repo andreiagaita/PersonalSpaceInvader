@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -168,5 +168,10 @@ public class ItemManager : MonoBehaviour
 		}
 
 		return challenge1 && challenge2;
+	}
+
+	public PickupItem GetItemById (int itemId)
+	{
+		return ItemDatabase[itemId];
 	}
 }
