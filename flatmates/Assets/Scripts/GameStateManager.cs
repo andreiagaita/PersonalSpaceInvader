@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -206,10 +207,10 @@ public class GameStateManager : GameScript
 	private void SetupWorld ()
 	{
 		//Setup item spawn points
+        itemManager.InitItems(players.Values.ToList());
 
 		//setup player spawn points
 		SetupPlayerSpawnPoinnts ();
-
 
 		Dispatcher.SendMessage("World", "Ready");
 		SetWorldReady ();
