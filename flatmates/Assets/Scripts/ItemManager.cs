@@ -67,16 +67,25 @@ public class ItemManager : MonoBehaviour
         // lets give 2 items as objectives to each player
         foreach(PickupObject pickObject in ItemDatabase.Values)
         {
-            int playerPick = GetRandomPlayer(objectiveAssignments.Where(x => x.Value < 2).ToArray());
+            int playerPick = GetRandomPlayer(pickObject.Owner, objectiveAssignments.Where(x => x.Value < 2).ToArray());
+            if (playerPick == -1)
+                continue;
             pickObject.ObjectiveForPlayer = playerPick;
             pickObject.ObjectiveIndex = objectiveAssignments[playerPick];
             objectiveAssignments[playerPick]++;
         }
     }
 
-    int GetRandomPlayer(params KeyValuePair<int, int>[] playerIds)
+    int GetRandomPlayer(int ignorePlayerID, params KeyValuePair<int, int>[] playerIds)
     {
-        return playerIds[Random.Range(0, playerIds.Length)].Key;
+        if (playerIds.Length <= 1)
+            return -1;
+        int randomPlayer = playerIds[Random.Range(0, playerIds.Length)].Key;
+        while(randomPlayer==ignorePlayerID)
+        {
+            randomPlayer = playerIds[Random.Range(0, playerIds.Length)].Key;
+        }
+        return randomPlayer;
     }
 
     int GetClosestItemLocation(Vector3 pos)

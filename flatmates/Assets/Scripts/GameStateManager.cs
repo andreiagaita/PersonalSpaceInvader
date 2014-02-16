@@ -58,6 +58,9 @@ public class GameStateManager : GameScript
 		Debug.Log("host player created");
 
 		SpawnPoint spawnLocation = GetRandomSpawn();
+        if (spawnLocation == null)
+            return;
+
 		GameObject player = null;
 		if (useNetwork)
 			player = PhotonNetwork.Instantiate(PlayerPrefab.name, spawnLocation.transform.position, Quaternion.identity, 0);
@@ -91,6 +94,9 @@ public class GameStateManager : GameScript
 				else if (m_CurrentPlayerInfo.ID != playerID && !m_CurrentPlayerInfo.OpponentPlayers.ContainsKey(playerID))
 				{
 					SpawnPoint spawnLocation = GetRandomSpawn();
+                    if (spawnLocation == null)
+                        return;
+
 					PlayerJoined(playerID, "Player" + playerID, spawnLocation.transform.position, Color.green, 0);
 					spawnLocation.Available = false;
 					Debug.Log("player " + playerID + "created");
@@ -137,6 +143,11 @@ public class GameStateManager : GameScript
 
 	SpawnPoint GetRandomSpawn()
 	{
+        if (!LevelSpawns.Any(x => x.Available))
+        {
+            Debug.LogError("No Spawn Locations found!!!");
+            return null;
+        }
 		SpawnPoint sp = LevelSpawns[UnityEngine.Random.Range(0, LevelSpawns.Length)];
 		while(!sp.Available)
 		{
@@ -211,18 +222,20 @@ public class GameStateManager : GameScript
         itemManager.InitItems(players.Values.ToList());
 
 		//setup player spawn points
-		SetupPlayerSpawnPoinnts ();
+		SetupPlayerSpawnPoints ();
 
 		Dispatcher.SendMessage("World", "Ready");
 		SetWorldReady ();
 	}
 
 	//Sets up all players initial spawn points
-	private void SetupPlayerSpawnPoinnts ()
+	private void SetupPlayerSpawnPoints ()
 	{
 		foreach (KeyValuePair<int, PlayerInfo> playerTuple in players)
 		{
 			SpawnPoint spawnLocation = GetRandomSpawn();
+            if (spawnLocation == null)
+                continue;
 			PlayerInfo player = playerTuple.Value;
 			player.Position = spawnLocation.transform.position;
 
