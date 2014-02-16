@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c128d50027c355b44bd6ec1b450331fc
+guid: ad759fed9340122408b9b19f84b85895
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -23,19 +23,19 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 1024
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 0
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 10
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings:
@@ -44,6 +44,150 @@ TextureImporter:
     textureFormat: -2
     compressionQuality: 50
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Player1A
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player2A
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 60
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player3A
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 60
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player4A
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 60
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player1B
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 40
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player2B
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 40
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player3B
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 40
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player4B
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 40
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player1C
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 20
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player2C
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 20
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player3C
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 20
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player4C
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 20
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player1D
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player2C
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 0
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player3D
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
+    - name: Player4D
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: .5, y: .5}
   spritePackingTag: 
   userData: 
