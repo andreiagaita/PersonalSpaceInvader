@@ -177,7 +177,7 @@ public class GameStateManager : GameScript
 			if (Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), keyCode)))
 				return i;
 		}
-		if (Input.GetKeyDown(KeyCode.Return))
+		if (Input.anyKey)
 			return 5;
 		return controllerID;
 	}

@@ -5,6 +5,7 @@ public class VisibilityRaycaster : MonoBehaviour
 {
 
 	public LayerMask occluderLayer;
+	public float maxDistance = 5f;
 
 	private PlayerInfo m_Myself;
 
@@ -33,6 +34,9 @@ public class VisibilityRaycaster : MonoBehaviour
 	{
 		Vector3 direction = position - transform.position;
 		float distance = Vector3.Distance(transform.position, position);
+		if (distance > maxDistance)
+			return false;
+		
 
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, occluderLayer);
 	
