@@ -380,6 +380,7 @@ MonoBehaviour:
   occluderLayer:
     serializedVersion: 2
     m_Bits: 1
+  maxDistance: 7
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

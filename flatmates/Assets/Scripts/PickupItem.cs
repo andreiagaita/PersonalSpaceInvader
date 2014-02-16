@@ -41,14 +41,18 @@ public class PickupItem : PickupObject
 			return false;
 
 		PlayerInfo itemOwner = GameStateManager.Instance.GetPlayerByID (Owner);
+		VisibilityRaycaster visibilityRaycaster = itemOwner.gameObject.GetComponent<VisibilityRaycaster>();
 		Vector3 direction = itemOwner.gameObject.transform.position - transform.position;
 		float distance = Vector3.Distance(transform.position, itemOwner.gameObject.transform.position);
 
-		RaycastHit2D ownerItemVisiblityHit = Physics2D.Raycast(transform.position, direction, distance, itemOwner.gameObject.GetComponent<VisibilityRaycaster>().occluderLayer);
-		if (!ownerItemVisiblityHit)
+		if (distance < visibilityRaycaster.maxDistance)
 		{
-			Debug.Log ("cant pick up item while owner is looking");
-			return false;
+			RaycastHit2D ownerItemVisiblityHit = Physics2D.Raycast(transform.position, direction, distance, visibilityRaycaster.occluderLayer);
+			if (!ownerItemVisiblityHit)
+			{
+				Debug.Log("cant pick up item while owner is looking");
+				return false;
+			}
 		}
 
 		player.PickUpItem (this);
