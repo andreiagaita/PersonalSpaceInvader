@@ -91,6 +91,7 @@ public class PickupItem : PickupObject
 		gameObject.SetActive (false);
 
 		IsStolen = true;
+		Debug.Log(Holder + " entered own room with " + name);
 
 		if (GameStateManager.Instance.GetPlayerByID(Holder) != null)
 			GameStateManager.Instance.GetPlayerByID(Holder).Drop(this);

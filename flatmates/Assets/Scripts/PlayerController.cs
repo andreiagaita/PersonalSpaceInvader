@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -142,13 +142,13 @@ internal class PlayerController : MonoBehaviour
 					if (playerid == playerID)
 					{
 						GUI.Label(new Rect(0, (Screen.height / 2) - 10, Screen.width, 20), "All their stuff IS yours!", WinMessageFont);
-						Time.timeScale = 0;
+						//Time.timeScale = 0;
 						return;
 					}
 					else
 					{
 						GUI.Label(new Rect(0, (Screen.height / 2) - 10, Screen.width, 20), "Its probably time to move out!", WinMessageFont);
-						Time.timeScale = 0;
+						//Time.timeScale = 0;
 						return;
 					}
 				}

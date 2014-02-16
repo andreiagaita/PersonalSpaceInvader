@@ -71,6 +71,7 @@ public class NetworkManager : MonoBehaviour
 
 	private void RoomBusy ()
 	{
+		Debug.Log("Room was busy");
 		needToCreateOwnRoom = true;
 		PhotonNetwork.LeaveRoom ();
 	}
