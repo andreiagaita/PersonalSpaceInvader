@@ -23,6 +23,9 @@ internal class PlayerController : MonoBehaviour
 	public Texture2D ScoreTexture;
 	public Texture2D WantTexture;
 
+	public Texture2D WinTexture;
+	public Texture2D LoseTexture;
+
 	public GUIStyle WinMessageFont;
 
 	private PickupItem Item1;
@@ -141,13 +144,15 @@ internal class PlayerController : MonoBehaviour
 				{
 					if (playerid == playerID)
 					{
-						GUI.Label(new Rect(0, (Screen.height / 2) - 10, Screen.width, 20), "All their stuff IS yours!", WinMessageFont);
+						GUI.DrawTexture(new Rect((Screen.width - 320) / 2, (Screen.height - 180) / 2, 320, 180), WinTexture);
+						//GUI.Label(new Rect(0, (Screen.height / 2) - 10, Screen.width, 20), "All their stuff IS yours!", WinMessageFont);
 						//Time.timeScale = 0;
 						return;
 					}
 					else
 					{
-						GUI.Label(new Rect(0, (Screen.height / 2) - 10, Screen.width, 20), "Its probably time to move out!", WinMessageFont);
+						GUI.DrawTexture(new Rect((Screen.width - 320) / 2, (Screen.height - 180) / 2, 320, 180), LoseTexture);
+						//GUI.Label(new Rect(0, (Screen.height / 2) - 10, Screen.width, 20), "Its probably time to move out!", WinMessageFont);
 						//Time.timeScale = 0;
 						return;
 					}
