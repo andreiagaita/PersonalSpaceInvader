@@ -44,7 +44,7 @@ public class GameStateManager : GameScript
 		{
 			if (go == player.gameObject)
 			{
-				return go;
+				return player;
 			}
 		}
 		return null;
