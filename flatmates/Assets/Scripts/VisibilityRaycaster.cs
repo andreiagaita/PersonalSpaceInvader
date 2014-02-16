@@ -6,21 +6,25 @@ public class VisibilityRaycaster : MonoBehaviour
 
 	public LayerMask occluderLayer;
 
+	private PlayerInfo m_Myself;
+
 	void Update () {
-
-		BlackBoard.WriteInstant(name, "PublicPosition", transform.position);
-
-		for (int i = 1; i < 3; i++)
+		if (m_Myself == null)
 		{
-			if (name == "Player" + i)
+			m_Myself = GameStateManager.Instance.GetPlayerByGameObject(gameObject);
+		}
+
+		foreach (PlayerInfo player in GameStateManager.Instance.GetPlayersDict ().Values)
+		{
+			if (gameObject == player.gameObject)
 				continue;
 
-			Vector3 position = BlackBoard.Read<Vector3>("Player" + i, "PublicPosition");
+			Vector3 position = player.gameObject.transform.position;
 
 			if (IsPlayerVisible(position))
 			{
-				Dispatcher.SendMessage("Player" + i, "PlayerIsVisible", name);
-				Dispatcher.SendMessage(name, "DidSawPlayer", "Player" + i);
+				Dispatcher.SendMessage(player.gameObject.name, "PlayerIsVisible", m_Myself.ID);
+				Dispatcher.SendMessage(name, "DidSawPlayer", player.gameObject.name);
 			}
 		}
 	}

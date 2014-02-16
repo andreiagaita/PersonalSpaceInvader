@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class GameStateManager : GameScript
 {
+	private static GameStateManager s_Instance;
+
 	private Time GameStartTime;
 
 	private Dictionary<int, PlayerInfo> players;
@@ -18,6 +20,14 @@ public class GameStateManager : GameScript
 
 	private SpawnPoint[] LevelSpawns;
 
+	static public GameStateManager Instance 
+	{
+		get
+		{
+			return s_Instance;
+		}
+	}
+
 	public ClientPlayerInfo currentPlayerInfo
 	{ 
 		get { return m_CurrentPlayerInfo; }
@@ -28,12 +38,36 @@ public class GameStateManager : GameScript
 		return players[id];
 	}
 
+	public PlayerInfo GetPlayerByGameObject (GameObject go)
+	{
+		foreach (PlayerInfo player in GameStateManager.Instance.GetPlayersDict().Values)
+		{
+			if (go == player.gameObject)
+			{
+				return go;
+			}
+		}
+		return null;
+	}
+
+	public Dictionary<int, PlayerInfo> GetPlayersDict ()
+	{
+		return players;
+	} 
+
 	void Start()
 	{
 		base.Start();
 
 		players = new Dictionary<int, PlayerInfo> ();
 		Debug.Log("Waiting for host to join game... Press A to join");
+
+		if (s_Instance != null)
+		{
+			Debug.LogError ("For some reason there are more than one GameStatemanager, DIE");
+		}
+		s_Instance = this;
+
 	}
 
 	void OnEnable ()
