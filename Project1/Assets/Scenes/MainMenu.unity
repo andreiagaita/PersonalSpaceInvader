@@ -158,7 +158,7 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 78
+  m_FontSize: 55
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 9172ad382e6ed4df4a61c378e0517a40, type: 3}
@@ -367,7 +367,7 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 46
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 9172ad382e6ed4df4a61c378e0517a40, type: 3}
@@ -446,6 +446,12 @@ MonoBehaviour:
   - {r: 0, g: .625, b: .288793147, a: 1}
   - {r: .941176474, g: .525760651, b: 0, a: 1}
   assignNewTargetsDelay: 20
+  levels:
+  - Level1
+  - Level3
+  - Level4
+  - Level5
+  - Level7
   spawnPoints: []
   players: []
   powerUpLocations: []
