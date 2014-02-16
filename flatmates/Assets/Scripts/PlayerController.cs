@@ -51,10 +51,10 @@ internal class PlayerController : MonoBehaviour
 
 		if (myAnimation != null && !AnimationSet)
 		{
-			Animator myAnimator = myTransform.GetComponent<Animator>();
+			Animator myAnimator = GetComponent<Animator>();
 			Debug.LogError("animator not found");
 			Debug.Log(myAnimation.name);
-			//myAnimator.Play()
+			myAnimator.Play(myAnimation.name);
 		}
 	}
 
