@@ -50,7 +50,6 @@ public class GameManager : MonoBehaviour {
 	
 	public Color[] playerColors;
 	public float assignNewTargetsDelay = 20.0f;
-	private GameObject[] pulsatingAuras;
 	private bool aurasPulsating = false;
 	private float timeSinceLastTargetReassign = 0f;
 	private float pulsatingAuraNotificationLength = 3.0f;
@@ -256,7 +255,6 @@ public class GameManager : MonoBehaviour {
 	{
 		if (ColorChangeWarning != null)
 			ColorChangeWarning ();
-		pulsatingAuras = new GameObject[players.Count];
 		for (var i = 0; i < players.Count; ++i)
 			players[i].arrow.GetComponent<Pulsator>().enabled = true;
 		aurasPulsating = true;
