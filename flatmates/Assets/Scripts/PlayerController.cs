@@ -86,7 +86,7 @@ internal class PlayerController : MonoBehaviour
 		{
 			sprite.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
 		}
-		else
+		else if (horizontal > 0)
 		{
 			sprite.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
 		}
