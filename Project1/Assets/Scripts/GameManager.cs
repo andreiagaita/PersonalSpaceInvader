@@ -50,8 +50,6 @@ public class GameManager : MonoBehaviour {
 	
 	public Color[] playerColors;
 	public float assignNewTargetsDelay = 20.0f;
-	public GameObject pulsatingAura;
-	private GameObject[] pulsatingAuras;
 	private bool aurasPulsating = false;
 	private float timeSinceLastTargetReassign = 0f;
 	private float pulsatingAuraNotificationLength = 3.0f;
@@ -149,7 +147,7 @@ public class GameManager : MonoBehaviour {
 			if (timeSinceLastTargetReassign > assignNewTargetsDelay)
 			{
 				AssignTargets();
-				DestroyPulsatingAuraCircles();
+				DisablePulsatingAuraCircles();
 				timeSinceLastTargetReassign = 0f;
 			}
 
@@ -266,19 +264,15 @@ public class GameManager : MonoBehaviour {
 	{
 		if (ColorChangeWarning != null)
 			ColorChangeWarning ();
-		pulsatingAuras = new GameObject[players.Count];
 		for (var i = 0; i < players.Count; ++i)
-		{
-			pulsatingAuras[i] = Instantiate(pulsatingAura, players[i].transform.position, Quaternion.identity) as GameObject;
-			pulsatingAuras[i].transform.parent = players[i].transform;
-		}
+			players[i].arrow.GetComponent<Pulsator>().enabled = true;
 		aurasPulsating = true;
 	}
 
-	private void DestroyPulsatingAuraCircles()
+	private void DisablePulsatingAuraCircles()
 	{
 		for (var i = 0; i < players.Count; ++i)
-			Destroy(pulsatingAuras[i]);
+			players[i].arrow.GetComponent<Pulsator>().enabled = false;
 		aurasPulsating = false;
 	}
 
