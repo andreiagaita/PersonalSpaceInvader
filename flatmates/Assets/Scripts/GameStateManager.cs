@@ -28,6 +28,9 @@ public class GameStateManager : GameScript
 	public List<AnimationClip> PlayerIdleClips;
 	int animationIndex = 0;
 
+	public List<Color> PlayerColors;
+	int colorIndex = 0;
+
 	static public GameStateManager Instance 
 	{
 		get
