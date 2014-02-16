@@ -25,3 +25,4 @@ flatmates/Assembly-UnityScript-Editor-vs.unityproj
 flatmates/Assembly-UnityScript-Editor.unityproj
 flatmates/Assembly-UnityScript-firstpass-vs.unityproj
 flatmates/Assembly-UnityScript-firstpass.unityproj
+*.db

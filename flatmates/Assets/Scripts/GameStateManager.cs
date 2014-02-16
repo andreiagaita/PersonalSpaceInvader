@@ -20,6 +20,14 @@ public class GameStateManager : GameScript
 
 	private SpawnPoint[] LevelSpawns;
 
+	//public Texture2D PlayerSprite1;
+	//public Texture2D PlayerSprite2;
+	//public Texture2D PlayerSprite3;
+	//public Texture2D PlayerSprite4;
+
+	public List<AnimationClip> PlayerIdleClips;
+	int animationIndex = 0;
+
 	static public GameStateManager Instance 
 	{
 		get
@@ -115,6 +123,7 @@ public class GameStateManager : GameScript
 		PlayerController controller = player.GetComponentInChildren<PlayerController>();
 		controller.controller = m_CurrentPlayerInfo.ID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
 		controller.controllerID = m_CurrentPlayerInfo.ID;
+		controller.myAnimation = PlayerIdleClips[m_CurrentPlayerInfo.AnimationIndex];
 
 		Debug.Log("Waiting for other players to join game... Press A to join");
 	}
@@ -197,8 +206,9 @@ public class GameStateManager : GameScript
 
 	public void RegisterNewPlayer(int id, string name)
 	{
-		var player = new PlayerInfo(id, name, Vector3.zero, Color.black, 0, false);
+		var player = new PlayerInfo(id, name, Vector3.zero, Color.black, 0, animationIndex, false);
 		players.Add(id, player);
+		animationIndex++;
 		m_CurrentPlayerInfo.AddOpponent(player);
 	}
 
@@ -219,7 +229,8 @@ public class GameStateManager : GameScript
 
 	public ClientPlayerInfo CreateMySelf(int playerID, bool isMaster)
 	{
-		m_CurrentPlayerInfo = new ClientPlayerInfo (playerID, "Player" + playerID, Vector3.zero, Color.red, 0, isMaster);
+		m_CurrentPlayerInfo = new ClientPlayerInfo(playerID, "Player" + playerID, Vector3.zero, Color.red, 0, animationIndex, isMaster);
+		animationIndex++;
 		players.Add(playerID, m_CurrentPlayerInfo);
 		return m_CurrentPlayerInfo;
 	}
@@ -313,6 +324,7 @@ public class GameStateManager : GameScript
 			controller.controller = localPlayer.controllerID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
 			controller.controllerID = localPlayer.controllerID;
 			controller.playerID = player.ID;
+			controller.myAnimation = PlayerIdleClips[player.AnimationIndex];
 		}
 		controller.enabled = false;
 		

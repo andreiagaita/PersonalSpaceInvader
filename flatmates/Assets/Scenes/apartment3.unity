@@ -3110,6 +3110,11 @@ MonoBehaviour:
   itemManager: {fileID: 823633076}
   PlayerPrefab: {fileID: 100004, guid: d448caba286f5624dab91710700502f2, type: 2}
   useNetwork: 1
+  PlayerIdleClips:
+  - {fileID: 7400000, guid: db94f41aca29b7d439f59fbe95719002, type: 2}
+  - {fileID: 7400000, guid: 6ad49feb28232f64ebb6a391cbd1ac44, type: 2}
+  - {fileID: 7400000, guid: 81289cb5852d2c34fbda29972455c14f, type: 2}
+  - {fileID: 7400000, guid: 4b777c67ac298b04dbd54162a9f8c5c8, type: 2}
 --- !u!4 &823633072
 Transform:
   m_ObjectHideFlags: 0
@@ -4809,6 +4814,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11400000, guid: ae91aae58e8ddb447973d55465b1008e, type: 2}
+      propertyPath: PlayerIdleClips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ae91aae58e8ddb447973d55465b1008e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4841,6 +4850,38 @@ Prefab:
       propertyPath: subId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: ae91aae58e8ddb447973d55465b1008e, type: 2}
+      propertyPath: PlayerAIdle
+      value: 
+      objectReference: {fileID: 7400000, guid: 4b777c67ac298b04dbd54162a9f8c5c8, type: 2}
+    - target: {fileID: 11400000, guid: ae91aae58e8ddb447973d55465b1008e, type: 2}
+      propertyPath: PlayerBIdle
+      value: 
+      objectReference: {fileID: 7400000, guid: 81289cb5852d2c34fbda29972455c14f, type: 2}
+    - target: {fileID: 11400000, guid: ae91aae58e8ddb447973d55465b1008e, type: 2}
+      propertyPath: PlayerCIdle
+      value: 
+      objectReference: {fileID: 7400000, guid: 6ad49feb28232f64ebb6a391cbd1ac44, type: 2}
+    - target: {fileID: 11400000, guid: ae91aae58e8ddb447973d55465b1008e, type: 2}
+      propertyPath: PlayerDIdle
+      value: 
+      objectReference: {fileID: 7400000, guid: db94f41aca29b7d439f59fbe95719002, type: 2}
+    - target: {fileID: 11400000, guid: ae91aae58e8ddb447973d55465b1008e, type: 2}
+      propertyPath: PlayerIdleClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 7400000, guid: db94f41aca29b7d439f59fbe95719002, type: 2}
+    - target: {fileID: 11400000, guid: ae91aae58e8ddb447973d55465b1008e, type: 2}
+      propertyPath: PlayerIdleClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 7400000, guid: 6ad49feb28232f64ebb6a391cbd1ac44, type: 2}
+    - target: {fileID: 11400000, guid: ae91aae58e8ddb447973d55465b1008e, type: 2}
+      propertyPath: PlayerIdleClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 7400000, guid: 81289cb5852d2c34fbda29972455c14f, type: 2}
+    - target: {fileID: 11400000, guid: ae91aae58e8ddb447973d55465b1008e, type: 2}
+      propertyPath: PlayerIdleClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 7400000, guid: 4b777c67ac298b04dbd54162a9f8c5c8, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae91aae58e8ddb447973d55465b1008e, type: 2}
   m_RootGameObject: {fileID: 823633070}
