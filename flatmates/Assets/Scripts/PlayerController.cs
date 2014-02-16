@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 internal class PlayerController : MonoBehaviour
@@ -17,12 +17,33 @@ internal class PlayerController : MonoBehaviour
 	private Transform myTransform;
 	private Transform sprite;
 
+	private GameStateManager gameController;
+
+	public Texture2D ScoreTexture;
+	public Texture2D WantTexture;
+
+	private PickupItem Item1;
+	private PickupItem Item2;
+
 	void OnEnable ()
 	{
 		myTransform = GetComponent<Transform> ();
 		sprite = transform.Find("Sprite");
+
+		gameController = GameStateManager.Instance;
+		foreach(PickupItem item in GameStateManager.Instance.itemManager.ItemDatabase.Values)
+		{
+			if(item.ObjectiveForPlayer == playerID)
+			{
+				if (item.ObjectiveIndex == 0)
+					Item1 = item;
+				else
+					Item2 = item;
+			}
+		}
 	}
 
+	
 	public void Update()
 	{
         //base.Update();
@@ -64,6 +85,22 @@ internal class PlayerController : MonoBehaviour
 			Animator myAnimator = GetComponent<Animator>();
 			myAnimator.Play(myAnimation.name);
 		}
+	}
+
+	void OnGUI()
+	{
+		GUI.DrawTexture(new Rect(0, Screen.height - 40, 111, 29), ScoreTexture);
+
+		Rect wantarea = new Rect(Screen.width - 100, Screen.height - 50, 94, 41);
+		GUI.DrawTexture(wantarea, WantTexture);
+
+		Sprite itemSprite = Item1.IsStolen ? Item2.GetComponent<SpriteRenderer>().sprite : Item1.GetComponent<SpriteRenderer>().sprite;
+		Texture2D wantItem = itemSprite.texture;
+		Rect ItemRect = new Rect(wantarea.x + 65, wantarea.y + 13, 17, 14);
+		Rect textCoords = new Rect(itemSprite.rect.x / wantItem.width, itemSprite.rect.y/ wantItem.height,
+			itemSprite.rect.width / wantItem.width, itemSprite.rect.height / wantItem.height);
+		GUI.DrawTextureWithTexCoords(ItemRect, wantItem, textCoords, true);
+
 	}
 
 	public void FixedUpdate ()

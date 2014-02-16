@@ -28,6 +28,9 @@ public class GameStateManager : GameScript
 	public List<AnimationClip> PlayerIdleClips;
 	int animationIndex = 0;
 
+	public List<Color> PlayerColors;
+	int colorIndex = 0;
+
 	static public GameStateManager Instance 
 	{
 		get
@@ -174,7 +177,7 @@ public class GameStateManager : GameScript
 			if (Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode), keyCode)))
 				return i;
 		}
-		if (Input.GetKeyDown(KeyCode.Return))
+		if (Input.anyKey)
 			return 5;
 		return controllerID;
 	}
@@ -327,7 +330,14 @@ public class GameStateManager : GameScript
 			controller.myAnimation = PlayerIdleClips[player.AnimationIndex];
 		}
 		controller.enabled = false;
-		
+
+		PlayerRoom[] rooms = FindObjectsOfType<PlayerRoom>();
+		foreach (var room in rooms)
+		{
+			BoxCollider2D box = room.GetComponent<BoxCollider2D>();
+			if (box.OverlapPoint(player.Position))
+				room.owner = player.ID;
+		}
 	}
 
 	public void MoveRemotePlayer (int id, Vector3 position)

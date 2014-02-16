@@ -41,14 +41,17 @@ public class PickupItem : PickupObject
 			return false;
 
 		PlayerInfo itemOwner = GameStateManager.Instance.GetPlayerByID (Owner);
+		VisibilityRaycaster visibilityRaycaster = itemOwner.gameObject.GetComponent<VisibilityRaycaster>();
 		Vector3 direction = itemOwner.gameObject.transform.position - transform.position;
 		float distance = Vector3.Distance(transform.position, itemOwner.gameObject.transform.position);
 
-		RaycastHit2D ownerItemVisiblityHit = Physics2D.Raycast(transform.position, direction, distance, itemOwner.gameObject.GetComponent<VisibilityRaycaster>().occluderLayer);
-		if (!ownerItemVisiblityHit)
+		if (distance < visibilityRaycaster.maxDistance)
 		{
-			Debug.Log ("cant pick up item while owner is looking");
-			return false;
+			RaycastHit2D ownerItemVisiblityHit = Physics2D.Raycast(transform.position, direction, distance, visibilityRaycaster.occluderLayer);
+			if (!ownerItemVisiblityHit)
+			{
+				return false;
+			}
 		}
 
 		player.PickUpItem (this);
@@ -74,8 +77,7 @@ public class PickupItem : PickupObject
 		player.Drop (this);
 
 		IsCollected = false;
-		Holder = 0;
-		
+		Holder = 0;		
 	}
 
 	void DidEnterRoom(Subscription subscription)
@@ -84,8 +86,10 @@ public class PickupItem : PickupObject
 
 		IsCollected = false;
 
-		//Destroy(gameObject);
 		gameObject.SetActive (false);
+
+		IsStolen = true;
+		GameStateManager.Instance.GetPlayerByID(Holder).Drop(this);
 	}
 
 	private void Update()
