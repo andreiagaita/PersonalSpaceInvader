@@ -25,7 +25,6 @@ public class PickupItem : PickupObject
 
 	private void OnPickup (GameObject playerObject)
 	{
-		Debug.Log (playerObject.name + " Is trying to pickup " + name);
         int playerID = playerObject.GetComponent<PlayerController>().playerID;
         if (IsCollected || playerID == Owner)
 			return;
