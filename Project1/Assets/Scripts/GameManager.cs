@@ -53,8 +53,9 @@ public class GameManager : MonoBehaviour {
 	private bool aurasPulsating = false;
 	private float timeSinceLastTargetReassign = 0f;
 	private float pulsatingAuraNotificationLength = 3.0f;
-	private List<string> levels = new List<string> ();
 	private int currentLevel = -1;
+
+	public List<string> levels = new List<string> ();
 
 	[HideInInspector]
 	public List<GameObject> spawnPoints = new List<GameObject> ();
@@ -76,7 +77,6 @@ public class GameManager : MonoBehaviour {
 
 	public void Start ()
 	{
-		InitLevels ();
 		currentLevel = levels.FindIndex ((k) => Application.loadedLevelName == k);
 		InitLevel ();
 	}
@@ -85,17 +85,6 @@ public class GameManager : MonoBehaviour {
 	{
 		currentLevel = levels.FindIndex ((k) => Application.loadedLevelName == k);
 		InitLevel ();
-	}
-
-	private void InitLevels ()
-	{
-		levels.Add ("Level1");
-//		levels.Add ("Level2");
-		levels.Add ("Level3");
-		levels.Add ("Level4");
-		levels.Add ("Level5");
-//		levels.Add ("Level6");
-		levels.Add ("Level7");
 	}
 
 	private void InitLevel ()

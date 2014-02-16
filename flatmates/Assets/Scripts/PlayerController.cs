@@ -11,6 +11,8 @@ internal class PlayerController : MonoBehaviour
 
     public int controllerID = 0;
     public int playerID = 0;
+	public AnimationClip myAnimation;
+	private bool AnimationSet = false;
 
 	private Transform myTransform;
 
@@ -46,6 +48,14 @@ internal class PlayerController : MonoBehaviour
 
 		rigidbody2D.AddForce(new Vector2(horizontal * force, vertical * force));
 		rigidbody2D.velocity = new Vector2(Mathf.Clamp(rigidbody2D.velocity.x, -speed, speed), Mathf.Clamp(rigidbody2D.velocity.y, -speed, speed));
+
+		if (myAnimation != null && !AnimationSet)
+		{
+			Animator myAnimator = GetComponent<Animator>();
+			Debug.LogError("animator not found");
+			Debug.Log(myAnimation.name);
+			myAnimator.Play(myAnimation.name);
+		}
 	}
 
 	public void FixedUpdate ()
