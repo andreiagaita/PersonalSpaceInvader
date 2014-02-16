@@ -305,6 +305,8 @@ MonoBehaviour:
   myAnimation: {fileID: 0}
   ScoreTexture: {fileID: 2800000, guid: 7b8eb73486b14b4458fdf071a4701562, type: 3}
   WantTexture: {fileID: 2800000, guid: 495e52323e145b848a717a671e9fb1f1, type: 3}
+  WinTexture: {fileID: 2800000, guid: e915343c74275eb438d92a20d17d0d6a, type: 3}
+  LoseTexture: {fileID: 2800000, guid: 11663691c5badfc409669bd5d9b2f2d7, type: 3}
   WinMessageFont:
     m_Name: 
     m_Normal:
