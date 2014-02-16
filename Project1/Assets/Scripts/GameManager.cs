@@ -50,8 +50,6 @@ public class GameManager : MonoBehaviour {
 	
 	public Color[] playerColors;
 	public float assignNewTargetsDelay = 20.0f;
-	public GameObject pulsatingAura;
-	private GameObject[] pulsatingAuras;
 	private bool aurasPulsating = false;
 	private float timeSinceLastTargetReassign = 0f;
 	private float pulsatingAuraNotificationLength = 3.0f;
@@ -115,8 +113,11 @@ public class GameManager : MonoBehaviour {
 		for (int i=0; i<players.Count; i++) {
 			var player = players[i];
 			GUIText text = Instantiate (scoreTextPrefab) as GUIText;
-			text.pixelOffset = new Vector2 (40, -10-30*i);
-			text.color = player.GetActualPlayerColor ();
+			text.pixelOffset = new Vector2 (0, 0.032f*Screen.height);
+			text.fontSize = Mathf.RoundToInt (Screen.height * 0.03f);
+			Color col = player.GetActualPlayerColor ();
+			col.a = 0.7f;
+			text.color = col;
 			text.text = "0";
 			
 			scoreDict[player.playerColor] = 0;
@@ -126,6 +127,12 @@ public class GameManager : MonoBehaviour {
 
 	public void Update()
 	{
+		for (int i=0; i<players.Count; i++) {
+			Vector3 playerPos = players[i].transform.position;
+			GUIText text = scoreTexts[players[i].playerColor];
+			text.transform.position = new Vector3 ((playerPos.x + 0.5f) / 32f, (playerPos.y + 0.5f) / 24f);
+		}
+		
 		if (currentLevel < 0)
 			return;
 
@@ -140,7 +147,7 @@ public class GameManager : MonoBehaviour {
 			if (timeSinceLastTargetReassign > assignNewTargetsDelay)
 			{
 				AssignTargets();
-				DestroyPulsatingAuraCircles();
+				DisablePulsatingAuraCircles();
 				timeSinceLastTargetReassign = 0f;
 			}
 
@@ -257,19 +264,15 @@ public class GameManager : MonoBehaviour {
 	{
 		if (ColorChangeWarning != null)
 			ColorChangeWarning ();
-		pulsatingAuras = new GameObject[players.Count];
 		for (var i = 0; i < players.Count; ++i)
-		{
-			pulsatingAuras[i] = Instantiate(pulsatingAura, players[i].transform.position, Quaternion.identity) as GameObject;
-			pulsatingAuras[i].transform.parent = players[i].transform;
-		}
+			players[i].arrow.GetComponent<Pulsator>().enabled = true;
 		aurasPulsating = true;
 	}
 
-	private void DestroyPulsatingAuraCircles()
+	private void DisablePulsatingAuraCircles()
 	{
 		for (var i = 0; i < players.Count; ++i)
-			Destroy(pulsatingAuras[i]);
+			players[i].arrow.GetComponent<Pulsator>().enabled = false;
 		aurasPulsating = false;
 	}
 

@@ -29,6 +29,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 212: {fileID: 21200000}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: aura_spike
   m_TagString: Untagged
@@ -230,6 +231,18 @@ MonoBehaviour:
   spawnLocation: {fileID: 0}
   playerColor: 0
   activePowerUp: {fileID: 0}
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16e2fd7d71d97bf4889f6403df06bd5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

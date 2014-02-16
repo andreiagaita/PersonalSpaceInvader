@@ -48,6 +48,9 @@ public class PlayerBehaviour : MonoBehaviour {
 		}
 	} 
 	
+	static float spawnDelay = 0.5f;
+	static float spawnDuration = 0.5f;
+	
 	void Update () {
 		if (Time.time > sloMoTimeStop)
 			Time.timeScale = 1;
@@ -62,7 +65,7 @@ public class PlayerBehaviour : MonoBehaviour {
 			}
 		}
 		if (dead) {
-			float spawnTime = Mathf.Clamp01 (Time.time - dieTime - 1);
+			float spawnTime = Mathf.Clamp01 ((Time.time - dieTime - spawnDelay) / spawnDuration);
 			transform.localScale = Vector3.one * spawnTime;
 			if (spawnTime == 1) {
 				playable = true;
