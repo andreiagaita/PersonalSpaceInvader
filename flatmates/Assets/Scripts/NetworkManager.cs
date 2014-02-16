@@ -66,6 +66,11 @@ public class NetworkManager : MonoBehaviour
 	[RPC]
 	private void RoomBusy (PhotonMessageInfo messageInfo)
 	{
+		RoomBusy ();
+	}
+
+	private void RoomBusy ()
+	{
 		needToCreateOwnRoom = true;
 		PhotonNetwork.LeaveRoom ();
 	}
@@ -156,6 +161,15 @@ public class NetworkManager : MonoBehaviour
 	}
 
 
+	private bool IsPlayerReady()
+	{
+		if (gameStateManager.currentPlayerInfo.currentState != PlayerInfo.PlayerState.Playing)
+		{
+			RoomBusy();
+			return false;
+		}
+		return true;
+	}
 
 	private void OnPlayerMove(Subscription subscription)
 	{
@@ -168,6 +182,9 @@ public class NetworkManager : MonoBehaviour
 	[RPC]
 	void MovePlayer(Vector3 position, PhotonMessageInfo messageInfo)
 	{
+		if (!IsPlayerReady())
+			return;
+		
 		//Debug.Log ("Received a Player Move");
 		gameStateManager.MoveRemotePlayer(messageInfo.sender.ID, position);
 	}
@@ -182,6 +199,9 @@ public class NetworkManager : MonoBehaviour
 	[RPC]
 	void PlayerPickUpItem(int playerId, int itemId, PhotonMessageInfo messageInfo)
 	{
+		if (!IsPlayerReady())
+			return;
+
 		gameStateManager.PlayerPickItem(playerId, itemId);
 	}
 }
