@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class NetworkManager : MonoBehaviour
@@ -28,14 +28,15 @@ public class NetworkManager : MonoBehaviour
 	void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
 	{
 		gameStateManager.RegisterNewPlayer(newPlayer.ID, "Player " + newPlayer.ID);
-		photonView.RPC("SetPlayerInfo", PhotonPlayer.Find(newPlayer.ID), gameStateManager.currentPlayerInfo.Name, gameStateManager.currentPlayerInfo.Position, gameStateManager.currentPlayerInfo.Score);
+		ClientPlayerInfo currentplayer = gameStateManager.currentPlayerInfo;
+		photonView.RPC("SetPlayerInfo", PhotonPlayer.Find(newPlayer.ID), currentplayer.Name, currentplayer.Position, currentplayer.Score, currentplayer.currentState);
 	}
 
 	[RPC]
-	private void SetPlayerInfo(string playerName, Vector3 position/*, Color color*/, int score, PhotonMessageInfo messageInfo)
+	private void SetPlayerInfo(string playerName, Vector3 position, int score, PlayerInfo.PlayerState playerState, PhotonMessageInfo messageInfo)
 	{
 		Debug.Log("GotPlayerInfo:" + playerName);
-		gameStateManager.SetPlayerInfo(messageInfo.sender.ID, playerName, position, Color.green, score);
+		gameStateManager.SetPlayerInfo(messageInfo.sender.ID, playerName, position, Color.green, score, playerState);
 	}
 
 	private void OnLocalPlayerReady(Subscription subscription)

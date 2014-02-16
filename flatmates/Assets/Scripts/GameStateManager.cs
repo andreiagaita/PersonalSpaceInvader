@@ -152,7 +152,7 @@ public class GameStateManager : GameScript
 		m_CurrentPlayerInfo.AddOpponent(player);
 	}
 
-	public PlayerInfo SetPlayerInfo(int id, string playerName, Vector3 position, Color color, int score)
+	public PlayerInfo SetPlayerInfo(int id, string playerName, Vector3 position, Color color, int score, PlayerInfo.PlayerState playerstate)
 	{
 		if (!players.ContainsKey (id))
 		{
@@ -163,6 +163,7 @@ public class GameStateManager : GameScript
 		player.Position = position;
 		player.Color = color;
 		player.Score = score;
+		player.currentState = playerstate;
 		return player;
 	}
 
