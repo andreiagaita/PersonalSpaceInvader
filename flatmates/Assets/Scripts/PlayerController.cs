@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 internal class PlayerController : MonoBehaviour
@@ -53,7 +53,6 @@ internal class PlayerController : MonoBehaviour
 
 		if (myAnimator != null && myAnimation != null && !AnimationSet)
 		{
-			Debug.Log("playing animation : " + myAnimation.name);
 			myAnimator.Play(myAnimation.name);
 		}
 	}
