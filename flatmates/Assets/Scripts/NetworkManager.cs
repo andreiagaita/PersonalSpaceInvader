@@ -161,7 +161,7 @@ public class NetworkManager : MonoBehaviour
 	}
 
 
-	private bool EnsurePlayerReady()
+	private bool IsPlayerReady()
 	{
 		if (gameStateManager.currentPlayerInfo.currentState != PlayerInfo.PlayerState.Playing)
 		{
@@ -182,7 +182,7 @@ public class NetworkManager : MonoBehaviour
 	[RPC]
 	void MovePlayer(Vector3 position, PhotonMessageInfo messageInfo)
 	{
-		if (EnsurePlayerReady ())
+		if (!IsPlayerReady())
 			return;
 		
 		//Debug.Log ("Received a Player Move");
@@ -199,7 +199,7 @@ public class NetworkManager : MonoBehaviour
 	[RPC]
 	void PlayerPickUpItem(int playerId, int itemId, PhotonMessageInfo messageInfo)
 	{
-		if (EnsurePlayerReady())
+		if (!IsPlayerReady())
 			return;
 
 		gameStateManager.PlayerPickItem(playerId, itemId);
