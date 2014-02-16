@@ -33,13 +33,14 @@ public class PlayerInfo
 	public bool isMaster {
 		get { return m_IsMaster; }
 	}
+	public int AnimationIndex { get; set; }
 
 	public GameObject gameObject { get; set; }
 
 	public List<PickupObject> ObjectsOwned { get; set; }
 	public List<PickupObject> ObjectsPicked { get; set; }
 
-	public PlayerInfo(int id, string name, Vector3 position, Color color, int score, bool master)
+	public PlayerInfo(int id, string name, Vector3 position, Color color, int score, int animationIndex, bool master)
 	{
 		ID = id;
 		Name = name;
@@ -47,6 +48,7 @@ public class PlayerInfo
 		Color = color;
 		Score = score;
 		m_IsMaster = master;
+		AnimationIndex = animationIndex;
 		currentState = PlayerState.Connected;
 
 		ObjectsOwned = new List<PickupObject>();
