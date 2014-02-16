@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PickupItem : GameScript
+public class PickupItem : PickupObject
 {
-	public string owner;
+	//public string owner;
 	private bool isCollected;
-	private string holder;
+	//private string holder;
 
 	void Start()
 	{
@@ -15,33 +15,34 @@ public class PickupItem : GameScript
 	void OnTriggerEnter2D (Collider2D hit)
 	{
 		if (hit.gameObject.layer == LayerMask.NameToLayer("ItemCollector"))
-			Pickup(hit.transform.parent.name);
+            Pickup(hit.transform.parent.gameObject);
 	}
 
 	void OnTriggerStay2D(Collider2D hit)
 	{
 		if (hit.gameObject.layer == LayerMask.NameToLayer("ItemCollector"))
-			Pickup(hit.transform.parent.name);
+			Pickup(hit.transform.parent.gameObject);
 	}
 
-	private void Pickup (string playerName)
+	private void Pickup (GameObject playerObject)
 	{
-		if (isCollected || playerName == owner)
+        int playerID = playerObject.GetComponent<PlayerController>().playerID;
+        if (isCollected || playerID == Owner)
 			return;
 
-		holder = playerName;
-		SendMessage("PickupObject", "PlayerDidPickupItem", playerName, name);
+        Holder = playerID;
+        SendMessage("PickupObject", "PlayerDidPickupItem", playerID, name);
 		isCollected = true;
 
-		Subscribe(holder, "PlayerIsVisible", Drop);
-		Subscribe(holder, "DidEnterRoom", DidEnterRoom);
+		Subscribe("Player" + Holder, "PlayerIsVisible", Drop);
+        Subscribe("Player" + Holder, "DidEnterRoom", DidEnterRoom);
 	}
 
 	private void Drop (Subscription subscription)
 	{
-		string opponentName = subscription.Read<string>(0);
+		int opponentID = subscription.Read<int>(0);
 
-		if (opponentName != owner)
+        if (opponentID != Owner)
 			return;
 
 		subscription.UnSubscribe();
@@ -63,6 +64,6 @@ public class PickupItem : GameScript
 		if (!isCollected)
 			return;
 
-		transform.position = BlackBoard.Read<Vector3>(holder, "PublicPosition") + Vector3.up * 2;
+        transform.position = BlackBoard.Read<Vector3>("Player" + Holder, "PublicPosition") + Vector3.up * 2;
 	}
 }

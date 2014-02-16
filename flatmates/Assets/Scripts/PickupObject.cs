@@ -2,18 +2,26 @@
 using System.Collections;
 using UnityEngine;
 
-public class PickupObject
+public class PickupObject : GameScript
 {
-    public Guid GUID { get; set; }
-    public string Name { get; set; }
+    public int ID { get; set; }
+    //public string Name { get; set; }
+    public string Sprite { get; set; }
+    public Vector3 Position { get; set; }
     public int Owner { get; set; }
     public int Holder { get; set; }
+    public int ObjectiveForPlayer { get; set; }
+    public int ObjectiveIndex { get; set; }
 
-    public PickupObject(string name, int owner, int holder = 0)
+    void Start()
     {
-        Name = name;
-        Owner = owner;
-        Holder = holder;
-        GUID = Guid.NewGuid();
+        ID = 0;
+        //Name = name;
+        Sprite = "";
+        Position = Vector3.zero;
+        Owner = -1;
+        ObjectiveForPlayer = -1;
+        ObjectiveIndex = -1;
+        Holder = -1;
     }
 }
