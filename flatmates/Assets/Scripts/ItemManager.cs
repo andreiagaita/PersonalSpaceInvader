@@ -16,8 +16,9 @@ public class ItemManager : MonoBehaviour
     {
         // fill available item spawn locations from the level
         AvailableItemSpawnLocations = GameObject.FindObjectsOfType<ItemSpawnpoint>().ToList();
+        Debug.Log("found available item spawn locations: " + AvailableItemSpawnLocations.Count);
 
-        // fill available item sprites for the level
+        Debug.Log("item templates: " + ItemTemplates.Count);
     }
 
     void Update()
@@ -25,7 +26,7 @@ public class ItemManager : MonoBehaviour
         // this handles the rendering of all the items - show the items which are up for grabs and hide the ones already picked by player
     }
 
-    void InitItems(List<PlayerInfo> players)
+    public void InitItems(List<PlayerInfo> players)
     {
         // lets create (2 x playercount) items in the level
         for (int i = 0; i < players.Count; i++)
