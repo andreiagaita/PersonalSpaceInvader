@@ -13,6 +13,7 @@ public class PickupObject : GameScript
     public int ObjectiveForPlayer { get; set; }
     public int ObjectiveIndex { get; set; }
 	public bool IsCollected { get; set; }
+	public bool IsStolen { get; set; }
 
     void Start()
     {

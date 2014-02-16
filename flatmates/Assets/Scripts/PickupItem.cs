@@ -50,7 +50,6 @@ public class PickupItem : PickupObject
 			RaycastHit2D ownerItemVisiblityHit = Physics2D.Raycast(transform.position, direction, distance, visibilityRaycaster.occluderLayer);
 			if (!ownerItemVisiblityHit)
 			{
-				Debug.Log("cant pick up item while owner is looking");
 				return false;
 			}
 		}
@@ -78,8 +77,7 @@ public class PickupItem : PickupObject
 		player.Drop (this);
 
 		IsCollected = false;
-		Holder = 0;
-		
+		Holder = 0;		
 	}
 
 	void DidEnterRoom(Subscription subscription)
@@ -88,8 +86,10 @@ public class PickupItem : PickupObject
 
 		IsCollected = false;
 
-		//Destroy(gameObject);
 		gameObject.SetActive (false);
+
+		IsStolen = true;
+		GameStateManager.Instance.GetPlayerByID(Holder).Drop(this);
 	}
 
 	private void Update()

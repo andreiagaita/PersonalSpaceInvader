@@ -89,13 +89,12 @@ internal class PlayerController : MonoBehaviour
 
 	void OnGUI()
 	{
-		Debug.Log("trying to draw GUI");
 		GUI.DrawTexture(new Rect(0, Screen.height - 40, 111, 29), ScoreTexture);
 
 		Rect wantarea = new Rect(Screen.width - 100, Screen.height - 50, 94, 41);
 		GUI.DrawTexture(wantarea, WantTexture);
 
-		Sprite itemSprite = Item1.GetComponent<SpriteRenderer>().sprite;
+		Sprite itemSprite = Item1.IsStolen ? Item2.GetComponent<SpriteRenderer>().sprite : Item1.GetComponent<SpriteRenderer>().sprite;
 		Texture2D wantItem = itemSprite.texture;
 		Rect ItemRect = new Rect(wantarea.x + 65, wantarea.y + 13, 17, 14);
 		Rect textCoords = new Rect(itemSprite.rect.x / wantItem.width, itemSprite.rect.y/ wantItem.height,
