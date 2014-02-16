@@ -23,6 +23,7 @@ public class PlayerInfo
 	}
 
 	private bool m_IsMaster = false;
+	private PickupItem m_currentCarryItem = null;
 
 	public int ID { get; set; }
 	public string Name { get; set; }
@@ -51,5 +52,25 @@ public class PlayerInfo
 
 		ObjectsOwned = new List<PickupObject>();
 		ObjectsPicked = new List<PickupObject>();
+	}
+
+	public void PickUpItem (PickupItem pickupItem)
+	{
+		m_currentCarryItem = pickupItem;
+	}
+
+	public bool IsCarryingItem ()
+	{
+		return m_currentCarryItem != null;
+		;
+	}
+
+	public void Drop (PickupItem dropItem)
+	{
+		if (m_currentCarryItem != dropItem)
+		{
+			Debug.LogError ("Ican't drop an Item i don't have :(");
+		}
+		m_currentCarryItem = null;
 	}
 }
