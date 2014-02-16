@@ -12,6 +12,13 @@ internal class PlayerController : MonoBehaviour
     public int controllerID = 0;
     public int playerID = 0;
 
+	private Transform myTransform;
+
+	void OnEnable ()
+	{
+		myTransform = GetComponent<Transform> ();
+	}
+
 	public void Update()
 	{
         //base.Update();
@@ -21,7 +28,7 @@ internal class PlayerController : MonoBehaviour
 
 		float horizontal = 0;
 		float vertical = 0;
-		
+
 		switch (controller)
 		{
 			case ControllerType.Keyboard:
@@ -39,5 +46,10 @@ internal class PlayerController : MonoBehaviour
 
 		rigidbody2D.AddForce(new Vector2(horizontal * force, vertical * force));
 		rigidbody2D.velocity = new Vector2(Mathf.Clamp(rigidbody2D.velocity.x, -speed, speed), Mathf.Clamp(rigidbody2D.velocity.y, -speed, speed));
+	}
+
+	public void FixedUpdate ()
+	{
+		Dispatcher.SendMessage("Player", "Moved", playerID, myTransform.position);
 	}
 }
