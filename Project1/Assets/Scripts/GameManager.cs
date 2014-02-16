@@ -121,14 +121,14 @@ public class GameManager : MonoBehaviour {
 
 	public void Update()
 	{
+		if (currentLevel < 0)
+			return;
+
 		for (int i=0; i<players.Count; i++) {
 			Vector3 playerPos = players[i].transform.position;
 			GUIText text = scoreTexts[players[i].playerColor];
 			text.transform.position = new Vector3 ((playerPos.x + 0.5f) / 32f, (playerPos.y + 0.5f) / 24f);
 		}
-		
-		if (currentLevel < 0)
-			return;
 
 		if (!gameRoundEnded)
 		{
@@ -279,10 +279,12 @@ public class GameManager : MonoBehaviour {
 			GameEnded ();
 		
 		foreach (var player in players)
-			player.GetComponent<CharacterController> ().enabled = false;
+			player.playable = false;
 		
-		Time.timeScale = 0.10f;
-		yield return new WaitForSeconds (0.7f);
+		Time.timeScale = 0.0f;
+		float endTime = Time.realtimeSinceStartup;
+		while (Time.realtimeSinceStartup < endTime + 1)
+			yield return null;
 		Time.timeScale = 1;
 		
 		Application.LoadLevel("EndGameMenu");
