@@ -119,7 +119,7 @@ public class GameStateManager : GameScript
 		player.name = "Player" + playerID;
 		spawnLocation.Available = false;
 
-		player.GetComponentInChildren<SpriteRenderer>().color = m_CurrentPlayerInfo.Color;
+		//player.GetComponentInChildren<SpriteRenderer>().color = m_CurrentPlayerInfo.Color;
 		PlayerController controller = player.GetComponentInChildren<PlayerController>();
 		controller.controller = m_CurrentPlayerInfo.ID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
 		controller.controllerID = m_CurrentPlayerInfo.ID;
@@ -310,7 +310,7 @@ public class GameStateManager : GameScript
 	{
 		Debug.Log ("Spawning Player: " + player.ID);
 		GameObject playerGO = (GameObject)Instantiate(PlayerPrefab, player.Position, Quaternion.identity);
-		playerGO.GetComponentInChildren<SpriteRenderer>().color = player.Color;
+		//playerGO.GetComponentInChildren<SpriteRenderer>().color = player.Color;
 		playerGO.name = "Player" + player.ID;
 
 		player.gameObject = playerGO;
