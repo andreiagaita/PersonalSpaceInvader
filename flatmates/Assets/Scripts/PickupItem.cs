@@ -84,12 +84,17 @@ public class PickupItem : PickupObject
 	{
 		subscription.UnSubscribe();
 
+		if (!IsCollected)
+			return;
+
 		IsCollected = false;
 
 		gameObject.SetActive (false);
 
 		IsStolen = true;
-		GameStateManager.Instance.GetPlayerByID(Holder).Drop(this);
+
+		if (GameStateManager.Instance.GetPlayerByID(Holder) != null)
+			GameStateManager.Instance.GetPlayerByID(Holder).Drop(this);
 	}
 
 	private void Update()
