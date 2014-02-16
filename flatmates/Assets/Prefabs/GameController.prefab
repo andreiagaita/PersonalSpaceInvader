@@ -45,6 +45,11 @@ MonoBehaviour:
   itemManager: {fileID: 11400002}
   PlayerPrefab: {fileID: 100004, guid: d448caba286f5624dab91710700502f2, type: 2}
   useNetwork: 1
+  PlayerIdleClips:
+  - {fileID: 7400000, guid: db94f41aca29b7d439f59fbe95719002, type: 2}
+  - {fileID: 7400000, guid: 6ad49feb28232f64ebb6a391cbd1ac44, type: 2}
+  - {fileID: 7400000, guid: 81289cb5852d2c34fbda29972455c14f, type: 2}
+  - {fileID: 7400000, guid: 4b777c67ac298b04dbd54162a9f8c5c8, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
