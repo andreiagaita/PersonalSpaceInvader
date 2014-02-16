@@ -97,7 +97,7 @@ public class GameStateManager : GameScript
                     if (spawnLocation == null)
                         return;
 
-					PlayerJoined(playerID, "Player" + playerID, spawnLocation.transform.position, Color.green, 0);
+					PlayerJoined(playerID, "Player" + playerID, spawnLocation.transform.position, Color.green, 0, PlayerInfo.PlayerState.Connected);
 					spawnLocation.Available = false;
 					Debug.Log("player " + playerID + "created");
 				}
@@ -131,12 +131,12 @@ public class GameStateManager : GameScript
 		return controllerID;
 	}
 
-	public void PlayerJoined(int id, string name, Vector3 position, Color color, int score)
+	public void PlayerJoined(int id, string name, Vector3 position, Color color, int score, PlayerInfo.PlayerState playerstate)
 	{
 		
 		Debug.Log("Player " + id + " just joined the game");
 		RegisterNewPlayer(id, name);
-		PlayerInfo newPlayer = SetPlayerInfo(id, name, position, color, score);
+		PlayerInfo newPlayer = SetPlayerInfo(id, name, position, color, score, playerstate);
 
 		SpawnPlayer (newPlayer);
 	}
