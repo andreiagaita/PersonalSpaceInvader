@@ -20,6 +20,9 @@ public class VisibilityRaycaster : MonoBehaviour
 			if (gameObject == player.gameObject)
 				continue;
 
+			if (player == null || player.gameObject == null)
+				continue;
+
 			Vector3 position = player.gameObject.transform.position;
 
 			if (IsPlayerVisible(position))
