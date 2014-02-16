@@ -16,7 +16,13 @@ public class PlayerBehaviour : MonoBehaviour {
 	public PowerUpBase activePowerUp;
 
 	private float playerAuraDistance = 0f;
-	private float distanceLimit; 
+	private float distanceLimit;
+	
+	private bool dying = false;
+	private bool dead = true;
+	private float dieTime = 0;
+	
+	private static float sloMoTimeStop = -1;
 
 	void Awake () {
 		if (GameManager.instance)
@@ -27,13 +33,47 @@ public class PlayerBehaviour : MonoBehaviour {
 		distanceLimit = (aura.renderer.bounds.size.x) / 2;
 		aura.GetComponent<SpriteRenderer>().color = GetActualPlayerColor();
 		graphic.color = GetActualPlayerColor ();
+		
+		dieTime = Time.time;
+		playable = false;
+		transform.localScale = Vector3.one * 0.0001f;
 	}
 	
+	public bool playable {
+		get { return collider.enabled; }
+		set {
+			GetComponent<CharacterController> ().enabled = value;
+			collider2D.enabled = value;
+			rigidbody2D.isKinematic = !value;
+		}
+	} 
+	
 	void Update () {
+		if (Time.time > sloMoTimeStop)
+			Time.timeScale = 1;
+		
+		if (dying) {
+			transform.localScale = Vector3.one * (1 + (Time.time - dieTime) * 4);
+			if (Time.time > dieTime + 0.1f) {
+				dying = false;
+				dead = true;
+				transform.localScale = Vector3.one * 0.0001f;
+				Respawn();
+			}
+		}
+		if (dead) {
+			float spawnTime = Mathf.Clamp01 (Time.time - dieTime - 1);
+			transform.localScale = Vector3.one * spawnTime;
+			if (spawnTime == 1) {
+				playable = true;
+				dead = false;
+			}
+		}
+		
 		if (!enemy) return;
 
 		playerAuraDistance = Vector3.Distance (enemy.transform.position, transform.position);
-		if (playerAuraDistance < distanceLimit) {
+		if (playerAuraDistance < distanceLimit && !enemy.dead && !enemy.dying) {
 			enemy.Die ();
 			if (GameManager.instance)
 				GameManager.instance.AwardPointToPlayer (this);
@@ -46,9 +86,16 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 	
 	public void Die () {
+		if (dead || dying)
+			return;
 		if (Died != null)
 			Died ();
-		Respawn();
+		
+		dying = true;
+		dieTime = Time.time;
+		playable = false;
+		sloMoTimeStop = Time.time + 0.2f;
+		//Time.timeScale = 0.3f;
 	}
 
 	public PlayerColor GetPlayerColor()
