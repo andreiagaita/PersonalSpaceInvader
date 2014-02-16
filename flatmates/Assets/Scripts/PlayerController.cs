@@ -10,6 +10,7 @@ internal class PlayerController : MonoBehaviour
 	public ControllerType controller;
 
     public int controllerID = 0;
+    public int playerID = 0;
 
 	public void Update()
 	{

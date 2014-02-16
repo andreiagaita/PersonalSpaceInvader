@@ -10,10 +10,9 @@ public class GameStateManager : GameScript
 	private Dictionary<int, PlayerInfo> players;
 
 	private ClientPlayerInfo m_CurrentPlayerInfo;
-	private Dictionary<Guid, PickupObject> GamePickups = new Dictionary<Guid, PickupObject>();
+    public ItemManager itemManager;
 
 	public GameObject PlayerPrefab;
-	public bool fake2Player = true;
 	public bool useNetwork = false;
 
 	private SpawnPoint[] LevelSpawns;
@@ -118,12 +117,6 @@ public class GameStateManager : GameScript
 		PlayerController controller = ndplayerTransform.GetComponentInChildren<PlayerController>();
 		controller.controller = newPlayer.ID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
 		controller.controllerID = newPlayer.ID;
-	}
-
-	void PlayerLeft(int id)
-	{
-		Debug.Log("Player " +  id + " just left the game");
-		m_CurrentPlayerInfo.RemoveOpponent(id);
 	}
 
 	SpawnPoint GetRandomSpawn()
