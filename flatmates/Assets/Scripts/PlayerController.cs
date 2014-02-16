@@ -53,7 +53,7 @@ internal class PlayerController : MonoBehaviour
 
 		if (myAnimator != null && myAnimation != null && !AnimationSet)
 		{
-			Debug.Log("playing animation : " + myAnimation.name);
+			//Debug.Log("playing animation : " + myAnimation.name);
 			myAnimator.Play(myAnimation.name);
 		}
 	}
