@@ -22,6 +22,8 @@ internal class PlayerController : MonoBehaviour
 	public Texture2D ScoreTexture;
 	public Texture2D WantTexture;
 
+	public GUIStyle WinMessageFont;
+
 	private PickupItem Item1;
 	private PickupItem Item2;
 
@@ -101,6 +103,11 @@ internal class PlayerController : MonoBehaviour
 			itemSprite.rect.width / wantItem.width, itemSprite.rect.height / wantItem.height);
 		GUI.DrawTextureWithTexCoords(ItemRect, wantItem, textCoords, true);
 
+		if (Item1.IsStolen && Item2.IsStolen)
+		{
+			GUI.Label(new Rect(0, (Screen.height / 2) - 10, Screen.width, 20), "All their stuff IS yours!", WinMessageFont);
+			Time.timeScale = 0;
+		}
 	}
 
 	public void FixedUpdate ()
