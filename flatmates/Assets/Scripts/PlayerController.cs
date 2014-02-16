@@ -15,10 +15,12 @@ internal class PlayerController : MonoBehaviour
 	private bool AnimationSet = false;
 
 	private Transform myTransform;
+	private Transform sprite;
 
 	void OnEnable ()
 	{
 		myTransform = GetComponent<Transform> ();
+		sprite = transform.Find("Sprite");
 	}
 
 	public void Update()
@@ -48,6 +50,14 @@ internal class PlayerController : MonoBehaviour
 
 		rigidbody2D.AddForce(new Vector2(horizontal * force, vertical * force));
 		rigidbody2D.velocity = new Vector2(Mathf.Clamp(rigidbody2D.velocity.x, -speed, speed), Mathf.Clamp(rigidbody2D.velocity.y, -speed, speed));
+
+		// flip the player sprite when going left/right
+		if (horizontal < 0) {
+			sprite.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+		}
+		else {
+			sprite.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+		}
 
 		if (myAnimation != null && !AnimationSet)
 		{
