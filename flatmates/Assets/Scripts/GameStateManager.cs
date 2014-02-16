@@ -43,7 +43,12 @@ public class GameStateManager : GameScript
 
 	public PlayerInfo GetPlayerByID (int id)
 	{
-		return players[id];
+		PlayerInfo player;
+		if (players.TryGetValue (id, out player))
+			return players[id];
+
+		Debug.LogError ("Could not find key "+ id);
+		return null;
 	}
 
 	public PlayerInfo GetPlayerByGameObject (GameObject go)

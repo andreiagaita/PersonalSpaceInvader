@@ -4,9 +4,13 @@ using System.Collections;
 
 public class NetworkManager : MonoBehaviour
 {
+
+
 	public GameStateManager gameStateManager;
 
 	private PhotonView photonView;
+
+	private bool needToCreateOwnRoom = false;
 
 	private void Start ()
 	{
@@ -36,8 +40,18 @@ public class NetworkManager : MonoBehaviour
 
 	void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
 	{
-		gameStateManager.RegisterNewPlayer(newPlayer.ID, "Player " + newPlayer.ID);
+		
 		ClientPlayerInfo currentplayer = gameStateManager.currentPlayerInfo;
+
+		if (currentplayer.currentState == PlayerInfo.PlayerState.WorldReady || currentplayer.currentState == PlayerInfo.PlayerState.Playing)
+		{
+			if (currentplayer.isMaster)
+				photonView.RPC("RoomBusy", PhotonPlayer.Find(newPlayer.ID));
+			return;
+		}
+
+		gameStateManager.RegisterNewPlayer(newPlayer.ID, "Player " + newPlayer.ID);
+
 		photonView.RPC("SetPlayerInfo", PhotonPlayer.Find(newPlayer.ID), currentplayer.Name, currentplayer.Position, currentplayer.Score, currentplayer.currentState);
 	}
 
@@ -47,6 +61,22 @@ public class NetworkManager : MonoBehaviour
 		Debug.Log("GotPlayerInfo:" + playerName);
 		PlayerInfo.PlayerState state =(PlayerInfo.PlayerState) playerState;
 		gameStateManager.SetPlayerInfo(messageInfo.sender.ID, playerName, position, Color.green, score, state);
+	}
+
+	[RPC]
+	private void RoomBusy (PhotonMessageInfo messageInfo)
+	{
+		needToCreateOwnRoom = true;
+		PhotonNetwork.LeaveRoom ();
+	}
+
+	private void OnLeftRoom ()
+	{
+		if (needToCreateOwnRoom)
+		{
+			needToCreateOwnRoom = false;
+			PhotonNetwork.CreateRoom(null, true, true, 4);
+		}
 	}
 
 	private void OnLocalPlayerReady(Subscription subscription)

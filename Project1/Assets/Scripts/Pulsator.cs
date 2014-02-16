@@ -7,14 +7,9 @@ public class Pulsator : MonoBehaviour {
 	private Color colorEnd;
 	private float startTime;
 
-	void Awake ()
-	{
-		GetComponent<SpriteRenderer>().color = Color.clear;
-	}
-
 	void Start () {
-		colorStart = colorEnd = Color.white;
-		colorStart.a = 0;
+		colorStart = GetComponent<SpriteRenderer>().color;
+		colorEnd = Color.white;
 		startTime = 0;
 	}
 	
