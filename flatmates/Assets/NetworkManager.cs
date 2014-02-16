@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -33,10 +34,11 @@ public class NetworkManager : MonoBehaviour
 	}
 
 	[RPC]
-	private void SetPlayerInfo(string playerName, Vector3 position, int score, PlayerInfo.PlayerState playerState, PhotonMessageInfo messageInfo)
+	private void SetPlayerInfo(string playerName, Vector3 position, int score, int playerState, PhotonMessageInfo messageInfo)
 	{
 		Debug.Log("GotPlayerInfo:" + playerName);
-		gameStateManager.SetPlayerInfo(messageInfo.sender.ID, playerName, position, Color.green, score, playerState);
+		PlayerInfo.PlayerState state = Enum.ToObject (typeof(PlayerInfo.PlayerState), playerState);
+		gameStateManager.SetPlayerInfo(messageInfo.sender.ID, playerName, position, Color.green, score, state);
 	}
 
 	private void OnLocalPlayerReady(Subscription subscription)
