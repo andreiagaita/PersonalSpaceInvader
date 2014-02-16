@@ -11,10 +11,11 @@ public class MainMenu : MonoBehaviour {
 			GameManager.instance.NextLevel ();
 			break;
 		case "no":
+		case "back":
 			Application.LoadLevel ("MainMenu");
 			break;
 		case "credits":
-			Debug.Log ("hit credits");
+			Application.LoadLevel ("Credits");
 			break;
 		case "quit":
 			Application.Quit(); 
