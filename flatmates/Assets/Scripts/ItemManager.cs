@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -152,5 +152,21 @@ public class ItemManager : MonoBehaviour
 		PickupObject pickObject = go.GetComponent<PickupItem>();
 		pickObject.ObjectiveForPlayer = seekerId;
 		pickObject.ObjectiveIndex = seekIndex;
+	}
+
+	private bool CheckPlayerWin(int playerID)
+	{
+		bool challenge1 = false;
+		bool challenge2 = false;
+		foreach (KeyValuePair<int, PickupItem> pair in ItemDatabase)
+		{
+			if (pair.Value.ObjectiveForPlayer == playerID)
+				if (pair.Value.ObjectiveIndex == 0)
+					challenge1 = pair.Value.IsCollected;
+				else
+					challenge2 = pair.Value.IsCollected;
+		}
+
+		return challenge1 && challenge2;
 	}
 }

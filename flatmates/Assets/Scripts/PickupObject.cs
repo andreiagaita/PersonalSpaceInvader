@@ -12,6 +12,7 @@ public class PickupObject : GameScript
     public int Holder { get; set; }
     public int ObjectiveForPlayer { get; set; }
     public int ObjectiveIndex { get; set; }
+	public bool IsCollected { get; set; }
 
     void Start()
     {
@@ -23,5 +24,6 @@ public class PickupObject : GameScript
         ObjectiveForPlayer = -1;
         ObjectiveIndex = -1;
         Holder = -1;
+		IsCollected = false;
     }
 }

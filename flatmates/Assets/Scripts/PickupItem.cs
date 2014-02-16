@@ -3,10 +3,6 @@ using System.Collections;
 
 public class PickupItem : PickupObject
 {
-	//public string owner;
-	private bool isCollected;
-	//private string holder;
-
 	void Start()
 	{
 		base.Start();
@@ -27,12 +23,12 @@ public class PickupItem : PickupObject
 	private void Pickup (GameObject playerObject)
 	{
         int playerID = playerObject.GetComponent<PlayerController>().playerID;
-        if (isCollected || playerID == Owner)
+        if (IsCollected || playerID == Owner)
 			return;
 
         Holder = playerID;
         SendMessage("PickupObject", "PlayerDidPickupItem", playerID, name);
-		isCollected = true;
+		IsCollected = true;
 
 		Subscribe("Player" + Holder, "PlayerIsVisible", Drop);
         Subscribe("Player" + Holder, "DidEnterRoom", DidEnterRoom);
@@ -47,21 +43,21 @@ public class PickupItem : PickupObject
 
 		subscription.UnSubscribe();
 
-		isCollected = false;
+		IsCollected = false;
 	}
 
 	void DidEnterRoom(Subscription subscription)
 	{
 		subscription.UnSubscribe();
 
-		isCollected = false;
+		IsCollected = false;
 
 		Destroy(gameObject);
 	}
 
 	private void Update()
 	{
-		if (!isCollected)
+		if (!IsCollected)
 			return;
 
         transform.position = BlackBoard.Read<Vector3>("Player" + Holder, "PublicPosition") + Vector3.up * 2;
