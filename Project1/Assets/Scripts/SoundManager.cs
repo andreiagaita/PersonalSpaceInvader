@@ -79,7 +79,7 @@ public class SoundManager : MonoBehaviour {
 	void PlayerJumped (PlayerBehaviour player, string jumptype)
 	{
 		var clip = jumpClipsPerPlayer[player.GetPlayerColor ().ToString ()];
-		audio.PlayOneShot (clip);
+		audio.PlayOneShot (clip, 0.3f);
 	}
 
 	void LevelStart ()
