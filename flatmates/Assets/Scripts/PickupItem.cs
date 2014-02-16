@@ -7,7 +7,7 @@ public class PickupItem : PickupObject
 
 	void Start()
 	{
-		m_PlayerOffset = Vector3.up * 2;
+		m_PlayerOffset = new Vector3(.6f,1.8f,0);
 		base.Start();
 	}
 
@@ -52,7 +52,7 @@ public class PickupItem : PickupObject
 		subscription.UnSubscribe();
 
 		PlayerInfo player = GameStateManager.Instance.GetPlayerByID (Holder);
-		transform.position = player.gameObject.transform.position - m_PlayerOffset;
+		transform.position = transform.position - m_PlayerOffset;
 
 		IsCollected = false;
 		Holder = 0;
