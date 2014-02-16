@@ -50,6 +50,11 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 6ad49feb28232f64ebb6a391cbd1ac44, type: 2}
   - {fileID: 7400000, guid: 81289cb5852d2c34fbda29972455c14f, type: 2}
   - {fileID: 7400000, guid: 4b777c67ac298b04dbd54162a9f8c5c8, type: 2}
+  PlayerColors:
+  - {r: .580392182, g: .686274529, b: .701960802, a: 0}
+  - {r: .760784328, g: .466666669, b: .513725519, a: 0}
+  - {r: .552941203, g: .760784328, b: .65882355, a: 0}
+  - {r: .760784328, g: .749019623, b: .552941203, a: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

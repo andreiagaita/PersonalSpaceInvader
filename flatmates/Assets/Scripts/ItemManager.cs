@@ -92,7 +92,7 @@ public class ItemManager : MonoBehaviour
 	{
 		if (playerObjectivesDict.Count <= 1)
 		{
-			Debug.Log("GetRandomPlayer: " + -1);
+			//Debug.Log("GetRandomPlayer: " + -1);
 			return -1;
 		}
 
