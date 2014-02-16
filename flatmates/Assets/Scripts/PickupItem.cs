@@ -45,7 +45,7 @@ public class PickupItem : PickupObject
 		float distance = Vector3.Distance(transform.position, itemOwner.gameObject.transform.position);
 
 		RaycastHit2D ownerItemVisiblityHit = Physics2D.Raycast(transform.position, direction, distance, itemOwner.gameObject.GetComponent<VisibilityRaycaster>().occluderLayer);
-		if (ownerItemVisiblityHit)
+		if (!ownerItemVisiblityHit)
 		{
 			Debug.Log ("cant pick up item while owner is looking");
 			return false;
