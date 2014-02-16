@@ -24,8 +24,15 @@ public class VisibilityRaycaster : MonoBehaviour
 
 			if (IsPlayerVisible(position))
 			{
+				player.gameObject.transform.Find("Sprite").GetComponent<SpriteRenderer>().enabled = true;
+				player.gameObject.transform.Find("2DLight").GetComponent<SpriteRenderer>().enabled = true;
 				Dispatcher.SendMessage(player.gameObject.name, "PlayerIsVisible", m_Myself.ID);
 				Dispatcher.SendMessage(name, "DidSawPlayer", player.gameObject.name);
+			}
+			else if (!(player is ClientPlayerInfo))
+			{
+				player.gameObject.transform.Find("Sprite").GetComponent<SpriteRenderer>().enabled = false;
+				player.gameObject.transform.Find("2DLight").GetComponent<SpriteRenderer>().enabled = false;
 			}
 		}
 	}
