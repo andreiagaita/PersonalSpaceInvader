@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -38,7 +39,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a082458dd268cb40a273ef4efb6f569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 400004, guid: d448caba286f5624dab91710700502f2, type: 2}
+  itemManager: {fileID: 11400002}
+  PlayerPrefab: {fileID: 100004, guid: d448caba286f5624dab91710700502f2, type: 2}
+  useNetwork: 0
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb3426caba67954a99d90ef59813f84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AvailableItemSpawnLocations: []
+  ItemTemplates:
+  - {fileID: 100002, guid: 0de38229825ac204fb093ff2f2e22c4c, type: 2}
+  - {fileID: 100002, guid: 2bb4378831137bf428a61e9191414e7a, type: 2}
+  - {fileID: 100002, guid: 4bb3a007967c8a449a15f3382a99b0ab, type: 2}
+  - {fileID: 100002, guid: 55da8d9cd7b0f9241af6e02e8e86ab77, type: 2}
+  - {fileID: 100002, guid: 7f766744d25945b4a9d6626801d95e72, type: 2}
+  - {fileID: 100002, guid: 8e5185d32ac841c4aa0b082317f0d08d, type: 2}
+  - {fileID: 100002, guid: 903d7dcb9d370614db009dc5865c32a1, type: 2}
+  - {fileID: 100002, guid: 9cefb337b6575844cb322408c198e154, type: 2}
+  - {fileID: 100002, guid: cccd18c3547e5e1498b5f117d6f7abf3, type: 2}
+  - {fileID: 100002, guid: ff18b7380c29181408d0ddcc253d972f, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

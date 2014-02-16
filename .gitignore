@@ -19,3 +19,9 @@ flatmates/Build/
 /flatmates/Assembly-CSharp-Editor.csproj
 /flatmates/Assembly-CSharp-Editor.csproj
 *.suo
+flatmates/Assembly-CSharp-firstpass-vs.csproj
+flatmates/Assembly-CSharp-firstpass.csproj
+flatmates/Assembly-UnityScript-Editor-vs.unityproj
+flatmates/Assembly-UnityScript-Editor.unityproj
+flatmates/Assembly-UnityScript-firstpass-vs.unityproj
+flatmates/Assembly-UnityScript-firstpass.unityproj
