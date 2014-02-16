@@ -13,7 +13,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ControllerTestScene.unity
   - enabled: 1
     path: Assets/Scenes/Level1.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level2.unity
   - enabled: 1
     path: Assets/Scenes/Level3.unity
@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level4.unity
   - enabled: 1
     path: Assets/Scenes/Level5.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level6.unity
   - enabled: 1
     path: Assets/Scenes/Level7.unity
