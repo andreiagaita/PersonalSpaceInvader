@@ -41,6 +41,9 @@ internal class PlayerController : MonoBehaviour
 					Item2 = item;
 			}
 		}
+
+		// applying a proper animation
+
 	}
 
 	
@@ -84,6 +87,7 @@ internal class PlayerController : MonoBehaviour
 		{
 			Animator myAnimator = GetComponent<Animator>();
 			myAnimator.Play(myAnimation.name);
+			AnimationSet = true;
 		}
 	}
 
