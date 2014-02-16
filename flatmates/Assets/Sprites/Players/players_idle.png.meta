@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ad759fed9340122408b9b19f84b85895
+guid: 6cf81cc1b75863640adf5bd0c1a82786
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -45,149 +45,149 @@ TextureImporter:
     compressionQuality: 50
   spriteSheet:
     sprites:
-    - name: Player1A
+    - name: players_1_idle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 60
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player2A
+        x: 2
+        y: 61
+        width: 8
+        height: 17
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_2_idle_1
       rect:
         serializedVersion: 2
-        x: 12
-        y: 60
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player3A
+        x: 13
+        y: 61
+        width: 9
+        height: 17
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_3_idle_1
       rect:
         serializedVersion: 2
-        x: 24
-        y: 60
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player4A
+        x: 26
+        y: 61
+        width: 8
+        height: 16
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_4_idle_1
       rect:
         serializedVersion: 2
-        x: 36
-        y: 60
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player1B
+        x: 38
+        y: 61
+        width: 8
+        height: 16
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_1_idle_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 40
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player2B
+        x: 2
+        y: 41
+        width: 8
+        height: 16
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_2_idle_2
       rect:
         serializedVersion: 2
-        x: 12
-        y: 40
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player3B
+        x: 13
+        y: 41
+        width: 9
+        height: 16
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_3_idle_2
       rect:
         serializedVersion: 2
-        x: 24
-        y: 40
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player4B
+        x: 26
+        y: 41
+        width: 8
+        height: 15
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_4_idle_2
       rect:
         serializedVersion: 2
-        x: 36
-        y: 40
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player1C
+        x: 38
+        y: 41
+        width: 8
+        height: 16
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_1_idle_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 20
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player2C
+        x: 2
+        y: 21
+        width: 8
+        height: 17
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_2_idle_3
       rect:
         serializedVersion: 2
-        x: 12
-        y: 20
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player3C
+        x: 13
+        y: 21
+        width: 9
+        height: 16
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_3_idle_3
       rect:
         serializedVersion: 2
-        x: 24
-        y: 20
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player4C
+        x: 26
+        y: 21
+        width: 8
+        height: 16
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_4_idle_3
       rect:
         serializedVersion: 2
-        x: 36
-        y: 20
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player1D
+        x: 38
+        y: 21
+        width: 8
+        height: 16
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_1_idle_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player2C
+        x: 2
+        y: 1
+        width: 8
+        height: 16
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_2_idle_4
       rect:
         serializedVersion: 2
-        x: 12
-        y: 0
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player3D
+        x: 13
+        y: 1
+        width: 9
+        height: 16
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_3_idle_4
       rect:
         serializedVersion: 2
-        x: 24
-        y: 0
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: Player4D
+        x: 26
+        y: 1
+        width: 8
+        height: 15
+      alignment: 7
+      pivot: {x: .5, y: 0}
+    - name: players_4_idle_4
       rect:
         serializedVersion: 2
-        x: 36
-        y: 0
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: .5, y: .5}
+        x: 38
+        y: 1
+        width: 8
+        height: 16
+      alignment: 7
+      pivot: {x: .5, y: 0}
   spritePackingTag: 
   userData: 
