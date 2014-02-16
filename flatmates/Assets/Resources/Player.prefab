@@ -99,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .74000001, z: 0}
+  m_LocalPosition: {x: 0, y: -.170000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400004}
@@ -121,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.38418579e-07, y: 12.9328375, z: 0}
+  m_LocalPosition: {x: -.778678596, y: 14.9555435, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400006}
@@ -260,7 +260,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ae2ae75639cb8944dba9f16b7c8b48f5, type: 2}
   m_CullingMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
 --- !u!114 &11400000
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 25
-  speed: 3
+  speed: 4
   controller: 2
   controllerID: 0
   playerID: 0
@@ -331,7 +331,7 @@ MonoBehaviour:
   lightRadius: 7
   coneStart: 0
   coneAngle: 360
-  lightColor: {r: .653900981, g: .65882355, b: .565813184, a: 0}
+  lightColor: {r: .428149462, g: .431372553, b: .370472908, a: 0}
   lightDetail: 384
   lightMaterial: {fileID: 2100000, guid: e59eef300ef3e7d49b4def05ab2750f2, type: 2}
   shadowLayer:
@@ -399,7 +399,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 9864
+  m_SortingOrder: 9853
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300016, guid: 6cf81cc1b75863640adf5bd0c1a82786, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
