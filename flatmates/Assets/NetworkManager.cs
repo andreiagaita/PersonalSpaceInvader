@@ -14,8 +14,11 @@ public class NetworkManager : MonoBehaviour
 
 		Dispatcher.Subscribe ("Player",  "Ready",         OnLocalPlayerReady);
 		Dispatcher.Subscribe ("Player",  "SetSpawnPoint", OnSpawnPointSet);
-		Dispatcher.Subscribe ("World",   "Ready",         OnWorldReady);
-		Dispatcher.Subscribe ("Player",  "Moved",          OnPlayerMove);
+		Dispatcher.Subscribe ("Item",    "Spawn",         OnItemSpawn);
+		Dispatcher.Subscribe ("World",   "DataReady",     OnWorldDataReady);
+		Dispatcher.Subscribe ("Player",  "WorldReady",    OnWorldReady);
+		Dispatcher.Subscribe ("Match",   "Start",         OnMatchStart);
+		Dispatcher.Subscribe ("Player",  "Moved",         OnPlayerMove);
 	}
 
 	void OnJoinedRoom()
@@ -69,6 +72,30 @@ public class NetworkManager : MonoBehaviour
 		player.Position = position;
 	}
 
+	private void OnItemSpawn(Subscription subscription)
+	{
+		PickupItem item = subscription.Read<PickupItem> (0);
+		photonView.RPC("SpawnItem", PhotonTargets.Others, item.ID, item.gameObject.name, item.gameObject.transform.position, item.Owner, item.ObjectiveForPlayer, item.ObjectiveIndex );
+	}
+
+	[RPC]
+	void SpawnItem(int itemID, string ItemName, Vector3 position, int ownerId, int seekerId, int seekIndex, PhotonMessageInfo messageInfo)
+	{
+		gameStateManager.itemManager.RegisterItemSpawn (itemID, ItemName, position, ownerId, seekerId, seekIndex);
+	}
+
+	private void OnWorldDataReady(Subscription subscription)
+	{
+		photonView.RPC("SetWorldDataReady", PhotonTargets.Others);
+	}
+
+	[RPC]
+	void SetWorldDataReady(PhotonMessageInfo messageInfo)
+	{
+		Debug.Log(messageInfo.sender.ID + " says the world data is ready ");
+		gameStateManager.SetWorldDataReady();
+	}
+
 	private void OnWorldReady(Subscription subscription)
 	{
 		photonView.RPC("SetWorldReady", PhotonTargets.Others);
@@ -78,7 +105,19 @@ public class NetworkManager : MonoBehaviour
 	void SetWorldReady(PhotonMessageInfo messageInfo)
 	{
 		Debug.Log(messageInfo.sender.ID + " says the world is ready ");
-		gameStateManager.SetWorldReady();
+		gameStateManager.SetWorldReady(messageInfo.sender.ID);
+	}
+
+	private void OnMatchStart(Subscription subscription)
+	{
+		photonView.RPC("StartMatch", PhotonTargets.All);
+	}
+
+	[RPC]
+	void StartMatch(PhotonMessageInfo messageInfo)
+	{
+		Debug.Log(messageInfo.sender.ID + " says the match has started ");
+		gameStateManager.StartMatch();
 	}
 
 	private void OnPlayerMove(Subscription subscription)

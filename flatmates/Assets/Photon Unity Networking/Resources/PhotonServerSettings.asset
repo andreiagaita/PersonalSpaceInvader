@@ -29,4 +29,7 @@ MonoBehaviour:
   - SetPlayerSpawnPoint
   - SetWorldReady
   - MovePlayer
+  - SetWorldDataReady
+  - StartMatch
+  - SpawnItem
   DisableAutoOpenWizard: 0

@@ -17,7 +17,8 @@ public class PlayerInfo
 	public enum PlayerState
 	{
 		Connected,
-		Ready,
+		PlayerReady,
+		WorldReady,
 		Playing
 	}
 

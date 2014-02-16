@@ -188,12 +188,12 @@ public class GameStateManager : GameScript
 	public void SetPlayerReady (int playerId)
 	{
 		PlayerInfo player = players[playerId];
-		player.currentState = PlayerInfo.PlayerState.Ready;
+		player.currentState = PlayerInfo.PlayerState.PlayerReady;
 
 		bool allPlayersReady = true;
 		foreach (KeyValuePair<int, PlayerInfo> playerTuple in players)
 		{
-			if (playerTuple.Value.currentState != PlayerInfo.PlayerState.Ready)
+			if (playerTuple.Value.currentState != PlayerInfo.PlayerState.PlayerReady)
 			{
 				allPlayersReady = false;
 				break;
@@ -224,8 +224,8 @@ public class GameStateManager : GameScript
 		//setup player spawn points
 		SetupPlayerSpawnPoints ();
 
-		Dispatcher.SendMessage("World", "Ready");
-		SetWorldReady ();
+		Dispatcher.SendMessage("World", "DataReady");
+		SetWorldDataReady ();
 	}
 
 	//Sets up all players initial spawn points
@@ -245,14 +245,15 @@ public class GameStateManager : GameScript
 		}
 	}
 
-	public void SetWorldReady ()
+	public void SetWorldDataReady ()
 	{
 		foreach (KeyValuePair<int, PlayerInfo> playerTuple in players)
 		{
 			PlayerInfo player = playerTuple.Value;
-			player.currentState = PlayerInfo.PlayerState.Playing;
 			SpawnPlayer (player);
 		}
+		currentPlayerInfo.currentState = PlayerInfo.PlayerState.WorldReady;
+		Dispatcher.SendMessage("Player", "WorldReady", currentPlayerInfo);
 	}
 
 	private void SpawnPlayer (PlayerInfo player)
@@ -274,10 +275,8 @@ public class GameStateManager : GameScript
 			controller.controllerID = localPlayer.controllerID;
 			controller.playerID = player.ID;
 		}
-		else
-		{
-			controller.enabled = false;
-		}
+		controller.enabled = false;
+		
 	}
 
 	public void MoveRemotePlayer (int id, Vector3 position)
@@ -285,5 +284,60 @@ public class GameStateManager : GameScript
 		PlayerInfo player = GetPlayerByID (id);
 		player.Position = position;
 		player.gameObject.transform.position = position;
+	}
+
+	public void SetWorldReady (int id)
+	{
+		PlayerInfo player = GetPlayerByID(id);
+		player.currentState = PlayerInfo.PlayerState.WorldReady;
+
+		bool allWorldReady = true;
+		foreach (KeyValuePair<int, PlayerInfo> playerTuple in players)
+		{
+			if (playerTuple.Value.currentState != PlayerInfo.PlayerState.WorldReady)
+			{
+				allWorldReady = false;
+				break;
+			}
+		}
+		if (allWorldReady)
+			OnAllWorldssReady();
+	}
+
+	private void OnAllWorldssReady ()
+	{
+		if (!useNetwork)
+			throw new NotImplementedException();
+
+		Debug.Log ("currentPlayer " + currentPlayerInfo.ID);
+		Debug.Log ("IsMaster? " + currentPlayerInfo.isMaster);
+		if (currentPlayerInfo.isMaster)
+		{
+			SendStartMatch ();
+		}
+	}
+
+	private void SendStartMatch ()
+	{
+		Dispatcher.SendMessage ("Match", "Start");
+		currentPlayerInfo.currentState = PlayerInfo.PlayerState.Playing;
+	}
+
+	public void StartMatch ()
+	{
+		foreach (KeyValuePair<int, PlayerInfo> playerTuple in players)
+		{
+			PlayerInfo player = playerTuple.Value;
+			player.currentState = PlayerInfo.PlayerState.Playing;
+
+			ClientPlayerInfo localPlayer = player as ClientPlayerInfo;
+
+			
+
+			if (localPlayer != null)
+			{
+				localPlayer.gameObject.GetComponent<PlayerController> ().enabled = true;
+			}
+		}
 	}
 }
