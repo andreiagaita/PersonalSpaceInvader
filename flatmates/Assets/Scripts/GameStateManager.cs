@@ -124,6 +124,7 @@ public class GameStateManager : GameScript
 
 		//player.GetComponentInChildren<SpriteRenderer>().color = m_CurrentPlayerInfo.Color;
 		PlayerController controller = player.GetComponentInChildren<PlayerController>();
+		controller.playerID = playerID;
 		controller.controller = m_CurrentPlayerInfo.ID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
 		controller.controllerID = m_CurrentPlayerInfo.ID;
 		controller.myAnimation = PlayerIdleClips[m_CurrentPlayerInfo.AnimationIndex];
@@ -326,9 +327,10 @@ public class GameStateManager : GameScript
 		{
 			controller.controller = localPlayer.controllerID > 4 ? PlayerController.ControllerType.Keyboard : PlayerController.ControllerType.Xbox;
 			controller.controllerID = localPlayer.controllerID;
-			controller.playerID = player.ID;
-			controller.myAnimation = PlayerIdleClips[player.AnimationIndex];
 		}
+		controller.playerID = player.ID;
+		controller.myAnimation = PlayerIdleClips[player.AnimationIndex];
+		
 		controller.enabled = false;
 
 		PlayerRoom[] rooms = FindObjectsOfType<PlayerRoom>();
